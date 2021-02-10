@@ -1,25 +1,33 @@
+@font-face {
+    font-family: Sahel;
+    src        : url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.eot');
+    src        : url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.woff') format('woff'),
+        url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.ttf') format('truetype');
+    font-weight   : normal;
+}
+
 .box {
     background-color       : rgba(255, 255, 255, 0.3);
     border-radius          : 5px;
     font-family            : sans-serif;
     text-align             : center;
     line-height            : 1;
-    -webkit-backdrop-filter: blur(1px);
+    border                 : solid 1px rgba(255, 255, 255, 0.3);
     backdrop-filter        : blur(1px);
     width                  : 40vw;
-    /* max-width           : 50%;
-    max-height             : 50%; */
-    /* padding             : 20px 40px; */
+    -webkit-backdrop-filter: blur(1px);
 }
 
 html,
 body {
     height: 100%;
     width : 100%;
+    font-family            : 'Sahel', sans-serif;
 }
 
 body {
-    background-image   : url(https://cdn.wallpapersafari.com/52/58/yJhlfW.jpg), linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background-image   : url(https://cdn.wallpapersafari.com/52/58/yJhlfW.jpg), linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
     background-position: center center;
     background-repeat  : no-repeat;
     background-size    : cover;
