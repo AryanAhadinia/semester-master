@@ -7,7 +7,7 @@ var sha256 = require("sha256");
 var jwt = require("jsonwebtoken");
 var env = require("dotenv").config();
 const { body, validationResult } = require("express-validator");
-const { response } = require("express");
+// const { response } = require("express");
 
 // Configure environment
 const dbURL = process.env.DB_URL;
@@ -104,27 +104,35 @@ function validateTimeObject(timeObject) {
         !('endMin' in timeObject)) {
         return false;
     }
+    if (!Number.isInteger(timeObject.weekday) ||
+        !Number.isInteger(timeObject.startHour) ||
+        !Number.isInteger(timeObject.startMin) ||
+        !Number.isInteger(timeObject.endHour) ||
+        !Number.isInteger(timeObject.endMin)) {
+        return false;
+    }
     if (timeObject.weekday < 0 || timeObject.weekday > 6) {
         return false;
     }
-    if (startHour < 6 || startHour > 20) {
+    if (timeObject.startHour < 6 || timeObject.startHour > 20) {
         return false;
     }
-    if (endHour < 6 || endHour > 20) {
+    if (timeObject.endHour < 6 || timeObject.endHour > 20) {
         return false;
     }
-    if (startMin != 0 && startMin != 30) {
+    if (timeObject.startMin != 0 && timeObject.startMin != 30) {
         return false;
     }
-    if (endMin != 0 && endMin != 30) {
+    if (timeObject.endMin != 0 && timeObject.endMin != 30) {
         return false;
     }
-    if (endHour < startHour) {
+    if (timeObject.endHour < timeObject.startHour) {
         return false;
     }
-    if (endHour - startHour > 8) {
+    if (timeObject.endHour - timeObject.startHour > 8) {
         return false;
     }
+    return true;
 }
 
 // APIs
@@ -186,7 +194,6 @@ app.post("/api/signup",
         });
     });
 
-
 /*
 POST:: /api/signin				    urlencoded: email, password
     200 : no message, cookie	    OK
@@ -209,84 +216,28 @@ app.post("/api/signin",
         MongoClient.connect(dbURL, function (err1, db) {
             if (err1) {
                 res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
                 return;
             }
-            db.collection("User", function (err2, users) {
+            db.collection("User").findOne({ "email": emailSent }, function (err2, user) {
                 if (err2) {
-                    res.sendStatus(500);
-                    db.close();
-                    return;
+                    return res.sendstatus(500);
                 }
-                users.findOne({ "email": emailSent }, function (err3, user) {
-                    if (err3) {
-                        return res.sendstatus(500);
-                    }
-                    if (!user) {
-                        return res.status(401).send("کاربر مورد نظر یافت نشد");
-                    }
-                    if (user.password == sha256(passwordSent)) {
-                        res.cookie("token", getToken(emailSent, user.role), { "maxAge": tokenExpiry, "httpOnly": true });
-                        res.sendStatus(200);
-                    } else {
-                        return res.status(401).send("رمز عبور اشتباه است");
-                    }
-                    db.close();
-                })
+                if (!user) {
+                    return res.status(401).send("کاربر مورد نظر یافت نشد");
+                }
+                if (user.password == sha256(passwordSent)) {
+                    res.cookie("token", getToken(emailSent, user.role), { "maxAge": tokenExpiry, "httpOnly": true });
+                    res.sendStatus(200);
+                } else {
+                    return res.status(401).send("رمز عبور اشتباه است");
+                }
+                db.close();
             })
         });
     });
-
-/*
-POST:: /api/admin/signin	        urlencoded: email, password
-    200 : no message, cookie	    OK
-    400 : error text			    bad parameters, validation fail
-    401 : error text			    user not found, password not match 
-*/
-app.post("/api/admin/signin",
-    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست"),
-    body("password").isLength({ min: 8 }).withMessage("رمز عبور باید دست کم شامل 8 کاراکتر باشد"),
-    function (req, res) {
-        if (Object.keys(req.body).length != 2) {
-            return res.status(400).send("درخواست ارسال شده معتبر نیست");
-        }
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).send(errors.array()[0]["msg"]);
-        }
-        const emailSent = req.body.email;
-        const passwordSent = req.body.password;
-        MongoClient.connect(dbURL, function (err1, db) {
-            if (err1) {
-                res.sendStatus(500);
-                return;
-            }
-            db.collection("User", function (err2, users) {
-                if (err2) {
-                    res.sendStatus(500);
-                    db.close();
-                    return;
-                }
-                users.findOne({ "email": emailSent }, function (err3, user) {
-                    if (err3) {
-                        return res.sendstatus(500);
-                    }
-                    if (!user) {
-                        return res.status(401).send("کاربر مورد نظر یافت نشد");
-                    }
-                    if (user.password == sha256(passwordSent) && user.role == "admin") {
-                        res.cookie("token", getToken(emailSent, user.role), { "maxAge": tokenExpiry, "httpOnly": true });
-                        res.sendStatus(200);
-                    } else {
-                        return res.status(401).send("رمز عبور اشتباه است");
-                    }
-                    db.close();
-                })
-            })
-        });
-    });
-
-
-
 
 /*
 GET	:: /api/schedule/courses
@@ -349,8 +300,8 @@ PUT	:: /api/schedule/select			urlencoded: course id, groupId; token
 */
 app.put("/api/schedule/select",
     authenticate,
-    body("courseId").isInt({ min: 20000, max: 100000 }),
-    body("groupId").isInt({ min: 1, max: 100 }),
+    body("courseId").isInt({ min: 20000, max: 100000 }).toInt(),
+    body("groupId").isInt({ min: 1, max: 100 }).toInt(),
     function (req, res) {
         if (Object.keys(req.body).length != 2) {
             return res.sendStatus(400);
@@ -391,8 +342,8 @@ DEL	:: /api/schedule/unselect		urlencoded: course id, groupId; token
 */
 app.delete("/api/schedule/unselect",
     authenticate,
-    body("courseId").isInt({ min: 20000, max: 100000 }),
-    body("groupId").isInt({ min: 1, max: 100 }),
+    body("courseId").isInt({ min: 20000, max: 100000 }).toInt(),
+    body("groupId").isInt({ min: 1, max: 100 }).toInt(),
     function (req, res) {
         if (Object.keys(req.body).length != 2) {
             return res.sendStatus(400);
@@ -452,6 +403,53 @@ app.get("/api/schedule/selections",
     });
 
 /*
+POST:: /api/admin/signin	        urlencoded: email, password
+    200 : no message, cookie	    OK
+    400 : error text			    bad parameters, validation fail
+    401 : error text			    user not found, password not match 
+*/
+app.post("/api/admin/signin",
+    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست"),
+    body("password").isLength({ min: 8 }).withMessage("رمز عبور باید دست کم شامل 8 کاراکتر باشد"),
+    function (req, res) {
+        if (Object.keys(req.body).length != 2) {
+            return res.status(400).send("درخواست ارسال شده معتبر نیست");
+        }
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).send(errors.array()[0]["msg"]);
+        }
+        const emailSent = req.body.email;
+        const passwordSent = req.body.password;
+        MongoClient.connect(dbURL, function (err1, db) {
+            if (err1) {
+                res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
+                return;
+            }
+            db.collection("User").findOne({ "email": emailSent }, function (err2, user) {
+                if (err2) {
+                    return res.sendstatus(500);
+                }
+                if (!user) {
+                    return res.status(401).send("کاربر مورد نظر یافت نشد");
+                }
+                if (user.password == sha256(passwordSent) && user.role == "admin") {
+                    res.cookie("token", getToken(emailSent, user.role), { "maxAge": tokenExpiry, "httpOnly": true });
+                    res.sendStatus(200);
+                } else if (user.password != sha256(passwordSent)) {
+                    return res.status(401).send("رمز عبور اشتباه است");
+                } else {
+                    return res.status(403).send("شما دسترسی مدیر ندارید");
+                }
+                db.close();
+            })
+        });
+    });
+
+/*
 PUT :: /api/admin/addcourse			body JSON: course object properties; admintoken
     200 : no message			    OK
     400 : no message			    bad parameters, validation fail
@@ -460,9 +458,9 @@ PUT :: /api/admin/addcourse			body JSON: course object properties; admintoken
 app.put("/api/admin/addcourse",
     authenticateAdmin,
     validateCourseMiddleware,
-    body("courseId").isInt({ min: 20000, max: 100000 }).withMessage("کد درس معتبر نیست"),
-    body("groupId").isInt({ min: 1, max: 100 }).withMessage("شماره گروه درس معتبر نیست"),
-    body("unit").isInt({ min: 0, max: 4 }).withMessage("تعداد واحد معتبر نیست"),
+    body("courseId").isInt({ min: 20000, max: 100000 }).toInt().withMessage("کد درس معتبر نیست"),
+    body("groupId").isInt({ min: 1, max: 100 }).toInt().withMessage("شماره گروه درس معتبر نیست"),
+    body("unit").isInt({ min: 0, max: 4 }).toInt().withMessage("تعداد واحد معتبر نیست"),
     function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -477,7 +475,7 @@ app.put("/api/admin/addcourse",
                 return;
             }
             const queryObject = { "courseId": req.body.courseId, "groupId": req.body.groupId };
-            db.collection("Course").update(req.course, queryObject, { upsert: true }, function (err2, inserted) {
+            db.collection("Course").update(queryObject, req.course, { upsert: true }, function (err2, inserted) {
                 if (err2) {
                     res.sendStatus(500);
                 } else {
@@ -496,10 +494,40 @@ DEL	:: /api/admin/removecourse		urlencoded: courseId, groupId; admintoken
     400 : no message			    bad parameters, validation fail
     403 : no message			    FORBIDEN
 */
-app.put("/api/admin/removecourse",
+app.delete("/api/admin/removecourse",
     authenticateAdmin,
+    body("courseId").isInt({ min: 20000, max: 100000 }).toInt().withMessage("کد درس معتبر نیست"),
+    body("groupId").isInt({ min: 1, max: 100 }).toInt().withMessage("شماره گروه درس معتبر نیست"),
     function (req, res) {
-
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).send(errors.array()[0]["msg"]);
+        }
+        MongoClient.connect(dbURL, function (err1, db) {
+            if (err1) {
+                res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
+                return;
+            }
+            const queryObject = { "courseId": req.body.courseId, "groupId": req.body.groupId };
+            db.collection("Course").deleteMany(queryObject, function (err2, deleted) {
+                if (err2) {
+                    res.sendStatus(500);
+                }
+                db.collection("Selection").deleteMany(queryObject, function (err3, deletedSelections) {
+                    if (err3) {
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(200);
+                    }
+                    try {
+                        db.close();
+                    } catch (e) { }
+                })
+            })
+        })
     });
 
 /*
@@ -513,21 +541,28 @@ app.delete("/api/admin/dropsemester",
         MongoClient.connect(dbURL, function (err1, db) {
             if (err1) {
                 res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
                 return;
             }
-            db.collection("Courses").deleteMany({}, function (err2, deletedCourses) {
+            db.collection("Course").deleteMany({}, function (err2, deletedCourses) {
                 if (err2) {
                     res.sendStatus(500);
-                    db.close();
+                    try {
+                        db.close();
+                    } catch (e) { }
                     return;
                 }
                 db.collection("Selection").deleteMany({}, function (err3, deletedSelections) {
                     if (err3) {
                         res.sendStatus(500);
-                        db.close();
-                        return;
+                    } else {
+                        res.sendStatus(200);
                     }
-                    res.sendStatus(200);
+                    try {
+                        db.close();
+                    } catch (e) { }
                 })
             })
         })

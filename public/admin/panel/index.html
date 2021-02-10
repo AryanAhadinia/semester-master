@@ -14,12 +14,12 @@
     <style>
         body {
             font-family: 'Sahel', sans-serif;
-            background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(64, 185, 255, 0.521));
+            background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(64, 185, 255, 0.521));
         }
     </style>
 
     <title>پنل مدیریت</title>
-    <link rel="shortcut icon" type="image/png" href="/media/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="/media/favicon.png" />
 </head>
 
 <body>
@@ -46,62 +46,63 @@
     </ul>
     <div class="tab-content m-3" id="pills-tabContent">
         <div class="tab-pane fade" id="pills-add" role="tabpanel" aria-labelledby="pills-add-tab">
-
             <form class="row g-3 needs-validation" novalidate>
                 <div class="col-md-4">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="addCourseId" placeholder="token" required>
+                        <input type="number" class="form-control" id="addCourseId" placeholder="courseId" required>
                         <label for="addCourseId">کد درس</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="addGroupId" placeholder="token" required>
+                        <input type="number" class="form-control" id="addGroupId" placeholder="groupId" required>
                         <label for="addGroupId">شماره گروه</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="addUnit" placeholder="token" required>
+                        <input type="number" class="form-control" id="addUnit" placeholder="unit" required>
                         <label for="addUnit">تعداد واحد</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="addDepartment" placeholder="token" required>
+                        <input type="text" class="form-control" id="addDepartment" placeholder="department" required>
                         <label for="addDepartment">دانشکده ارائه دهنده</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="addTitle" placeholder="token" required>
+                        <input type="text" class="form-control" id="addTitle" placeholder="title" required>
                         <label for="addTitle">عنوان درس</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="addInstructor" placeholder="token" required>
+                        <input type="text" class="form-control" id="addInstructor" placeholder="instructor" required>
                         <label for="addInstructor">نام ارائه دهنده</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="addExamTime" placeholder="token" required>
+                        <input type="text" class="form-control" id="addExamTime" placeholder="examTime" required>
                         <label for="addExamTime">زمان آزمون</label>
                     </div>
                 </div>
                 <div id="addTiming">
                 </div>
-
                 <div class="col-md-6">
                     <div class="d-grid gap-2">
-                        <button id="addTime" class="btn btn-lg btn-outline-secondary" type="button">اضافه کردن زمان
-                            برگزاری</button>
+                        <button id="addTime" class="btn btn-lg btn-outline-secondary" type="button">
+                            اضافه کردن زمان برگزاری
+                        </button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="d-grid gap-2">
-                        <button id="addCourse" class="btn btn-lg btn-outline-primary" type="submit">اضافه کردن درس</button>
+                        <button id="addCourse" class="btn btn-lg btn-outline-primary" type="submit">
+                            اضافه کردن درس
+                        </button>
                     </div>
                 </div>
             </form>
@@ -131,7 +132,7 @@
                 <div class="col-6"></div>
                 <div class="col-6">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-lg btn-outline-warning" type="submit">حذف</button>
+                        <button class="btn btn-lg btn-outline-warning" id="removeCourse" type="submit">حذف</button>
                     </div>
                 </div>
             </form>
@@ -156,7 +157,8 @@
                 </div>
                 <div class="col-20">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-lg btn-outline-primary" type="submit">دریافت داده از سامانه آموزش</button>
+                        <button class="btn btn-lg btn-outline-primary" type="submit">دریافت داده از سامانه
+                            آموزش</button>
                     </div>
                 </div>
             </form>

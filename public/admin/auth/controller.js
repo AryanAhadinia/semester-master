@@ -17,19 +17,22 @@ function bootstrap_warning(message) {
 }
 
 document.getElementById("signin").onclick = function () {
+    const parameters = {
+        "email": document.getElementById("email").value,
+        "password": document.getElementById("password").value
+    }
+    if (parameters.email == "" || parameters.password == "") {
+        return;
+    }
+    const params = getURL_Encoded(parameters);
     if (document.getElementById("authalert")) {
         document.getElementById("authalert").remove();
     }
     const req = new XMLHttpRequest();
     const url = '/api/admin/signin';
-    const data = {
-        "email": document.getElementById("email").value,
-        "password": document.getElementById("password").value
-    }
-    const params = getURL_Encoded(data);
     req.onreadystatechange = function () {
         if (this.readyState == 1) {
-            document.getElementById("signin").innerHTML += '<span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>'
+            document.getElementById("signin").innerHTML += '<span class="spinner-border spinner-border-sm" style="width: 2rem; height: 2rem;" id="spinner" role="status" aria-hidden="true"></span>'
             document.getElementById("signin").disabled = true;
         } else if (this.readyState == 4) {
             document.getElementById("spinner").remove();
