@@ -499,6 +499,9 @@ app.delete("/api/admin/removecourse",
     body("courseId").isInt({ min: 20000, max: 100000 }).toInt().withMessage("کد درس معتبر نیست"),
     body("groupId").isInt({ min: 1, max: 100 }).toInt().withMessage("شماره گروه درس معتبر نیست"),
     function (req, res) {
+        if (Object.keys(req.body).length != 2) {
+            return res.status(400).send("درخواست ارسال شده معتبر نیست");
+        }
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).send(errors.array()[0]["msg"]);
