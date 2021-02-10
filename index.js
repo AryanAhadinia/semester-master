@@ -14,6 +14,8 @@ const dbURL = process.env.DB_URL;
 const tokenExpiry = process.env.TOKEN_EXPIRY;
 const port = process.env.PORT;
 
+const url = `http://127.0.0.1:${port}`;
+
 // Configure app
 var app = express();
 app.use(express.json());
@@ -89,7 +91,7 @@ function validateCourseMiddleware(req, res, next) {
 
 // Functions
 function getToken(email, role) {
-    const userObject = { "email": email, "role": role, "expiry": +new Date() + tokenExpiry };
+    const userObject = { "email": email, "role": role, "expiry": +new Date() + tokenExpiry};
     return jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
 }
 
@@ -582,3 +584,17 @@ app.put("/api/admin/crawl",
     function (req, res) {
 
     });
+
+app.post("/api/forgetpass/req",
+    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست"),
+    function (req, res) {
+        if (Object.keys(req.body).length != 1) {
+            return res.status(400).send("درخواست ارسال شده معتبر نیست");
+        }
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).send(errors.array()[0]["msg"]);
+        }
+        const token = getToken(req.body.email, "std");
+        // TODO
+    })
