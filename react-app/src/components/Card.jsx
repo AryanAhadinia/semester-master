@@ -45,9 +45,6 @@ class Card extends Component {
         
      </div>
      </Tilt>
-        <div class="drop drop2"></div>
-        <div class="drop drop3"></div>
-        <div class="drop drop4"></div>
         </React.Fragment>
        );
     }
