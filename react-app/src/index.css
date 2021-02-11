@@ -781,6 +781,7 @@ h1 {
     text-transform: uppercase;
     align-self: auto;
     text-align: center;
+    text-shadow: 6px 6px 11px rgb(20, 20, 20);
 }
 
 .drop {
@@ -804,6 +805,7 @@ h1 {
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     color: white;
+    border: solid 2px transparent;
 }
 
 .sidebar {
@@ -817,7 +819,7 @@ h1 {
     float: right;
     margin: 0px;
     padding: 0px;
-    border-radius: 10px 0px 0 10px;
+    border-radius: 5px 0px 0 5px;
     position: relative;
 }
 
@@ -837,44 +839,6 @@ h1 {
     align-content: center;
     font-size: 100%;
     font-family: kalameh-bold;
-}
-
-.drop2 {
-    width: 40px;
-    height: 40px;
-    top: 40%;
-    left: -35%;
-    right: 0;
-    z-index: 0;
-}
-
-.drop3 {
-    width: 60px;
-    height: 60px;
-    top: 190px;
-    right: 40%;
-    z-index: 3;
-}
-
-.drop4 {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    top: 40%;
-    right: 25%;
-}
-
-span {
-    background: #fff;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-span a {
-    padding: 8px 12px;
-    font-family: Arial;
-    color: #000;
-    display: block;
 }
 
 .pattern-horizontal-lines-sm {
@@ -918,15 +882,23 @@ label {
     padding: 1px 5px;
 }
 
+.sidebar img {
+    padding: 0%;
+    margin: 25% auto;
+    -webkit-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
+    box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
+}
+
 .person {
     width: 86% !important;
     bottom: 4% !important;
     left: 7% !important;
     position: absolute;
     border-radius: 3px;
-    -webkit-box-shadow: 15px 17px 67px -31px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 15px 17px 67px -31px rgba(0, 0, 0, 0.75);
-    box-shadow: 15px 17px 67px -31px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.45);
+    box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.45);
 }
 
 .card-bar {
