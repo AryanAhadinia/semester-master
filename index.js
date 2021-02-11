@@ -7,6 +7,7 @@ var sha256 = require("sha256");
 var jwt = require("jsonwebtoken");
 var env = require("dotenv").config();
 const { body, validationResult } = require("express-validator");
+const nodemailer = require("nodemailer");
 // const { response } = require("express");
 
 // Configure environment
@@ -91,7 +92,7 @@ function validateCourseMiddleware(req, res, next) {
 
 // Functions
 function getToken(email, role) {
-    const userObject = { "email": email, "role": role, "expiry": +new Date() + tokenExpiry};
+    const userObject = { "email": email, "role": role, "expiry": +new Date() + tokenExpiry };
     return jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
 }
 
@@ -135,6 +136,23 @@ function validateTimeObject(timeObject) {
         return false;
     }
     return true;
+}
+
+function sendMail(emailAddress, subject, body) {
+    let transport = new nodemailer.createTransport({
+        "service": 'gmail',
+        "auth": {
+            "user": process.env.USER,
+            "pass": process.env.PASS
+        }
+    });
+    let mailOption = {
+        "from": `Aryan from SeMaster <${process.env.USER}>`,
+        "to": emailAddress,
+        "subject": subject,
+        "text": body
+    }
+    transport.sendMail(mailOption, function (err, mail) { });
 }
 
 // APIs
@@ -586,15 +604,51 @@ app.put("/api/admin/crawl",
     });
 
 app.post("/api/forgetpass/req",
-    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست"),
+    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست."),
     function (req, res) {
         if (Object.keys(req.body).length != 1) {
-            return res.status(400).send("درخواست ارسال شده معتبر نیست");
+            return res.status(400).send("درخواست ارسال شده معتبر نیست.");
         }
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).send(errors.array()[0]["msg"]);
         }
         const token = getToken(req.body.email, "std");
-        // TODO
-    })
+        const link = `${url}/forgetpass/serve/${token}`;
+        MongoClient.connect(dbURL, function (err1, db) {
+            if (err1) {
+                res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
+                return;
+            }
+            db.collection("User").findOne({ "email": emailSent }, function (err2, user) {
+                if (err2) {
+                    res.sendStatus(500);
+                } else if (!user) {
+                    res.sendStatus(401);
+                } else {
+                    sendMail(email,
+                        "فراموشی رمز عبور",
+                        `لینک بازیابی: ${link}`);
+                    res.sendStatus(200);
+                }
+                try {
+                    db.close();
+                } catch (e) { }
+            })
+        });
+    });
+
+app.get("/forgetpass/serve/:token",
+    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست."),
+    function (req, res) {
+        res.sendFile(path.join(__dirname, '/public/auth/'));
+    });
+
+app.get("/account/validate",
+    authenticate,
+    function (req, res) {
+        res.json({ "email": req.user.email, "role": req.user.role }).send();
+    });
