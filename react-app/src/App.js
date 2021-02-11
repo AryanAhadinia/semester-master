@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
 import Card from "./components/Card";
 import { Col, Row } from "react-bootstrap";
+import Week from "./components/Week"
 
 class App extends Component {
     state = {};
@@ -11,12 +12,10 @@ class App extends Component {
         return (
             <React.Fragment>
                 <Row style={{ height: "100%" }}>
-                    <Sidebar></Sidebar>
-                    <Col>
-                        <h1 style={{ fontSize: "450%" }}> ترمیناتور </h1>
-                        <Card style={{ width: "100%" }}></Card>
-                    </Col>
+                    
+                    <Week></Week>
                 </Row>
+               
             </React.Fragment>
         );
     }
