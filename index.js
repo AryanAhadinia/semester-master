@@ -138,7 +138,7 @@ function validateTimeObject(timeObject) {
     return true;
 }
 
-function sendMail(emailAddress, subject, body) {
+function sendMail(emailAddress, subject, bodyText) {
     let transport = new nodemailer.createTransport({
         "service": 'gmail',
         "auth": {
@@ -150,7 +150,7 @@ function sendMail(emailAddress, subject, body) {
         "from": `Aryan from SeMaster <${process.env.USER}>`,
         "to": emailAddress,
         "subject": subject,
-        "text": body
+        "text": bodyText
     }
     transport.sendMail(mailOption, function (err, mail) { });
 }
@@ -623,13 +623,13 @@ app.post("/api/forgetpass/req",
                 } catch (e) { }
                 return;
             }
-            db.collection("User").findOne({ "email": emailSent }, function (err2, user) {
+            db.collection("User").findOne({ "email": req.body.email }, function (err2, user) {
                 if (err2) {
                     res.sendStatus(500);
                 } else if (!user) {
                     res.sendStatus(401);
                 } else {
-                    sendMail(email,
+                    sendMail(req.body.email,
                         "فراموشی رمز عبور",
                         `لینک بازیابی: ${link}`);
                     res.sendStatus(200);
@@ -642,12 +642,22 @@ app.post("/api/forgetpass/req",
     });
 
 app.get("/forgetpass/serve/:token",
-    body("email").isEmail().normalizeEmail().withMessage("پست الکترونیک وارد شده معتبر نیست."),
     function (req, res) {
-        res.sendFile(path.join(__dirname, '/public/auth/'));
+        if (!req.params["token"]) {
+            res.sendStatus(400);
+            return;
+        }
+        const token = req.params["token"];
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, user) {
+            if (err || user.expiry < +new Date()) {
+                return res.sendStatus(403);
+            }
+            res.cookie("token", getToken(user.email, user.role), { "maxAge": tokenExpiry, "httpOnly": true });
+            res.sendFile(path.join(__dirname, '/public/change_password/index.html'));
+        });
     });
 
-app.get("/account/validate",
+app.get("/api/account/validate",
     authenticate,
     function (req, res) {
         res.json({ "email": req.user.email, "role": req.user.role }).send();
