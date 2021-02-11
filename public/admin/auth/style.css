@@ -15,7 +15,7 @@
     line-height            : 1;
     border                 : solid 1px rgba(255, 255, 255, 0.3);
     backdrop-filter        : blur(1px);
-    width                  : 40vw;
+    width                  : 30vw;
     -webkit-backdrop-filter: blur(1px);
 }
 

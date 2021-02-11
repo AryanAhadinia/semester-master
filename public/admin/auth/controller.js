@@ -12,10 +12,6 @@ function getURL_Encoded(object) {
     return elements.join("&");
 }
 
-function bootstrap_warning(message) {
-    document.getElementById("alert_placeholder").innerHTML += `<div id="authalert" class="alert alert-danger alert-dismissible fade show" role="alert">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
-}
-
 document.getElementById("signin").onclick = function () {
     const parameters = {
         "email": document.getElementById("email").value,
@@ -25,9 +21,6 @@ document.getElementById("signin").onclick = function () {
         return;
     }
     const params = getURL_Encoded(parameters);
-    if (document.getElementById("authalert")) {
-        document.getElementById("authalert").remove();
-    }
     const req = new XMLHttpRequest();
     const url = '/api/admin/signin';
     req.onreadystatechange = function () {
@@ -37,10 +30,16 @@ document.getElementById("signin").onclick = function () {
         } else if (this.readyState == 4) {
             document.getElementById("spinner").remove();
             document.getElementById("signin").disabled = false;
-            if (this.status != 200) {
-                bootstrap_warning(req.responseText);
-            } else if (this.status == 200) {
+            if (this.status == 200) {
                 redirectToPanel();
+            } else if (this.status == 400) {
+
+            } else if (this.status == 401) {
+
+            } else if (this.status == 401) {
+
+            } else {
+
             }
         }
     }
