@@ -5,6 +5,11 @@ body {
     overflow: hidden;
 }
 
+#root {
+    height: 100vh;
+    width: 100vw;
+}
+
 body {
     background: #5f2c82; /* fallback for old browsers */
     background: -webkit-linear-gradient(
@@ -26,19 +31,21 @@ body {
 
 .wrap {
     position: relative;
-    width: 800px;
-    height: 700px;
+    width: auto;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
     font-family: Arial;
     color: #fff;
     font-size: 90px;
-    padding: 20px 30px;
+    padding: 40px 30px;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
-    position: absolute;
     align-self: auto;
+    text-align: center;
 }
 
 .main {
@@ -66,7 +73,6 @@ h1 {
     position: absolute;
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    display: block;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -81,6 +87,38 @@ h1 {
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     color: white;
+}
+
+.sidebar {
+    height: 100%;
+    top: 0px;
+    right: 0;
+    z-index: 2;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    color: white;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px 0px 0 10px;
+    position: relative;
+}
+
+.menu-item {
+    height: 40px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+    text-align: right;
+    padding: 8px;
+    vertical-align: center;
+    align-self: center;
+    align-content: center;
+    font-size: 80%;
 }
 
 .drop2 {
@@ -176,5 +214,6 @@ label {
 
 .row {
     width: 100%;
+    height: 100vh;
     margin: auto 0 !important;
 }

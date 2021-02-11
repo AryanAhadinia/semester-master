@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import university from './university-bulding.png'
-import person from './person.jpg'
+import university from '../university-bulding.png'
+import person from '../person.jpg'
 import Tilt from 'react-parallax-tilt';
-
-
 
 class Card extends Component {
     state = {  }
     render() { 
         return ( 
-           <Tilt>
+       <Tilt> 
         <div className="wrap">
         <div className="drop drop1" dir="rtl">
         <Row className="card-bar" style={{height : '50px', backgroundColor : 'rgba(0, 0, 0, 0.2)'}}>
@@ -44,8 +42,9 @@ class Card extends Component {
         </div>
      </div>
      </Tilt>
+        
        );
     }
 }
- 
+
 export default Card;
