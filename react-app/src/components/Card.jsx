@@ -8,6 +8,7 @@ class Card extends Component {
     state = {  }
     render() { 
         return ( 
+         <React.Fragment>
        <Tilt> 
         <div className="wrap">
         <div className="drop drop1" dir="rtl">
@@ -39,10 +40,15 @@ class Card extends Component {
                </Col>
    
             </Row>
+            
         </div>
+        
      </div>
      </Tilt>
-        
+        <div class="drop drop2"></div>
+        <div class="drop drop3"></div>
+        <div class="drop drop4"></div>
+        </React.Fragment>
        );
     }
 }

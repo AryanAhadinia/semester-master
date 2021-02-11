@@ -13,7 +13,7 @@ class App extends Component {
                 <Row style={{ height: "100%" }}>
                     <Sidebar></Sidebar>
                     <Col>
-                        <h1> Terminator </h1>
+                        <h1 style={{ fontSize: "450%" }}> ترمیناتور </h1>
                         <Card style={{ width: "100%" }}></Card>
                     </Col>
                 </Row>
