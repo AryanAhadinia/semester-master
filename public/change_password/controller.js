@@ -1,7 +1,3 @@
-function redirectToPanel() {
-    window.location.pathname = "/admin/panel";
-}
-
 function getURL_Encoded(object) {
     let elements = [];
     for (let property in object) {
@@ -10,6 +6,22 @@ function getURL_Encoded(object) {
         elements.push(encodedKey + "=" + encodedValue);
     }
     return elements.join("&");
+}
+
+function setEmail() {
+    const req = new XMLHttpRequest();
+    const url = '/api/account/validate';
+    req.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                document.getElementById("email").value = JSON.parse(this.responseText).email;
+            } else {
+
+            }
+        }
+    }
+    req.open("GET", url);
+    req.send();
 }
 
 document.getElementById("signin").onclick = function () {
@@ -47,3 +59,5 @@ document.getElementById("signin").onclick = function () {
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     req.send(params);
 }
+
+setEmail();

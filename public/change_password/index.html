@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-mUkCBeyHPdg0tqB6JDd+65Gpw5h/l8DKcCTV2D2UpaMMFd7Jo8A+mDAosaWgFBPl" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-    <title>ورود مدیر</title>
+    <link href='https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.css' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-family: 'Sahel', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="/change_password/style.css">
+    <title>دگرش گذرواژه</title>
     <link rel="shortcut icon" type="image/png" href="/media/favicon.png" />
-
-
 </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-
     <div class="container">
         <div class="box">
             <div class="card-body">
                 <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-pane">
-                        <img src="/media/logo-tr-superwide.png" style="width:inherit" alt=""></img>
-                    </div>
                     <div class="col-pane">
                         <div class="trinput form-floating mb-3">
                             <input type="email" class="trinput form-control" id="email" placeholder="email"
@@ -32,20 +32,20 @@
                             <label class="trinput" for="email">پست الکترونیک</label>
                         </div>
                     </div>
+                    <script>
+                        document.getElementById("email").disabled = true;                    
+                    </script>
                     <div class="col-pane">
                         <div class="trinput form-floating mb-3">
                             <input type="password" class="trinput form-control" id="password" placeholder="password"
                                 style="text-align: center;" required>
-                            <label class="trinput " for="password">رمز عبور</label>
+                            <label class="trinput " for="password">گذرواژه جدید</label>
                         </div>
                     </div>
-                    <!-- <div class="col-pane">
-                        <div id="alert_placeholder"></div>
-                    </div> -->
                     <div class="col-pane">
                         <div class="d-grid gap-2">
                             <button class="btn btn-lg btn-primary" id="signin" type="submit">
-                                ورود مدیر
+                                دگرش گذرواژه
                             </button>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-
+    <script src="/change_password/controller.js"></script>
     <script>
         (function () {
             'use strict';
@@ -71,7 +71,6 @@
             }, false);
         })();
     </script>
-    <script src="./controller.js"></script>
 </body>
 
 </html>
