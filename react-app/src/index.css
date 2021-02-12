@@ -791,7 +791,6 @@ h1 {
 }
 
 .sidebar {
-    height: 100%;
     top: 0px;
     right: 0;
     z-index: 2;
@@ -803,6 +802,7 @@ h1 {
     padding: 0px;
     border-radius: 5px 0px 0 5px;
     position: relative;
+    display: inline-block;
 }
 
 .menu-item {
@@ -913,4 +913,36 @@ label {
     width: 200px;
     margin: 40px auto;
     display: flex;
+    top: 0;
+}
+
+.department-div {
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 5px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+}
+
+.custom-select {
+    margin: 5%;
+    padding-right: 25px !important;
+    width: 90% !important;
+    height: 4rem !important;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 5px !important;
+    position: relative;
+    font-family: kalameh-bold;
+    font-size: 110% !important;
 }
