@@ -5,6 +5,8 @@ import { Col, Row } from "react-bootstrap";
 import Week from "./components/Week";
 import logo from "./termix.png";
 import Departments from "./components/Departments";
+import TableContainer from "./components/TableContainer";
+import Timetable from "./components/Timetable";
 
 class App extends Component {
     state = {
@@ -19,10 +21,13 @@ class App extends Component {
                         handleCurrentState={this.handleCurrentState}
                         currentState={this.state.currentState}
                     ></Sidebar>
-                    <Col className="d-flex flex-column justify-content-start align-items-center flex-fill">
+                    <Col className="d-flex flex-column justify-content-start align-items-center flex-fill main-section">
                         <img id="termix-logo" src={logo} alt="Termix"></img>
-                        <div className="d-flex justify-content-center w-100">
-                            <div className="w-100">{this.handleSidebar()}</div>
+                        <div
+                            className="d-flex justify-content-between w-100 h-100"
+                            style={{ marginBottom: "15px" }}
+                        >
+                            {this.handleSidebar()}
                             {this.state.currentState === 2 ? (
                                 <div className="flex-grow-1 flex-shrink-1">
                                     <Departments></Departments>
@@ -42,9 +47,16 @@ class App extends Component {
     handleSidebar = () => {
         switch (this.state.currentState) {
             case 1:
-                return <Card></Card>;
+                return (
+                    <div className="w-100">
+                        <Card></Card>
+                    </div>
+                );
             case 2:
-                return <Week></Week>;
+                // return <Week></Week>;
+                return <Timetable></Timetable>;
+            case 3:
+                return <TableContainer></TableContainer>;
             default:
                 return null;
         }

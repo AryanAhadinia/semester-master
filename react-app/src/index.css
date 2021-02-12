@@ -36,12 +36,12 @@ html,
 body {
     font-family: kalameh;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     overflow: hidden;
 }
 
 #root {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -794,6 +794,7 @@ h1 {
     top: 0px;
     right: 0;
     z-index: 2;
+    height: 100vh;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: white;
@@ -835,34 +836,34 @@ h1 {
 }
 
 .uni-name-farsi {
-    padding-top: 4px;
+    padding-top: 6px;
     font-weight: 600;
-    font-family: kalameh-bold;
-    font-size: 120%;
+    font-family: kalameh-bold !important;
+    font-size: 120% !important;
 }
 
 .uni-name-eng {
-    font-size: 62%;
-    margin-top: -6px;
+    font-size: 60% !important;
+    margin-top: 0px !important;
 }
 
 label {
-    font-family: kalameh-bold;
-    font-size: 72%;
+    font-family: kalameh-bold !important;
+    font-size: 72% !important;
     text-align: right;
     float: right;
     display: block;
-    padding: 0;
+    padding: 3px !important;
     margin: 0 !important;
 }
 
 .info-field {
     background-color: rgba(255, 255, 255, 0.7);
     color: black;
-    font-size: 9pt;
+    font-size: 9pt !important;
     width: 100%;
     margin: 0 !important;
-    padding: 1px 5px;
+    padding: 3px 5px !important;
 }
 
 .sidebar img {
@@ -889,6 +890,7 @@ label {
     top: 1% !important;
     left: 7% !important;
     position: absolute;
+    z-index: 99999;
 }
 
 .card-bar {
@@ -925,7 +927,7 @@ label {
     color: white;
     background-color: white;
     margin: 0px;
-    padding: 0px;
+    padding: 5%;
     border-radius: 5px;
     position: relative;
     background: rgba(255, 255, 255, 0.4);
@@ -935,9 +937,7 @@ label {
 }
 
 .custom-select {
-    margin: 5%;
     padding-right: 25px !important;
-    width: 90% !important;
     height: 4rem !important;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -947,8 +947,8 @@ label {
     font-size: 110% !important;
 }
 .courses-container {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     z-index: 2;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -991,4 +991,131 @@ label {
     border: 2px solid rgba(255, 255, 255, 0.3);
     transition: background-color 0.2s;
     transition: border 0.2s;
+}
+
+.table-container {
+    margin: 5% 2%;
+    height: fit-content;
+    max-height: 75vh;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    padding: 3%;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(
+        130deg,
+        #ff781850,
+        #af002c4b 41.07%,
+        #31909746 76.05%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+    -webkit-box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.69);
+    box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.15);
+    padding-top: 5px;
+    overflow-y: auto;
+    margin-top: 0%;
+}
+
+.section-title {
+    font-family: katibeh;
+    font-size: 2vw;
+    padding: 3vh;
+    align-self: flex-start;
+}
+
+th {
+    font-family: kalameh-bold !important;
+    font-size: 120% !important;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    text-align: center !important;
+}
+
+.table {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center !important;
+}
+
+td {
+    font-family: kalameh !important;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem !important;
+}
+
+.timetable-container {
+    margin: 5% 2%;
+    height: 100%;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(
+        130deg,
+        #ff781850,
+        #af002c4b 41.07%,
+        #31909746 76.05%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+    -webkit-box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.69);
+    box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.15);
+    padding-top: 5px;
+    overflow-y: auto;
+    margin-top: 0%;
+    overflow: hidden;
+}
+
+.main-section {
+    height: 100vh !important;
+}
+
+.timetable {
+    /* height: 100% !important; */
+    flex-grow: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 5rem repeat(26, 1fr);
+    column-gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 15px;
+}
+
+.weekdays {
+    font-family: katibeh;
+    box-shadow: none;
+}
+
+.empty-cell {
+    background-color: rgba(255, 255, 255, 0.2);
+    justify-self: stretch;
+    align-self: stretch;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.course1 {
+    background-color: rgba(197, 11, 11, 0.4);
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+    justify-self: stretch;
+    align-self: stretch;
+    grid-row: 4 / span 3;
+    grid-column: 3;
 }
