@@ -791,7 +791,6 @@ h1 {
 }
 
 .sidebar {
-    height: 100%;
     top: 0px;
     right: 0;
     z-index: 2;
@@ -803,6 +802,7 @@ h1 {
     padding: 0px;
     border-radius: 5px 0px 0 5px;
     position: relative;
+    display: inline-block;
 }
 
 .menu-item {
@@ -884,6 +884,13 @@ label {
     box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.45);
 }
 
+.imam {
+    width: 86% !important;
+    top: 1% !important;
+    left: 7% !important;
+    position: absolute;
+}
+
 .card-bar {
     position: absolute;
     top: 0;
@@ -906,4 +913,82 @@ label {
     width: 200px;
     margin: 40px auto;
     display: flex;
+    top: 0;
+}
+
+.department-div {
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 5px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+}
+
+.custom-select {
+    margin: 5%;
+    padding-right: 25px !important;
+    width: 90% !important;
+    height: 4rem !important;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 5px !important;
+    position: relative;
+    font-family: kalameh-bold;
+    font-size: 110% !important;
+}
+.courses-container {
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(
+        130deg,
+        #ff781850,
+        #af002c69 41.07%,
+        #3190976e 76.05%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+    -webkit-box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.69);
+    box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.15);
+    padding-top: 5px;
+    overflow-y: auto;
+}
+
+.course {
+    height: 30px;
+    width: 95%;
+    padding: 7px;
+    text-align: center;
+    margin: 2%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-family: kalameh-bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    transition: border 0.2s;
+}
+
+.course:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s;
+    transition: border 0.2s;
 }

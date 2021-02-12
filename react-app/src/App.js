@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import { Col, Row } from "react-bootstrap";
 import Week from "./components/Week";
 import logo from "./termix.png";
+import Departments from "./components/Departments";
 
 class App extends Component {
     state = {
@@ -13,16 +14,28 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <Row style={{ height: "100vh" }}>
+                <div className="d-flex flex-row flex-fill">
                     <Sidebar
                         handleCurrentState={this.handleCurrentState}
                         currentState={this.state.currentState}
                     ></Sidebar>
-                    <Col>
-                        <img id="termix-logo" src={logo} alt="Termix"></img>
-                        {this.handleSidebar()}
+                    <Col className="d-flex flex-column justify-content-center flex-fill">
+                        <img
+                            className="flex-fill"
+                            id="termix-logo"
+                            src={logo}
+                            alt="Termix"
+                        ></img>
+                        <div className="d-flex justify-content-center">
+                            <div className="w-100">{this.handleSidebar()}</div>
+                            {this.state.currentState === 2 ? (
+                                <div className="flex-grow-1 flex-shrink-1">
+                                    <Departments></Departments>
+                                </div>
+                            ) : null}
+                        </div>
                     </Col>
-                </Row>
+                </div>
             </React.Fragment>
         );
     }

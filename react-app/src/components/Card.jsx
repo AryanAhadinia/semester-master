@@ -4,6 +4,7 @@ import university from '../university-bulding.png'
 import person from '../person.jpg'
 import Tilt from 'react-parallax-tilt';
 import "../index.css"
+import imam from '../imamQoute.png'
 
 class Card extends Component {
     state = {  }
@@ -37,6 +38,7 @@ class Card extends Component {
                  <label className="info-field"> کارشناسی</label>
               </Col>
               <Col sm={3} className="pattern-horizontal-lines-sm white" style={{ padding:'0' , zIndex : '-1', opacity : '0.9'}}>
+                 <img className='imam' src={imam} alt="Imam"/>
                  <img className='person' src={person} alt="Person"/>
                </Col>
    
