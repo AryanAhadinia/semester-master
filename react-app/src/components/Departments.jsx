@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Course from './CourseContainer';
+import Course from './Course';
+import CourseContainer from './CourseContainer';
 
 class Departments extends Component {
     state = {  }
@@ -12,9 +13,8 @@ class Departments extends Component {
                 <option value="2">شیمی</option>
                 <option value="3">کامپیوتر</option>
             </select>
-            <Course>
-
-            </Course>
+            <CourseContainer>
+            </CourseContainer>
         </div>
         );
     }

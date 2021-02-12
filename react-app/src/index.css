@@ -968,4 +968,27 @@ label {
     flex-grow: 1;
     -webkit-box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.69);
     box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.15);
+    padding-top: 5px;
+    overflow-y: auto;
+}
+
+.course {
+    height: 30px;
+    width: 95%;
+    padding: 7px;
+    text-align: center;
+    margin: 2%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-family: kalameh-bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    transition: border 0.2s;
+}
+
+.course:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s;
+    transition: border 0.2s;
 }
