@@ -884,6 +884,13 @@ label {
     box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.45);
 }
 
+.imam {
+    width: 86% !important;
+    top: 1% !important;
+    left: 7% !important;
+    position: absolute;
+}
+
 .card-bar {
     position: absolute;
     top: 0;
