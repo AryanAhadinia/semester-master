@@ -14,19 +14,14 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="d-flex flex-row flex-fill">
+                <div className="d-flex flex-row flex-fill h-100">
                     <Sidebar
                         handleCurrentState={this.handleCurrentState}
                         currentState={this.state.currentState}
                     ></Sidebar>
-                    <Col className="d-flex flex-column justify-content-center flex-fill">
-                        <img
-                            className="flex-fill"
-                            id="termix-logo"
-                            src={logo}
-                            alt="Termix"
-                        ></img>
-                        <div className="d-flex justify-content-center">
+                    <Col className="d-flex flex-column justify-content-start align-items-center flex-fill">
+                        <img id="termix-logo" src={logo} alt="Termix"></img>
+                        <div className="d-flex justify-content-center w-100">
                             <div className="w-100">{this.handleSidebar()}</div>
                             {this.state.currentState === 2 ? (
                                 <div className="flex-grow-1 flex-shrink-1">
