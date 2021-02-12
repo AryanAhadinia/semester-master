@@ -1,25 +1,46 @@
-import logo from "./logo.svg";
-import "./App.css";
 import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
 import Card from "./components/Card";
 import { Col, Row } from "react-bootstrap";
+import Week from "./components/Week";
+import logo from "./termix.png";
 
 class App extends Component {
-    state = {};
+    state = {
+        currentState: 1,
+    };
+
     render() {
         return (
             <React.Fragment>
-                <Row style={{ height: "100%" }}>
-                    <Sidebar></Sidebar>
+                <Row style={{ height: "100vh" }}>
+                    <Sidebar
+                        handleCurrentState={this.handleCurrentState}
+                        currentState={this.state.currentState}
+                    ></Sidebar>
                     <Col>
-                        <h1 style={{ fontSize: "450%" }}> ترمیناتور </h1>
-                        <Card style={{ width: "100%" }}></Card>
+                        <img id="termix-logo" src={logo} alt="Termix"></img>
+                        {this.handleSidebar()}
                     </Col>
                 </Row>
             </React.Fragment>
         );
     }
+
+    handleCurrentState = (state) => {
+        this.setState({ currentState: state });
+    };
+
+    handleSidebar = () => {
+        switch (this.state.currentState) {
+            case 1:
+                return <Card></Card>;
+            case 2:
+                return <Week></Week>;
+            default:
+                return null;
+        }
+    };
 }
 
 export default App;
