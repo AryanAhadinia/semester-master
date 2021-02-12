@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import university from '../university-bulding.png'
 import person from '../person.jpg'
 import Tilt from 'react-parallax-tilt';
+import "../index.css"
 
 class Card extends Component {
     state = {  }

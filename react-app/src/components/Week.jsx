@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../week.css';
+import '../index.css'
 
 class Week extends Component {
     state = {  }
