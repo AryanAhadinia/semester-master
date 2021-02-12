@@ -946,3 +946,26 @@ label {
     font-family: kalameh-bold;
     font-size: 110% !important;
 }
+.courses-container {
+    width: 90%;
+    height: 90%;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(
+        130deg,
+        #ff781850,
+        #af002c69 41.07%,
+        #3190976e 76.05%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-grow: 1;
+    -webkit-box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.69);
+    box-shadow: inset 0px 0px 34px 8px rgba(0, 0, 0, 0.15);
+}
