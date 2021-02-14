@@ -7,7 +7,7 @@ class Departments extends Component {
     render() { 
         return (
         <div className='department-div d-flex flex-column justify-content-start align-items-center'>
-            <select class="custom-select custom-select-lg mb-3">
+            <select className="custom-select custom-select-lg mb-3">
                 <option selected>دانشکده</option>
                 <option value="1">برق</option>
                 <option value="2">شیمی</option>

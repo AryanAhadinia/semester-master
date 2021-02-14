@@ -7,6 +7,7 @@ import logo from './termix.png';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
+
 import {
 	BrowserRouter as Router,
 	Route,
@@ -30,7 +31,7 @@ class App extends Component {
 						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section'>
 							<div
 								className='d-flex justify-content-between w-100 h-100'
-								style={{ margin: '15px auto' }}>
+								style={{ padding: '4%' }}>
 								{/* {this.handleSidebar()} */}
 								<Switch>
 									<Route
