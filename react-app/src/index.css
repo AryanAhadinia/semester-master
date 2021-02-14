@@ -869,7 +869,7 @@ label {
 .sidebar img {
 	padding: 0%;
 	width: 70%;
-	margin: 20% auto;
+	margin: 20% 15%;
 	-webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0, 0.3));
 	filter: drop-shadow(5px 5px 5px rgb(0, 0, 0, 0.3));
 }
@@ -1160,6 +1160,36 @@ td {
 	font-family: kalameh-thin !important;
 }
 
-.menu-items-text {
-	font-size: 20% !;
+.small-logo {
+	display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+	.sidebar {
+		width: 80px !important;
+	}
+
+	.menu-items-text {
+		display: none;
+	}
+
+	.menu-item > :first-child {
+		font-size: 140%;
+		text-align: center !important;
+		margin-left: 0px !important;
+	}
+
+	.menu-item {
+		justify-content: center;
+	}
+
+	.small-logo {
+		display: block;
+		width: 50% !important;
+		margin: 25% !important;
+	}
+
+	.big-logo {
+		display: none !important;
+	}
 }
