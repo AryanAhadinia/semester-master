@@ -12,9 +12,9 @@ class Card extends Component {
         return ( 
          <React.Fragment>
        <Tilt> 
-        <div className="wrap">
+        <div className="wrap d-flex flex-column justify-content-center">
         <div className="drop drop1" dir="rtl">
-        <Row className="card-bar" style={{height : '50px', backgroundColor : 'rgba(0, 0, 0, 0.2)'}}>
+        <Row className="card-bar" style={{ backgroundColor : 'rgba(0, 0, 0, 0.2)'}}>
            <Col sm={8}>
             <div className="uni-name">
                <div className="uni-name-farsi"> دانشگاه صنعتی شریف</div>
@@ -24,8 +24,8 @@ class Card extends Component {
            <Col sm={4}></Col>
         </Row>
            <Row style={{height : '100%'}}>
-              <Col sm={2}><img src={university} alt="university building" style={{height : '90%' , position : 'absolute', opacity : '0.6',bottom : '-5px',right : '-5px'}}/></Col>
-              <Col sm={7} style={{padding : '5px 25px', paddingLeft:'5px', marginTop : '50px'}}>
+              <Col className='uni-building' sm={2}><img src={university} alt="university building" style={{height : '90%' , position : 'absolute', opacity : '0.6',bottom : '-5px',right : '-5px'}}/></Col>
+              <Col  className='uni-form' sm={7} >
                  <Form>
                   <div className="form-group">
                      <label htmlFor="exampleInputEmail1">نام خانوداگی</label>
