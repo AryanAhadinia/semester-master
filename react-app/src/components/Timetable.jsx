@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import '../time-table.css';
 
 class Timetable extends Component {
-    state = {  }
+    state = { 
+        height: 0
+     };
+
     render() { 
         return (
             <div className="timetable-container d-flex flex-column justify-content-between w-100">
@@ -15,7 +18,7 @@ class Timetable extends Component {
                     <h1 className="weekdays" style={{gridColumn: '5'}}>سه‌شنبه</h1>
                     <h1 className="weekdays" style={{gridColumn: '6'}}>چهارشنبه</h1>
                     <h1 className="weekdays" style={{gridColumn: '7'}}>پنجشنبه</h1>
-                    <div className="grid-col" style={{gridColumn: '2'}} >
+                    <div className="grid-col"  id="height-setter" style={{gridColumn: '2'}} >
                         <div className="empty-cell"></div>
                         <div className="empty-cell"></div>
                         <div className="empty-cell"></div>
@@ -302,6 +305,13 @@ class Timetable extends Component {
             </div>
           );
     }
+
+    componentDidMount() {
+        const height = document.getElementById('height-setter').clientHeight;
+        this.setState({ height });
+        console.log(height);
+        console.log(height/26);
+      }
 }
  
 export default Timetable;
