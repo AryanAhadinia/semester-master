@@ -286,8 +286,15 @@ class Timetable extends Component {
                     <div className="empty-cell"></div>
                     <div className="empty-cell"></div>
         <div className="empty-cell"></div>*/}
-                    <div className="course1"></div>
-                    <div className="course2"></div>
+                    <div className="course1 d-flex flex-column justify-content-between">
+                        <label>fff</label>
+                    </div>
+                    <div className="course2 d-flex flex-column justify-content-between">
+                        <h2>course number</h2>
+                        <h2>course name</h2>
+                        <h3>master</h3>
+
+                    </div>
 
                 </div>
             </div>
