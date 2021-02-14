@@ -24,31 +24,30 @@ function setEmail() {
     req.send();
 }
 
-document.getElementById("signin").onclick = function () {
+document.getElementById("change").onclick = function () {
     const parameters = {
-        "email": document.getElementById("email").value,
         "password": document.getElementById("password").value
     }
-    if (parameters.email == "" || parameters.password == "") {
+    if (parameters.password == "") {
         return;
     }
     const params = getURL_Encoded(parameters);
     const req = new XMLHttpRequest();
-    const url = '/api/admin/signin';
+    const url = '/api/account/change_password';
     req.onreadystatechange = function () {
         if (this.readyState == 1) {
-            document.getElementById("signin").innerHTML += '<span class="spinner-border spinner-border-sm" style="width: 2rem; height: 2rem;" id="spinner" role="status" aria-hidden="true"></span>'
-            document.getElementById("signin").disabled = true;
+            document.getElementById("change").innerHTML += '<span class="spinner-border spinner-border-sm" style="width: 2rem; height: 2rem;" id="spinner" role="status" aria-hidden="true"></span>'
+            document.getElementById("change").disabled = true;
         } else if (this.readyState == 4) {
             document.getElementById("spinner").remove();
-            document.getElementById("signin").disabled = false;
+            document.getElementById("change").disabled = false;
             if (this.status == 200) {
                 redirectToPanel();
             } else if (this.status == 400) {
 
-            } else if (this.status == 401) {
+            } else if (this.status == 403) {
 
-            } else if (this.status == 401) {
+            } else if (this.status == 500) {
 
             } else {
 

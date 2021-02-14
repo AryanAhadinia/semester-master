@@ -662,3 +662,38 @@ app.get("/api/account/validate",
     function (req, res) {
         res.json({ "email": req.user.email, "role": req.user.role }).send();
     });
+
+app.post("/api/account/change_password",
+    authenticate,
+    body("password").isLength({ min: 8 }).withMessage("رمز عبور باید دست کم شامل 8 کاراکتر باشد."),
+    function (req, res) {
+        if (Object.keys(req.body).length != 1) {
+            return res.status(400).send("درخواست ارسال شده معتبر نیست.");
+        }
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).send(errors.array()[0]["msg"]);
+        }
+        MongoClient.connect(dbURL, function (err1, db) {
+            if (err1) {
+                res.sendStatus(500);
+                try {
+                    db.close();
+                } catch (e) { }
+                return;
+            }
+            db.collection("User").updateOne({ "email": emailSent }, { "password": sha256(req.body.password) }, function (err2, user) {
+                if (err2) {
+                    return res.sendstatus(500);
+                }
+                if (!user) {
+                    return res.status(401).send("کاربر مورد نظر یافت نشد");
+                }
+                res.sendStatus(200);
+                try {
+                    db.close();
+                } catch (e) { }
+                return;
+            })
+        });
+    })
