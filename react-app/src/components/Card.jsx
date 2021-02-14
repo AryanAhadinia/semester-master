@@ -27,21 +27,21 @@ class Card extends Component {
               <Col sm={2}><img src={university} alt="university building" style={{height : '90%' , position : 'absolute', opacity : '0.6',bottom : '-5px',right : '-5px'}}/></Col>
               <Col sm={7} style={{padding : '5px 25px', paddingLeft:'5px', marginTop : '50px'}}>
                  <Form>
-                  <div class="form-group">
+                  <div className="form-group">
                      <label for="exampleInputEmail1">نام خانوداگی</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='محمد'/>
                   </div>
-                  <div class="form-group">
+                  <div className="form-group">
                      <label for="exampleInputEmail1">نام</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='جعفری'/>
                   </div>
-                  <div class="form-group">
+                  <div className="form-group">
                      <label for="exampleInputEmail1">شماره دانشجویی</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='98105654'/>
                   </div>
-                  <div class="form-group">
+                  <div className="form-group">
                      <label for="exampleInputEmail1">رشته ‌تحصیلی</label>
-                     <select class="form-control" id="exampleFormControlSelect1">
+                     <select className="form-control" id="exampleFormControlSelect1">
                         <option>1</option>
                         <option>2</option>
                   </select>
