@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../time-table.css';
 
 class Timetable extends Component {
     state = {  }
@@ -14,12 +15,102 @@ class Timetable extends Component {
                     <h1 className="weekdays" style={{gridColumn: '5'}}>سه‌شنبه</h1>
                     <h1 className="weekdays" style={{gridColumn: '6'}}>چهارشنبه</h1>
                     <h1 className="weekdays" style={{gridColumn: '7'}}>پنجشنبه</h1>
-                    <div className="grid-col" style={{gridColumn: '2'}} ></div>
-                    <div className="grid-col" style={{gridColumn: '3'}}></div>
-                    <div className="grid-col" style={{gridColumn: '4'}}></div>
-                    <div className="grid-col" style={{gridColumn: '5'}}></div>
-                    <div className="grid-col" style={{gridColumn: '6'}}></div>
-                    <div className="grid-col" style={{gridColumn: '7'}}></div>
+                    <div className="grid-col" style={{gridColumn: '2'}} >
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
+                    <div className="grid-col" style={{gridColumn: '3'}}>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
+                    <div className="grid-col" style={{gridColumn: '4'}}>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
+                    <div className="grid-col" style={{gridColumn: '5'}}>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
+                    <div className="grid-col" style={{gridColumn: '6'}}>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
+                    <div className="grid-col" style={{gridColumn: '7'}}>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                        <div className="empty-cell"></div>
+                    </div>
                     <label htmlFor="" className="clock">7:00</label>
                     <label htmlFor="" className="clock">8:00</label>
                     <label htmlFor="" className="clock">9:00</label>
@@ -35,7 +126,8 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">19:00</label>
                     <label htmlFor="" className="clock">20:00</label>
 
-                    {/* <div className="empty-cell"></div>
+                    
+                    {/*<div className="empty-cell"></div>
                     <div className="empty-cell"></div>
                     <div className="empty-cell"></div>
                     <div className="empty-cell"></div>
@@ -191,7 +283,7 @@ class Timetable extends Component {
                     <div className="empty-cell"></div>
                     <div className="empty-cell"></div>
                     <div className="empty-cell"></div>
-                    <div className="empty-cell"></div> */}
+        <div className="empty-cell"></div>*/}
                     <div className="course1"></div>
                     <div className="course2"></div>
 
