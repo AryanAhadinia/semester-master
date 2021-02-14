@@ -131,16 +131,30 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">19:00</label>
                     <label htmlFor="" className="clock">20:00</label>
 
-                    <div className="course1 d-flex flex-column justify-content-between">
+                    <div className="course1 d-flex flex-column justify-content-between" style={{gridRow: "8 / span 5", gridColumn: "3"}}>
                         <h2>course number</h2>
                         <h2>course name</h2>
                         <h3>master</h3>
                     </div>
-                    <div className="course2 d-flex flex-column justify-content-between">
+                    <div className="course2 d-flex flex-column justify-content-between" style={{gridRow: "8 / span 5", gridColumn: "3"}}>
                         <h2>course number</h2>
                         <h2>course name</h2>
                         <h3>master</h3>
-
+                    </div>
+                    <div className="course1 d-flex flex-column justify-content-between" style={{gridRow: "2 / span 3", gridColumn: "5"}}>
+                        <h2>course number</h2>
+                        <h2>course name</h2>
+                        <h3>master</h3>
+                    </div>
+                    <div className="course1 d-flex flex-column justify-content-between" style={{gridRow: "5 / span 5", gridColumn: "7"}}>
+                        <h2>course number</h2>
+                        <h2>course name</h2>
+                        <h3>master</h3>
+                    </div>
+                    <div className="course1 d-flex flex-column justify-content-between" style={{gridRow: "5 / span 4", gridColumn: "2"}}>
+                        <h2>course number</h2>
+                        <h2>course name</h2>
+                        <h3>master</h3>
                     </div>
 
                 </div>
