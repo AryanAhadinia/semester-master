@@ -28,26 +28,26 @@ class Card extends Component {
               <Col sm={7} style={{padding : '5px 25px', paddingLeft:'5px', marginTop : '50px'}}>
                  <Form>
                   <div className="form-group">
-                     <label for="exampleInputEmail1">نام خانوداگی</label>
+                     <label htmlFor="exampleInputEmail1">نام خانوداگی</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='محمد'/>
                   </div>
                   <div className="form-group">
-                     <label for="exampleInputEmail1">نام</label>
+                     <label htmlFor="exampleInputEmail1">نام</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='جعفری'/>
                   </div>
                   <div className="form-group">
-                     <label for="exampleInputEmail1">شماره دانشجویی</label>
+                     <label htmlFor="exampleInputEmail1">شماره دانشجویی</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='98105654'/>
                   </div>
                   <div className="form-group">
-                     <label for="exampleInputEmail1">رشته ‌تحصیلی</label>
+                     <label htmlFor="exampleInputEmail1">رشته ‌تحصیلی</label>
                      <select className="form-control" id="exampleFormControlSelect1">
                         <option>1</option>
                         <option>2</option>
                   </select>
                   </div>
-                  <div class="form-group">
-                     <label for="exampleInputEmail1">مقطع تحصیلی</label>
+                  <div className="form-group">
+                     <label htmlFor="exampleInputEmail1">مقطع تحصیلی</label>
                      <input type="name" className="form-control info-field" id="inputName" placeholder='کارشناسی'/>
                   </div>
                  </Form>
