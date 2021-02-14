@@ -1,5 +1,11 @@
-.hhh{
-    border: 5px;
-    border-color: black;
-    background-color: chartreuse;
+.grid-col{
+    empty-cells: show;
+}
+
+.empty-cell{
+    border-style: dotted;
+    border-width: 1px 0 0 0;
+    border-color: rgba(255, 255, 255, 0.514);
+    margin-bottom: 12.2px;
+    background-color: rgba(128, 255, 0, 0);
 }

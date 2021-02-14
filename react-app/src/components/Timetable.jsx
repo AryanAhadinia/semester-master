@@ -48,7 +48,9 @@ class Timetable extends Component {
                         <div className="empty-cell"></div>
                     </div>
                     <div className="grid-col" style={{gridColumn: '4'}}>
-                        <div className="empty-cell"></div>
+                        <div className="empty-cell">
+
+                        </div>
                         <div className="empty-cell"></div>
                         <div className="empty-cell"></div>
                         <div className="empty-cell"></div>
