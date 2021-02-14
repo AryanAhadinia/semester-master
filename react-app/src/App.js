@@ -7,6 +7,7 @@ import logo from './termix.png';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
+
 import {
 	BrowserRouter as Router,
 	Route,
