@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 import university from '../university-bulding.png'
 import person from '../person.jpg'
 import Tilt from 'react-parallax-tilt';
@@ -26,16 +26,31 @@ class Card extends Component {
            <Row style={{height : '100%'}}>
               <Col sm={2}><img src={university} alt="university building" style={{height : '90%' , position : 'absolute', opacity : '0.6',bottom : '-5px',right : '-5px'}}/></Col>
               <Col sm={7} style={{padding : '5px 25px', paddingLeft:'5px', marginTop : '50px'}}>
-                 <label> نام خانوادگی</label>
-                 <label className="info-field"> جعفری</label>
-                 <label> نام</label>
-                 <label className="info-field"> محمد</label>
-                 <label> شماره دانشجویی</label>
-                 <label className="info-field"> 98105654</label>
-                 <label> رشته تحصیلی</label>
-                 <label className="info-field"> مهندسی کامپیوتر</label>
-                 <label> مقطع تحصیلی</label>
-                 <label className="info-field"> کارشناسی</label>
+                 <Form>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">نام خانوداگی</label>
+                     <input type="name" className="form-control info-field" id="inputName" placeholder='محمد'/>
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">نام</label>
+                     <input type="name" className="form-control info-field" id="inputName" placeholder='جعفری'/>
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">شماره دانشجویی</label>
+                     <input type="name" className="form-control info-field" id="inputName" placeholder='98105654'/>
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">رشته ‌تحصیلی</label>
+                     <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                  </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleInputEmail1">مقطع تحصیلی</label>
+                     <input type="name" className="form-control info-field" id="inputName" placeholder='کارشناسی'/>
+                  </div>
+                 </Form>
               </Col>
               <Col sm={3} className="pattern-horizontal-lines-sm white" style={{ padding:'0' , zIndex : '-1', opacity : '0.9'}}>
                  <img className='imam' src={imam} alt="Imam"/>
