@@ -22,10 +22,10 @@ class App extends Component {
                         currentState={this.state.currentState}
                     ></Sidebar>
                     <Col className="d-flex flex-column justify-content-start align-items-center flex-fill main-section">
-                        <img id="termix-logo" src={logo} alt="Termix"></img>
+                        {/* <img id="termix-logo" src={logo} alt="Termix"></img> */}
                         <div
                             className="d-flex justify-content-between w-100 h-100"
-                            style={{ marginBottom: "15px" }}
+                            style={{ margin: "15px auto" }}
                         >
                             {this.handleSidebar()}
                             {this.state.currentState === 2 ? (

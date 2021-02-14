@@ -868,10 +868,8 @@ label {
 
 .sidebar img {
     padding: 0%;
-    margin: 25% auto;
-    -webkit-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
-    -moz-box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
-    box-shadow: -47px 15px 77px 6px rgba(0, 0, 0, 0.35);
+    width: 70%;
+    margin: 20% auto;
 }
 
 .person {
