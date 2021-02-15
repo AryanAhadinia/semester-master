@@ -84,9 +84,12 @@ class App extends Component {
 					<React.Fragment>
 						<Redirect to='/timetable'></Redirect>
 						<Timetable></Timetable>
-						<div className='flex-grow-1 flex-shrink-1'>
+						<div
+							className='flex-grow-1 flex-shrink-1'
+							id='department-parent'>
 							<Departments></Departments>
 						</div>
+						<ResponsiveTimetable></ResponsiveTimetable>
 					</React.Fragment>
 				);
 			case 3:
@@ -97,11 +100,7 @@ class App extends Component {
 					</React.Fragment>
 				);
 			case 4:
-				return (
-					<div className='overflow-auto h-100'>
-						<ResponsiveTimetable></ResponsiveTimetable>
-					</div>
-				);
+				return null;
 
 			default:
 				return null;

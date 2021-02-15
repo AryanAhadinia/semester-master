@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap';
 import SmallCourseCard from './SmallCourseCard';
 import '../index.css'
 
@@ -9,6 +8,7 @@ class ResponsiveTimetable extends Component {
     render() { 
         return (
             <React.Fragment>
+        <div className='h-100 w-100 timetable-responsive'>
             <div className="search-course d-flex  justify-content-around align-items-center p-3" >
               <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
               <label className='flex-shrink-0 p-4'> دانشکده : </label>
@@ -95,6 +95,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
+            </div>
             </div>
             </div>
             </React.Fragment>

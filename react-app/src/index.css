@@ -491,6 +491,10 @@ td {
 	text-align: center;
 }
 
+.timetable-responsive {
+	display: none;
+}
+
 @media only screen and (max-width: 1000px) {
 	.sidebar {
 		width: 80px !important;
@@ -537,6 +541,15 @@ td {
 	.search-course div label {
 		width: max-content !important;
 		font-size: 2vw !important;
+	}
+
+	#timetable-container,
+	#department-parent {
+		display: none !important;
+	}
+
+	.timetable-responsive {
+		display: block;
 	}
 }
 
