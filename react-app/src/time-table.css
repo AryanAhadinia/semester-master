@@ -55,78 +55,6 @@
 	visibility: hidden;
 }
 
-.small-card-container {
-	position: relative;
-	background-color: rgb(0, 0, 0);
-	height: 100%;
-	margin: 20px 30px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition: 0.5s;
-	border-radius: 5px;
-}
-
-.small-card-container ::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		130deg,
-		#ff7a18,
-		#af002d 41.07%,
-		#319197 76.05%
-	);
-	border-radius: 5px;
-	z-index: -1 !important;
-}
-
-.small-card-container ::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(45deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
-	filter: blur(30px);
-	opacity: 0.01;
-	z-index: 1 !important;
-}
-
-.small-card-container span {
-	position: absolute;
-	top: 6px;
-	left: 6px;
-	bottom: 6px;
-	right: 6px;
-	background: rgba(0, 0, 0, 0.6);
-	border-radius: 5px;
-	z-index: 20 !important;
-}
-
-.small-card-container div {
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	align-items: center;
-	z-index: 15 !important;
-}
-.small-card-container span::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	background: rgba(255, 255, 255, 0.01);
-	border-radius: 5px;
-	pointer-events: none;
-}
-
 .responsive-course-container {
 	overflow: auto;
 	overflow-y: hidden;
@@ -168,4 +96,15 @@
 	box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.2);
 	padding: 5px;
 	margin: -5px;
+}
+
+.responsive-timetable-container {
+	max-height: calc(100% - 130px) !important;
+	padding-top: 0px;
+	margin-top: 30px;
+}
+
+.responsive-timetable-container > :first-child {
+	padding-top: 10px !important;
+	margin-top: 0px !important;
 }

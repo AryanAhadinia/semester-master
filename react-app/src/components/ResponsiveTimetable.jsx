@@ -9,9 +9,27 @@ class ResponsiveTimetable extends Component {
     render() { 
         return (
             <React.Fragment>
-            <div className="search-course" style={{height:'100px'}}>
+            <div className="search-course d-flex  justify-content-around align-items-center p-3" >
+              <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
+              <label className='flex-shrink-0 p-4'> دانشکده : </label>
+            <select className="custom-select custom-select-lg responsive-select">
+                <option selected>دانشکده</option>
+                <option value="1">برق</option>
+                <option value="2">شیمی</option>
+                <option value="3">کامپیوتر</option>
+            </select>
+            </div >
+            <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
+            <label className='flex-shrink-0 p-4'> درس : </label>
+            <select className="custom-select custom-select-lg responsive-select" >
+                <option selected>درس</option>
+                <option value="1">برق</option>
+                <option value="2">شیمی</option>
+                <option value="3">کامپیوتر</option>
+            </select>
+            </div >    
             </div>
-            <div className='col overflow-auto'>
+            <div className='col overflow-auto responsive-timetable-container'>
             <h1 className='weekdays mx text-right ' style={{fontSize :'160%', marginTop :'30px'}}>شنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>

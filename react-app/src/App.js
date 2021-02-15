@@ -7,9 +7,9 @@ import logo from './termix.png';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
-import SmallCourseCard from './components/SmallCourseCard';
 import './time-table.css';
 import './background.css';
+import './GradientBox.scss';
 
 import {
 	BrowserRouter as Router,
