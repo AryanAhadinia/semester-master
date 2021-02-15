@@ -39,7 +39,7 @@ body:after {
 		#319197 76.05%
 	);
 	background-size: 200%;
-	animation: infiniteMove 20s infinite;
+	animation: infiniteMove 60s infinite;
 }
 
 body:before {
