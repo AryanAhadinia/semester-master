@@ -9,6 +9,7 @@ import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
 import SmallCourseCard from './components/SmallCourseCard';
 import './time-table.css';
+import './background.css';
 
 import {
 	BrowserRouter as Router,
