@@ -9,7 +9,7 @@ class Timetable extends Component {
 
     render() { 
         return (
-            <div className="timetable-container d-flex flex-column justify-content-between w-100">
+            <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
                 <h1 className='section-title'> برنامه‌ریزی</h1>
                 <div className="timetable">
                     

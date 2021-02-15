@@ -7,9 +7,9 @@ import logo from './termix.png';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
-import SmallCourseCard from './components/SmallCourseCard';
 import './time-table.css';
 import './background.css';
+import './GradientBox.scss';
 
 import {
 	BrowserRouter as Router,
@@ -84,9 +84,12 @@ class App extends Component {
 					<React.Fragment>
 						<Redirect to='/timetable'></Redirect>
 						<Timetable></Timetable>
-						<div className='flex-grow-1 flex-shrink-1'>
+						<div
+							className='flex-grow-1 flex-shrink-1'
+							id='department-parent'>
 							<Departments></Departments>
 						</div>
+						<ResponsiveTimetable></ResponsiveTimetable>
 					</React.Fragment>
 				);
 			case 3:
@@ -97,7 +100,7 @@ class App extends Component {
 					</React.Fragment>
 				);
 			case 4:
-				return <ResponsiveTimetable></ResponsiveTimetable>;
+				return null;
 
 			default:
 				return null;

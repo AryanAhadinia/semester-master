@@ -96,6 +96,8 @@ h1 {
 	border-radius: 5px 0px 0 5px;
 	position: relative;
 	display: inline-block;
+	flex-shrink: 0;
+	flex-grow: 1;
 }
 
 .menu-item {
@@ -393,7 +395,8 @@ td {
 }
 
 .main-section {
-	height: 100vh !important;
+	min-height: 100vh !important;
+	overflow: auto !important;
 }
 
 .timetable {
@@ -511,6 +514,16 @@ td {
 	display: none;
 }
 
+.search-course div label {
+	width: max-content !important;
+	font-size: 1.3vw !important;
+	text-align: center;
+}
+
+.timetable-responsive {
+	display: none;
+}
+
 @media only screen and (max-width: 1000px) {
 	.sidebar {
 		width: 80px !important;
@@ -538,6 +551,34 @@ td {
 
 	.big-logo {
 		display: none !important;
+	}
+
+	.search-course {
+		flex-direction: column;
+	}
+
+	.search-course div {
+		width: 100% !important;
+		height: 40% !important;
+	}
+
+	.search-course div select {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	.search-course div label {
+		width: max-content !important;
+		font-size: 2vw !important;
+	}
+
+	#timetable-container,
+	#department-parent {
+		display: none !important;
+	}
+
+	.timetable-responsive {
+		display: block;
 	}
 }
 
