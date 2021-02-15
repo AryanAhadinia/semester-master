@@ -132,8 +132,9 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">18:00</label>
                     <label htmlFor="" className="clock">19:00</label>
                     <label htmlFor="" className="clock">20:00</label>
-
-                    <TableCard column="5" row="8" duration="5" color="rgba(232, 73, 48, 0.77)" courseName = {this.state.courses[0].courseName} courseMaster = {this.state.courses[0].courseMaster} courseNumber = {this.state.courses[0].courseNumber}></TableCard>
+                    {this.state.courses.map(card => (
+                        <TableCard key={card.courseNumber} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
+                    ))}
             
 
                 </div>

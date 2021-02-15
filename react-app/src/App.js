@@ -23,7 +23,9 @@ class App extends Component {
 	state = {
 		currentState: 1,
         courses:[
-            {courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
+            {column: "5",row: "8", duration: "5", color: "rgba(232, 73, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
+            {column: "2",row: "8", duration: "4", color: "rgba(232, 210, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
+            {column: "5",row: "6", duration: "4", color: "rgba(24, 73, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
         ]
 	};
 
