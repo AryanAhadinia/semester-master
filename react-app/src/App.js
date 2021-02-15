@@ -22,7 +22,9 @@ import ResponsiveTimetable from './components/ResponsiveTimetable';
 class App extends Component {
 	state = {
 		currentState: 1,
-        courses:[]
+        courses:[
+            {courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
+        ]
 	};
 
     addCourse = (number, name, master, row, duartion, column) => {

@@ -4,7 +4,8 @@ import '../time-table.css';
 
 class Timetable extends Component {
     state = { 
-        height: 0
+        height: 0,
+        courses : this.props.courses
      };
 
     render() { 
@@ -132,13 +133,8 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">19:00</label>
                     <label htmlFor="" className="clock">20:00</label>
 
-                    <TableCard column="5" row="8" duration="5" color="rgba(232, 73, 48, 0.77)"></TableCard>
-                    <TableCard column="3" row="4" duration="5" color="rgba(128, 232, 48, 0.77)"></TableCard>
-                    <TableCard column="3" row="7" duration="4" color="rgba(52, 48, 232, 0.77)"></TableCard>
-                    <TableCard column="3" row="14" duration="4" color="rgba(232, 48, 217, 0.77)"></TableCard>
-                    <TableCard column="7" row="14" duration="4" color="rgba(232, 48, 217, 0.77)"></TableCard>
-                    <TableCard column="6" row="14" duration="4" color="rgba(232, 48, 217, 0.77)"></TableCard>
-                    <TableCard column="3" row="9" duration="4" color="rgba(232, 48, 217, 0.77)"></TableCard>
+                    <TableCard column="5" row="8" duration="5" color="rgba(232, 73, 48, 0.77)" courseName = {this.state.courses[0].courseName} courseMaster = {this.state.courses[0].courseMaster} courseNumber = {this.state.courses[0].courseNumber}></TableCard>
+            
 
                 </div>
             </div>
