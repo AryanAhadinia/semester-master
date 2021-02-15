@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faMinusCircle} from  '@fortawesome/free-solid-svg-icons'
 
 class CourseRow extends Component {
     state = {  }
     render() { 
         return (
             <tr>
-            <td>
-                <span class="badge badge-danger">x</span>
+            <td className='delete-icon'>
+            <FontAwesomeIcon icon={faMinusCircle} className='p-1 mx'/> 
             </td>
             <td>{this.props.courseNumber}</td>
             <td>{this.props.courseName}</td>

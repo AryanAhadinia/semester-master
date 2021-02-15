@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../termix.png'
 import smallLogo from '../termix-icon.svg'
-
 import MenuItem from './MenuItem';
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 import { faChartPie } from "@fortawesome/free-solid-svg-icons";

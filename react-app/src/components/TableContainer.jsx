@@ -16,7 +16,7 @@ class TableContainer extends Component {
                     <th scope="col">گروه</th>
                     <th scope="col">واحد</th>
                     <th scope="col">استاد</th>
-                    <th scope="col">زمان امتحان</th>
+                    <th scope="col">امتحان</th>
                     <th scope="col">اطلاعات</th>
                     <th scope="col">پیغام ثبت‌نام</th>
                   </tr>
