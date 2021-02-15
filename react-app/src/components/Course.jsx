@@ -8,7 +8,6 @@ class Course extends Component {
         return ( 
             <div onClick={() => this.props.onSelect("4", "6", "3", "rgba(200, 73, 48, 0.77)", "40222", "خر سواری", "ممدلی")}
                 onMouseOver={() => this.props.onSelect("4", "6", "3", "rgba(200, 73, 48, 0.4)", "40222", "خر سواری", "ممدلی")}
-                onMouseOut={ () => this.props.onMouseOut()}
                 className="course">
                 نام درس
             </div>
