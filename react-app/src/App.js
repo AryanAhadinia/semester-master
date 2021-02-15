@@ -97,7 +97,11 @@ class App extends Component {
 					</React.Fragment>
 				);
 			case 4:
-				return <ResponsiveTimetable></ResponsiveTimetable>;
+				return (
+					<div className='overflow-auto h-100'>
+						<ResponsiveTimetable></ResponsiveTimetable>
+					</div>
+				);
 
 			default:
 				return null;

@@ -11,8 +11,8 @@ class ResponsiveTimetable extends Component {
             <React.Fragment>
             <div className="search-course" style={{height:'100px'}}>
             </div>
-            <div className='d-flex flex-column justify-content-between min-vh' style={{overflow : 'auto'}}>
-            <h1 className='weekdays align-self-start mt-8   ' style={{fontSize :'160%'}}>شنبه</h1>
+            <div className='col overflow-auto'>
+            <h1 className='weekdays mx text-right ' style={{fontSize :'160%', marginTop :'30px'}}>شنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
@@ -23,7 +23,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
             </div>
-            <h1 className='weekdays align-self-start mt-8  ' style={{fontSize :'160%'}}>یکشنبه</h1>
+            <h1 className='weekdays mx text-right   ' style={{fontSize :'160%', marginTop :'30px'}}>یکشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
@@ -34,7 +34,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
             </div>
-            <h1 className='weekdays align-self-start mt-8  ' style={{fontSize :'160%'}}>دوشنبه</h1>
+            <h1 className='weekdays mx text-right   ' style={{fontSize :'160%' , marginTop :'30px'}}>دوشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
@@ -45,7 +45,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
             </div>
-            <h1 className='weekdays align-self-start mt-8 ' style={{fontSize :'160%'}}>سه شنبه</h1>
+            <h1 className='weekdays mx text-right  ' style={{fontSize :'160%' , marginTop :'30px'}}>سه شنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
@@ -56,7 +56,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
             </div>
-            <h1 className='weekdays align-self-start mt-8  ' style={{fontSize :'160%'}}>چهرشنبه</h1>
+            <h1 className='weekdays mx text-right   ' style={{fontSize :'160%', marginTop :'30px'}}>چهرشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
@@ -67,7 +67,7 @@ class ResponsiveTimetable extends Component {
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
             </div>
-            <h1 className='weekdays align-self-start mt-8' style={{fontSize :'160%'}}>پنجشنبه</h1>
+            <h1 className='weekdays mx text-right ' style={{fontSize :'160%', marginTop :'30px'}}>پنجشنبه</h1>
             <div className='responsive-course-container mb-8' >
                     <SmallCourseCard></SmallCourseCard>
                     <SmallCourseCard></SmallCourseCard>
