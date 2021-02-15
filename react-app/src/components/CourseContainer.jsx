@@ -6,10 +6,10 @@ class CourseContainer extends Component {
     render() { 
         return (
             <div className="courses-container d-flex flex-column justify-content-start align-items-center">
-                <Course></Course>
-                <Course></Course>
-                <Course></Course>
-                <Course></Course>
+                <Course onSelect = {this.props.onSelect}></Course>
+                <Course onSelect = {this.props.onSelect}></Course>
+                <Course onSelect = {this.props.onSelect}></Course>
+                <Course onSelect = {this.props.onSelect}></Course>
             </div>
           );
     }

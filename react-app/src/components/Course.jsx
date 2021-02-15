@@ -5,7 +5,7 @@ class Course extends Component {
     
     render() { 
         return ( 
-            <div onClick={() => this.props.onSelect(this.props.index)} className="course">
+            <div onClick={() => this.props.onSelect("4", "6", "3", "rgba(200, 73, 48, 0.77)", "40222", "خر سواری", "ممدلی")} className="course">
                 نام درس
             </div>
          );

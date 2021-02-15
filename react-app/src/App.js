@@ -23,16 +23,15 @@ class App extends Component {
 	state = {
 		currentState: 1,
         courses:[
-            {column: "5",row: "8", duration: "5", color: "rgba(232, 73, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
-            {column: "2",row: "8", duration: "4", color: "rgba(232, 210, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
-            {column: "5",row: "6", duration: "4", color: "rgba(24, 73, 48, 0.77)" , courseNumber: "40222", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
+            {column: "5",row: "8", duration: "5", color: "rgba(232, 73, 48, 0.77)" , courseNumber: "40221", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
+            {column: "2",row: "8", duration: "4", color: "rgba(232, 210, 48, 0.77)" , courseNumber: "40224", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
+            {column: "5",row: "6", duration: "4", color: "rgba(24, 73, 48, 0.77)" , courseNumber: "40223", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
         ]
 	};
 
-    addCourse = (number, name, master, row, duartion, column) => {
-        let courses = this.state.courses;
-        let newCourse = {courseNumber: number, courseName: name, courseMaster: master, courseRow : row, courseColumn: column, courseDuration: duartion};
-        courses += newCourse;
+    addCourse = (courseColumn, courseRow, courseDuartion,  courseColor, number, name, master) => {
+        const newCourse = {'column': courseColumn, 'row' : courseRow, 'duration': courseDuartion, 'color': courseColor, 'courseNumber': number, 'courseName': name, 'courseMaster': master};
+        const courses = [...this.state.courses, newCourse]
         this.setState({courses});
     };
 
@@ -99,7 +98,7 @@ class App extends Component {
 						<div
 							className='flex-grow-1 flex-shrink-1'
 							id='department-parent'>
-							<Departments></Departments>
+							<Departments onSelect = {this.addCourse}></Departments>
 						</div>
 						<ResponsiveTimetable></ResponsiveTimetable>
 					</React.Fragment>
