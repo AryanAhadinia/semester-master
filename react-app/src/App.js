@@ -22,7 +22,15 @@ import ResponsiveTimetable from './components/ResponsiveTimetable';
 class App extends Component {
 	state = {
 		currentState: 1,
+        courses:[]
 	};
+
+    addCourse = (number, name, master, row, duartion, column) => {
+        let courses = this.state.courses;
+        let newCourse = {courseNumber: number, courseName: name, courseMaster: master, courseRow : row, courseColumn: column, courseDuration: duartion};
+        courses += newCourse;
+        this.setState({courses});
+    };
 
 	render() {
 		return (
@@ -83,7 +91,7 @@ class App extends Component {
 				return (
 					<React.Fragment>
 						<Redirect to='/timetable'></Redirect>
-						<Timetable></Timetable>
+						<Timetable courses = {this.state.courses}></Timetable>
 						<div
 							className='flex-grow-1 flex-shrink-1'
 							id='department-parent'>

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 class Course extends Component {
     state = {  }
+    
     render() { 
         return ( 
-            <div className="course">
+            <div onClick={() => this.props.onSelect(this.props.index)} className="course">
                 نام درس
             </div>
          );
