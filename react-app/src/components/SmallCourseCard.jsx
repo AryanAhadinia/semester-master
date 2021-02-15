@@ -7,12 +7,15 @@ class SmallCourseCard extends Component {
         return ( 
             <span>
             <div className="small-card-container">
-                <span></span>
-                <div className="small-card-content">
-                    <h2> ساعت </h2>
-                    <h1> نام درس</h1>
-                    <h2> استاد </h2>
-                    <h1>شماره درس</h1>
+                <span>
+                    
+                </span>
+                <div className="small-card-content d-flex flex-column justify-content-center h-100">
+                   <div className='col z-index-tooltip'>
+                        <h1> سلام</h1>
+                        <h1> سلام</h1>
+                        <h1> سلام</h1>
+                   </div>
                 </div>
             </div>
             </span>

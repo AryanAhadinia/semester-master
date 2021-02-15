@@ -57,7 +57,7 @@
 
 .small-card-container {
 	position: relative;
-	background-color: #111;
+	background-color: rgb(0, 0, 0);
 	height: 100%;
 	margin: 20px 30px;
 	display: flex;
@@ -65,7 +65,6 @@
 	align-items: center;
 	transition: 0.5s;
 	border-radius: 5px;
-	z-index: 0;
 }
 
 .small-card-container ::before {
@@ -82,20 +81,20 @@
 		#319197 76.05%
 	);
 	border-radius: 5px;
-	z-index: -1;
+	z-index: -1 !important;
 }
 
 .small-card-container ::after {
 	content: '';
 	position: absolute;
 	top: 0;
-	left: 0;
+	right: 0;
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(45deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
 	filter: blur(30px);
-	opacity: 0.02;
-	z-index: 1;
+	opacity: 0.01;
+	z-index: 1 !important;
 }
 
 .small-card-container span {
@@ -106,17 +105,7 @@
 	right: 6px;
 	background: rgba(0, 0, 0, 0.6);
 	border-radius: 5px;
-	z-index: 20;
-}
-
-.small-card-container div h1,
-.small-card-container div h2 {
-	font-size: 120%;
-	font-family: kalameh-bold !important;
-	z-index: 200 !important;
-	color: white !important;
-	text-align: center;
-	padding: 6px;
+	z-index: 20 !important;
 }
 
 .small-card-container div {
@@ -124,13 +113,13 @@
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
-	z-index: -10;
+	z-index: 15 !important;
 }
 .small-card-container span::before {
 	content: '';
 	position: absolute;
 	top: 0;
-	left: 0;
+	right: 0;
 	width: 50%;
 	height: 100%;
 	background: rgba(255, 255, 255, 0.01);
@@ -142,6 +131,9 @@
 	overflow: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
+	display: flex;
+	position: relative;
+	flex-wrap: nowrap;
 }
 
 .responsive-course-container span {
@@ -154,8 +146,7 @@
 }
 
 .small-card-content * {
-	z-index: 90;
-	padding: 10% 20%;
+	z-index: 25 !important;
+	padding: 5% 20%;
 	color: white;
-	background-color: transparent !important;
 }
