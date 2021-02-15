@@ -3,10 +3,21 @@ import TableCard from './TableCard';
 import '../time-table.css';
 
 class Timetable extends Component {
+
     state = { 
         height: 0,
         courses : this.props.courses
      };
+
+     constructor(props) {
+         super(props)
+         this.state.courses = this.props.courses;
+     }
+
+     componentDidUpdate(prevProps, prevState) {
+         if (prevProps.courses !== this.props.courses)
+            this.setState({courses : this.props.courses})
+     }
 
     render() { 
         return (
