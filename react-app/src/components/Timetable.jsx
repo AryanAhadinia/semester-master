@@ -14,7 +14,7 @@ class Timetable extends Component {
          this.state.courses = this.props.courses;
      }
 
-     componentDidUpdate(prevProps, prevState) {
+     componentDidUpdate(prevProps) {
          if (prevProps.courses !== this.props.courses)
             this.setState({courses : this.props.courses})
      }
@@ -146,7 +146,7 @@ class Timetable extends Component {
 
                     {this.state.courses.map(card => (
                         <TableCard key={card.courseNumber} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
-                    ))};
+                    ))}
             
 
                 </div>
