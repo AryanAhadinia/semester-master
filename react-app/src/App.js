@@ -7,6 +7,9 @@ import logo from './termix.png';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
+import SmallCourseCard from './components/SmallCourseCard';
+import './time-table.css';
+import './background.css';
 
 import {
 	BrowserRouter as Router,
@@ -14,6 +17,7 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom';
+import ResponsiveTimetable from './components/ResponsiveTimetable';
 
 class App extends Component {
 	state = {
@@ -92,6 +96,9 @@ class App extends Component {
 						<TableContainer></TableContainer>
 					</React.Fragment>
 				);
+			case 4:
+				return <ResponsiveTimetable></ResponsiveTimetable>;
+
 			default:
 				return null;
 		}
