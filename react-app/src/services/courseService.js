@@ -1,10 +1,10 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = 'something';
+const apiUrl = 'http://localhost:8082/api';
 
 export function getAllCourses() {
-	return http.get(apiUrl + '/schedule/all_courses');
+	return http.get(apiUrl + '/schedule/courses');
 }
 
 export function getMyCourses() {

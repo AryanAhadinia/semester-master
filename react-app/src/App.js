@@ -15,6 +15,7 @@ import { db } from './services/db';
 import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
+import Dexie, { liveQuery } from 'dexie';
 
 import {
 	BrowserRouter as Router,
