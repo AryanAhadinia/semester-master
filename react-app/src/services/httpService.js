@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.interceptors.response.use(null, (error) => {
 	const expectedError =
@@ -7,7 +8,15 @@ axios.interceptors.response.use(null, (error) => {
 		error.response.status < 500;
 
 	if (!expectedError) {
-		// TODO
+		toast.dark(error, {
+			position: 'bottom-left',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
 	}
 
 	return Promise.reject(error);

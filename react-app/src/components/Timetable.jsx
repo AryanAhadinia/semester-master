@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableCard from './TableCard';
 import '../time-table.css';
+import { toast } from 'react-toastify';
 import Course from './Course';
 
 class Timetable extends Component {
@@ -172,6 +173,16 @@ class Timetable extends Component {
         const courses = this.state.courses.filter(c => c !== course);
         this.setState(courses)
         this.props.handleUpdateCourses(courses);
+        toast.dark('درس مورد نظر حذف شد', {
+			position: 'bottom-left',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+        
       }
 
     componentDidMount() {

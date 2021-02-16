@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CourseRow from './CourseRow'
+import { toast } from 'react-toastify';
+
 
 class TableContainer extends Component {
     state = { 
@@ -57,6 +59,16 @@ class TableContainer extends Component {
         const newCourses = courses.filter(c => c !== course);
         this.setState({courses : newCourses})
         this.props.handleUpdateCourses(newCourses);
+        toast.dark('درس مورد نظر حذف شد', {
+          position: 'bottom-left',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+            
     }
 }
  

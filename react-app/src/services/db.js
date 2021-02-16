@@ -1,4 +1,4 @@
-import Dexie, { liveQuery } from 'dexie';
+import Dexie from 'dexie';
 
 const db = new Dexie('AllCourses');
 db.version(1).stores({
