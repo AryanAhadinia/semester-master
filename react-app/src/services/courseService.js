@@ -11,9 +11,12 @@ export function getMyCourses() {
 }
 
 export function addCourseToSchedule(course) {
-	return http.post(apiUrl + '/schedule/my_selections', course);
+	return http.post(apiUrl + '/schedule/select', course);
 }
 
 export function deleteCourseFromSchedule(course) {
-	return http.delete(apiUrl + '/schedule/my_selections', course);
+	return http.delete(
+		apiUrl + '/schedule/unselect',
+		course.courseId + course.groupId
+	);
 }

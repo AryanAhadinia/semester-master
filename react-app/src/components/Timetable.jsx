@@ -32,7 +32,7 @@ class Timetable extends Component {
             <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
                 <div className='d-flex justify-content-between align-items-center w-100'>
                 <h1 className='section-title'> جدول دروس</h1>
-                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b)}</span>
+                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}> {this.state.courses.length!==0 ? this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b) : null}</span>
                 </div>
                 <div className="timetable">
                     
