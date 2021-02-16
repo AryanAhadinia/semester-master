@@ -1,10 +1,10 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = 'something';
+const apiUrl = 'http://localhost:8082/api';
 
 export function getAllDepartments() {
-	return http.get(apiUrl + '/schedule/all_departments');
+	return http.get(apiUrl + '/schedule/departments');
 }
 
 export function populateDepartmentsOnDb(departments) {
