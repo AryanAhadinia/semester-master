@@ -5,11 +5,12 @@ class Course extends Component {
         course : {
             column: '6',
             row: '14',
-            duration: '3',
+            duration: '6',
             color: 'rgba(232, 73, 48, 0.3)',
             courseNumber: '406221',
             courseName: 'ساختمان داده',
             courseMaster: 'مسعود صدیقین',
+            courseUnits: '3',
         }
      }
 

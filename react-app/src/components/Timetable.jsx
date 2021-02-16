@@ -29,7 +29,10 @@ class Timetable extends Component {
     render() { 
         return (
             <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
-                <h1 className='section-title'> برنامه‌ریزی</h1>
+                <div className='d-flex justify-content-between align-items-center w-100'>
+                <h1 className='section-title'> جدول دروس</h1>
+                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b)}</span>
+                </div>
                 <div className="timetable">
                     
                     <h1 className="weekdays" style={{gridColumn: '2'}}>شنبه</h1>

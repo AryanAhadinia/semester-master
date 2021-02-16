@@ -15,7 +15,7 @@ class TableContainer extends Component {
             <div className="table-container d-flex flex-column justify-content-start align-items-center">
               <div className='d-flex justify-content-between align-items-center w-100'>
                 <h1 className='section-title'> جدول دروس</h1>
-                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.map( c => c.duration).reduce((a,b) => +a + +b)}</span>
+                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b)}</span>
                 </div>
                 <table className="table">
                 <thead>
@@ -38,7 +38,7 @@ class TableContainer extends Component {
                   courseNumber={	course.courseNumber}
                   courseName={course.courseName}
                   courseGroup={18}
-                  courseUnit={1}
+                  courseUnit={course.courseUnits}
                   courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
                   courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
                   course={course}

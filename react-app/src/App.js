@@ -33,6 +33,7 @@ class App extends Component {
 				courseNumber: '40221',
 				courseName: 'ساختمان داده',
 				courseMaster: 'مسعود صدیقین',
+				courseUnits: '2.5',
 			},
 			{
 				column: '2',
@@ -42,6 +43,7 @@ class App extends Component {
 				courseNumber: '40224',
 				courseName: 'ساختمان داده',
 				courseMaster: 'مسعود صدیقین',
+				courseUnits: '2',
 			},
 			{
 				column: '5',
@@ -51,6 +53,7 @@ class App extends Component {
 				courseNumber: '40223',
 				courseName: 'ساختمان داده',
 				courseMaster: 'مسعود صدیقین',
+				courseUnits: '2',
 			},
 		],
 	};
