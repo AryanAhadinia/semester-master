@@ -1,4 +1,5 @@
 import http from './httpService';
+import db from './db';
 
 const apiUrl = 'something';
 
@@ -20,3 +21,20 @@ export function deleteCourseFromSchedule(course) {
 		course.courseId + course.groupId
 	);
 }
+
+export function populateCoursesOnDb(courses) {
+	courses.forEach((value, key) => {
+		for (const course in value) {
+			db.courses.add({ ...course, depId: key });
+		}
+	});
+}
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+	getAllCourses,
+	getMyCourses,
+	addCourseToSchedule,
+	deleteCourseFromSchedule,
+	populateCoursesOnDb,
+};

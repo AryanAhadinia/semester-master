@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from './components/Sidebar';
 import Card from './components/Card';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import Week from './components/Week';
 import logo from './termix.png';
@@ -9,6 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
+import courseService from './services/courseService';
+import departmentService from './services/departmentService';
+import { db } from './services/db';
 import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
@@ -20,44 +23,12 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
-import Course from './components/Course';
 
 class App extends Component {
 	state = {
 		currentState: 1,
 		hoveredCourse: null,
-		courses: [
-			{
-				column: '5',
-				row: '8',
-				duration: '5',
-				color: 'rgba(232, 73, 48, 0.77)',
-				courseNumber: '40221',
-				courseName: 'ساختمان داده',
-				courseMaster: 'مسعود صدیقین',
-				courseUnits: '2.5',
-			},
-			{
-				column: '2',
-				row: '8',
-				duration: '4',
-				color: 'rgba(232, 210, 48, 0.77)',
-				courseNumber: '40224',
-				courseName: 'ساختمان داده',
-				courseMaster: 'مسعود صدیقین',
-				courseUnits: '2',
-			},
-			{
-				column: '5',
-				row: '6',
-				duration: '4',
-				color: 'rgba(24, 73, 48, 0.77)',
-				courseNumber: '40223',
-				courseName: 'ساختمان داده',
-				courseMaster: 'مسعود صدیقین',
-				courseUnits: '2',
-			},
-		],
+		courses: [],
 	};
 
 	addCourse = (course) => {
@@ -65,6 +36,22 @@ class App extends Component {
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 	};
+
+	constructor() {
+		super();
+		this.init();
+	}
+
+	async init() {
+		const { data: courses } = await courseService.getAllCourses();
+		const {
+			data: departments,
+		} = await departmentService.getAllDepartments();
+		const { data: myCourses } = await courseService.getMyCourses();
+		this.setState({ courses: myCourses });
+		await courseService.populateCoursesOnDb(courses);
+		await departmentService.populateDepartmentsOnDb(departments);
+	}
 
 	render() {
 		return (
