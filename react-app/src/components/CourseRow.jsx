@@ -7,8 +7,8 @@ class CourseRow extends Component {
     render() { 
         return (
             <tr>
-            <td className='delete-icon'>
-            <FontAwesomeIcon icon={faMinusCircle} className='p-1 mx'/> 
+            <td className='delete-icon' >
+            <FontAwesomeIcon onClick={() => this.props.handleDelete(this.props.course)} icon={faMinusCircle} className='p-1 mx'/> 
             </td>
             <td>{this.props.courseNumber}</td>
             <td>{this.props.courseName}</td>

@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import CourseRow from './CourseRow'
 
 class TableContainer extends Component {
-    state = {  }
+    state = { 
+      courses : this.props.courses
+     }
+
+    constructor(props) {
+      super(props);
+      this.state.courses = props.courses;
+    }
     render() { 
         return (  
             <div className="table-container d-flex flex-column justify-content-start align-items-center">
@@ -22,34 +29,30 @@ class TableContainer extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                    <CourseRow 
-                    courseNumber={	30003}
-                    courseName='تربیت بدنی'
-                    courseGroup={18}
-                    courseUnit={1}
-                    courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    ></CourseRow>
-                    <CourseRow 
-                    courseNumber={	30003}
-                    courseName='تربیت بدنی'
-                    courseGroup={18}
-                    courseUnit={1}
-                    courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    ></CourseRow>
-                    <CourseRow 
-                    courseNumber={	30003}
-                    courseName='تربیت بدنی'
-                    courseGroup={18}
-                    courseUnit={1}
-                    courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                    ></CourseRow>
+                  { this.state.courses.map( course => 
+                  <CourseRow 
+                  courseNumber={	course.courseNumber}
+                  courseName={course.courseName}
+                  courseGroup={18}
+                  courseUnit={1}
+                  courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
+                  courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
+                  course={course}
+                  handleDelete={this.handleDelete}
+                  ></CourseRow>)
+                    
+                  }
                 </tbody>
                 </table>
              </div>
         );
+    }
+
+    handleDelete = (course) => {
+      const courses = [...this.state.courses];
+        const newCourses = courses.filter(c => c !== course);
+        this.setState({courses : newCourses})
+        this.props.handleUpdateCourses(newCourses);
     }
 }
  

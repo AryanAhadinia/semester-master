@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TableCard from './TableCard';
 import '../time-table.css';
+import Course from './Course';
 
 class Timetable extends Component {
 
@@ -145,14 +146,21 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseNumber} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
-                    ))};
+                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
+                    ))}
             
 
                 </div>
             </div>
           );
     }
+
+    handleDelete = (course) => {
+        const courses = [...this.state.courses];
+        const newCourses = courses.filter(c => c !== course);
+        this.setState({courses : newCourses})
+        this.props.handleUpdateCourses(newCourses);
+      }
 
     componentDidMount() {
         const height = document.getElementById('height-setter').clientHeight;
