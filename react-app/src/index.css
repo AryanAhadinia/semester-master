@@ -526,6 +526,10 @@ td {
 	font-size: 2vh;
 }
 
+.Toastify__toast-container * {
+	font-family: kalameh-bold !important;
+}
+
 @media only screen and (max-width: 1000px) {
 	.sidebar {
 		width: 80px !important;

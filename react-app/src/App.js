@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Sidebar from './components/Sidebar';
 import Card from './components/Card';
 import { Col, Row } from 'react-bootstrap';
+import { ToastContainer } from 'react-toastify';
 import Week from './components/Week';
 import logo from './termix.png';
+import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
@@ -68,6 +70,17 @@ class App extends Component {
 		return (
 			<Router>
 				<React.Fragment>
+					<ToastContainer
+						position='bottom-left'
+						autoClose={5000}
+						hideProgressBar={false}
+						newestOnTop
+						closeOnClick
+						rtl
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover
+					/>
 					<div className='d-flex flex-row flex-fill h-100 overflow-hidden'>
 						<Sidebar
 							handleCurrentState={this.handleCurrentState}
