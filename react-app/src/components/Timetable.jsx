@@ -166,10 +166,9 @@ class Timetable extends Component {
     }
 
     handleDelete = (course) => {
-        const courses = [...this.state.courses];
-        const newCourses = courses.filter(c => c !== course);
-        this.setState({courses : newCourses})
-        this.props.handleUpdateCourses(newCourses);
+        const courses = this.state.courses.filter(c => c !== course);
+        this.setState(courses)
+        this.props.handleUpdateCourses(courses);
       }
 
     componentDidMount() {
