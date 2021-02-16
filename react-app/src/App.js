@@ -18,6 +18,7 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
+import Course from './components/Course';
 
 class App extends Component {
 	state = {
@@ -54,24 +55,8 @@ class App extends Component {
 		],
 	};
 
-	addCourse = (
-		courseColumn,
-		courseRow,
-		courseDuartion,
-		courseColor,
-		number,
-		name,
-		master
-	) => {
-		const newCourse = {
-			column: courseColumn,
-			row: courseRow,
-			duration: courseDuartion,
-			color: courseColor,
-			courseNumber: number,
-			courseName: name,
-			courseMaster: master,
-		};
+	addCourse = (course) => {
+		const newCourse = { ...course };
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 	};

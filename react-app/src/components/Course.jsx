@@ -17,7 +17,7 @@ class Course extends Component {
     render() { 
         return ( 
             <div 
-                onClick={() => this.props.handleUpdateHover(this.state.course)}
+                onClick={() => this.props.onSelect(this.state.course)}
                 onMouseOver={() => this.props.handleUpdateHover(this.state.course)}
                 onMouseOut={() => this.props.handleUpdateHover(null)}
                 className="course">
