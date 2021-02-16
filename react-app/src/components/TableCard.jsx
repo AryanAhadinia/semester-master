@@ -6,7 +6,7 @@ class TableCard extends Component {
     state = {  }
     render() { 
         return (
-            <div className="course-card d-flex flex-column align-items-center justify-content-around" style={{gridRow: this.props.row + "/ span " + this.props.duration , gridColumn: this.props.column, backgroundColor: this.props.color}}>
+            <div className="course-card d-flex flex-column align-items-center justify-content-around" style={{gridRow: this.props.row + "/ span " + this.props.duration , gridColumn: this.props.column, backgroundColor: this.props.color, zIndex: this.props.index, marginLeft: this.props.index + "vw", marginRight: -(this.props.index) + "vw", marginTop: this.props.index + "vw", marginBottom: -(this.props.index) + "vw"}}>
                 <div className='delete-icon-timetable' >
                     <FontAwesomeIcon onClick={() => this.props.handleDelete(this.props.course)} icon={faMinusCircle} className='p-1 mx'/> 
                 </div>

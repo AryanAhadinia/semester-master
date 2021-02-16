@@ -32,7 +32,7 @@ class Timetable extends Component {
             <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
                 <div className='d-flex justify-content-between align-items-center w-100'>
                 <h1 className='section-title'> جدول دروس</h1>
-                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}> {this.state.courses.length!==0 ? this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b) : null}</span>
+                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}> {this.state.courses.length!==0 ? this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b) : 0}</span>
                 </div>
                 <div className="timetable">
                     
@@ -156,11 +156,11 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
+                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber} index = {(card.index - 1)/2}></TableCard>
                     ))}
 
                     { this.state.hoveredCourse ? 
-                        <TableCard key={this.state.hoveredCourse.courseNumber} course={this.state.hoveredCourse} handleDelete={this.handleDelete} column={this.state.hoveredCourse.column} row={this.state.hoveredCourse.row} duration={this.state.hoveredCourse.duration} color={this.state.hoveredCourse.color} courseName = {this.state.hoveredCourse.courseName} courseMaster = {this.state.hoveredCourse.courseMaster} courseNumber = {this.state.hoveredCourse.courseNumber}></TableCard>
+                        <TableCard key={this.state.hoveredCourse.courseNumber} course={this.state.hoveredCourse} handleDelete={this.handleDelete} column={this.state.hoveredCourse.column} row={this.state.hoveredCourse.row} duration={this.state.hoveredCourse.duration} color={this.state.hoveredCourse.color} courseName = {this.state.hoveredCourse.courseName} courseMaster = {this.state.hoveredCourse.courseMaster} courseNumber = {this.state.hoveredCourse.courseNumber} index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
                     : null}
             
 
@@ -171,6 +171,28 @@ class Timetable extends Component {
 
     handleDelete = (course) => {
         const courses = this.state.courses.filter(c => c !== course);
+        for (let index = 0; index < this.state.courses.length; index++) {
+			const element = this.state.courses[index];
+			if(element.column === course.column){
+				if(element.row === course.row){
+					if(element.index > course.index){
+                        element.index--;
+                    }
+				}else if(element.row < course.row){
+					if(element.row + element.duration >= course.row){
+						if(element.index > course.index){
+                            element.index--;
+                        }
+					}
+				}else{
+					if(course.row + course.duration >= element.row){
+						if(element.index > course.index){
+                            element.index--;
+                        }
+					}
+				}
+		}
+		}
         this.setState(courses)
         this.props.handleUpdateCourses(courses);
         toast.dark('درس مورد نظر حذف شد', {
