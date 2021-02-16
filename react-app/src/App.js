@@ -69,7 +69,7 @@ class App extends Component {
 						<Sidebar
 							handleCurrentState={this.handleCurrentState}
 							currentState={this.state.currentState}></Sidebar>
-						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section'>
+						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section overflow-hidden'>
 							<div
 								className='d-flex justify-content-between w-100 h-100'
 								style={{ padding: '4%' }}>
