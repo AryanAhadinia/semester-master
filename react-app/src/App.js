@@ -18,32 +18,58 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
+import Course from './components/Course';
 
 class App extends Component {
 	state = {
 		currentState: 1,
-        courses:[
-            {column: "5",row: "8", duration: "5", color: "rgba(232, 73, 48, 0.77)" , courseNumber: "40221", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
-            {column: "2",row: "8", duration: "4", color: "rgba(232, 210, 48, 0.77)" , courseNumber: "40224", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"},
-            {column: "5",row: "6", duration: "4", color: "rgba(24, 73, 48, 0.77)" , courseNumber: "40223", courseName: "ساختمان داده", courseMaster: "مسعود صدیقین"}
-        ]
+		hoveredCourse: null,
+		courses: [
+			{
+				column: '5',
+				row: '8',
+				duration: '5',
+				color: 'rgba(232, 73, 48, 0.77)',
+				courseNumber: '40221',
+				courseName: 'ساختمان داده',
+				courseMaster: 'مسعود صدیقین',
+			},
+			{
+				column: '2',
+				row: '8',
+				duration: '4',
+				color: 'rgba(232, 210, 48, 0.77)',
+				courseNumber: '40224',
+				courseName: 'ساختمان داده',
+				courseMaster: 'مسعود صدیقین',
+			},
+			{
+				column: '5',
+				row: '6',
+				duration: '4',
+				color: 'rgba(24, 73, 48, 0.77)',
+				courseNumber: '40223',
+				courseName: 'ساختمان داده',
+				courseMaster: 'مسعود صدیقین',
+			},
+		],
 	};
 
-    addCourse = (courseColumn, courseRow, courseDuartion,  courseColor, number, name, master) => {
-        const newCourse = {'column': courseColumn, 'row' : courseRow, 'duration': courseDuartion, 'color': courseColor, 'courseNumber': number, 'courseName': name, 'courseMaster': master};
-        const courses = [...this.state.courses, newCourse]
-        this.setState({courses});
-    };
+	addCourse = (course) => {
+		const newCourse = { ...course };
+		const courses = [...this.state.courses, newCourse];
+		this.setState({ courses });
+	};
 
 	render() {
 		return (
 			<Router>
 				<React.Fragment>
-					<div className='d-flex flex-row flex-fill h-100'>
+					<div className='d-flex flex-row flex-fill h-100 overflow-hidden'>
 						<Sidebar
 							handleCurrentState={this.handleCurrentState}
 							currentState={this.state.currentState}></Sidebar>
-						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section'>
+						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section overflow-hidden'>
 							<div
 								className='d-flex justify-content-between w-100 h-100'
 								style={{ padding: '4%' }}>
@@ -79,13 +105,22 @@ class App extends Component {
 		this.setState({ currentState: state });
 	};
 
+	handleUpdateCourses = (state) => {
+		this.setState({ courses: state });
+	};
+
+	handleUpdateHover = (state) => {
+		console.log(state);
+		this.setState({ hoveredCourse: state });
+	};
+
 	handleSidebar = () => {
 		switch (this.state.currentState) {
 			case 1:
 				return (
 					<React.Fragment>
 						<Redirect to='/dashboard'></Redirect>
-						<div className='w-100'>
+						<div className='w-100 h-100 overflow-hide'>
 							<Card></Card>
 						</div>
 					</React.Fragment>
@@ -94,11 +129,18 @@ class App extends Component {
 				return (
 					<React.Fragment>
 						<Redirect to='/timetable'></Redirect>
-						<Timetable courses = {this.state.courses}></Timetable>
+						<Timetable
+							courses={this.state.courses}
+							handleUpdateCourses={this.handleUpdateCourses}
+							hoveredCourse={this.state.hoveredCourse}>
+							handleUpdateHover={this.handleUpdateHover}
+						</Timetable>
 						<div
 							className='flex-grow-1 flex-shrink-1'
 							id='department-parent'>
-							<Departments onSelect = {this.addCourse}></Departments>
+							<Departments
+								handleUpdateHover={this.handleUpdateHover}
+								onSelect={this.addCourse}></Departments>
 						</div>
 						<ResponsiveTimetable></ResponsiveTimetable>
 					</React.Fragment>
@@ -107,7 +149,11 @@ class App extends Component {
 				return (
 					<React.Fragment>
 						<Redirect to='/courseTable'></Redirect>
-						<TableContainer></TableContainer>
+						<TableContainer
+							courses={this.state.courses}
+							handleUpdateCourses={
+								this.handleUpdateCourses
+							}></TableContainer>
 					</React.Fragment>
 				);
 			case 4:

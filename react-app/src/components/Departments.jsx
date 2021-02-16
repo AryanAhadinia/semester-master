@@ -13,7 +13,7 @@ class Departments extends Component {
                 <option value="2">شیمی</option>
                 <option value="3">کامپیوتر</option>
             </select>
-            <CourseContainer onSelect={this.props.onSelect}>
+            <CourseContainer handleUpdateHover={this.props.handleUpdateHover} onSelect={this.props.onSelect}>
             </CourseContainer>
         </div>
         );
