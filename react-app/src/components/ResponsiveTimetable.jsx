@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import SmallCourseCard from './SmallCourseCard';
+import  db  from '../services/db';
 import '../index.css'
 
 
 class ResponsiveTimetable extends Component {
-    state = {  }
+        state = { departments: undefined,
+        departmentCourses : undefined}
+
+
+        constructor(){
+           super()
+           this.readDepartments()
+        }
+    
+        readDepartments = async () => {
+            const{ data : departments } = await db.departments ; 
+            this.state.departments = departments
+        }
+    
+        handleChange = async (e) => {
+                const{ data : departmentCourses } = await db.courses.where('depId').equals(e.target.value) ;  
+                this.setState({departmentCourses})    
+        }
+
     render() { 
         return (
             <React.Fragment>
@@ -14,18 +33,19 @@ class ResponsiveTimetable extends Component {
               <label className='flex-shrink-0 p-4'> دانشکده : </label>
             <select className="custom-select custom-select-lg responsive-select">
                 <option selected>دانشکده</option>
-                <option value="1">برق</option>
-                <option value="2">شیمی</option>
-                <option value="3">کامپیوتر</option>
+                {
+                        this.state.departments && this.state.departments.map(dep => <option key={dep.depId} onClick={(e) => this.handleChange(e)} value={dep.depId}> dep.department </option>)
+                }
             </select>
             </div >
             <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
             <label className='flex-shrink-0 p-4'> درس : </label>
             <select className="custom-select custom-select-lg responsive-select" >
                 <option selected>درس</option>
-                <option value="1">برق</option>
-                <option value="2">شیمی</option>
-                <option value="3">کامپیوتر</option>
+                {
+                        this.state.departmentCourses && 
+                        this.state.departmentCourses.map(c => <option key={c.courseId + c.groupId} value={c.courseId + c.groupId}> c.courseName </option>)
+                }
             </select>
             </div >    
             </div>

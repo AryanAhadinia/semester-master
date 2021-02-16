@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
-import Course from './Course';
 import CourseContainer from './CourseContainer';
+import  db  from '../services/db';
 
-class Departments extends Component {
-    state = {  }
+
+class Deparment extends Component {
+    state = { departments: undefined}
+
+    constructor(){
+       super()
+       this.readDepartments()
+    }
+
+    readDepartments = async () => {
+        const{ data : departments } = await db.departments ; 
+        this.state.departments = departments
+    }
+
+    
     render() { 
         return (
-        <div className='department-div d-flex flex-column justify-content-start align-items-center'>
-            <select className="custom-select custom-select-lg mb-3">
-                <option selected>دانشکده</option>
-                <option value="1">برق</option>
-                <option value="2">شیمی</option>
-                <option value="3">کامپیوتر</option>
-            </select>
-            <CourseContainer handleUpdateHover={this.props.handleUpdateHover} onSelect={this.props.onSelect}>
-            </CourseContainer>
-        </div>
-        );
+            <div className='department-div d-flex flex-column justify-content-start align-items-center'>
+                <select className="custom-select custom-select-lg mb-3">
+                    <option selected>دانشکده</option>
+                    {
+                        this.state.departments && this.state.departments.map(dep => <option key={dep.depId} value={dep.depId}> dep.department </option>)
+                    }
+                </select>
+                <CourseContainer handleUpdateHover={this.props.handleUpdateHover} onSelect={this.props.onSelect}>
+                </CourseContainer>
+            </div>
+            );
     }
 }
  
-export default Departments;
+export default Deparment;
+
