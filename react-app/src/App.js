@@ -11,7 +11,7 @@ import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
 import courseService from './services/courseService';
 import departmentService from './services/departmentService';
-import { db } from './services/db';
+import db from './services/db';
 import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
@@ -37,21 +37,21 @@ class App extends Component {
 		const newCourse = { ...course };
 		for (let index = 0; index < this.state.courses.length; index++) {
 			const element = this.state.courses[index];
-			if(element.column === newCourse.column){
-				if(element.row === newCourse.row){
+			if (element.column === newCourse.column) {
+				if (element.row === newCourse.row) {
 					courseIndex++;
-				}else if(element.row < newCourse.row){
-					if(element.row + element.duration >= newCourse.row){
+				} else if (element.row < newCourse.row) {
+					if (element.row + element.duration >= newCourse.row) {
 						courseIndex++;
 					}
-				}else{
-					if(newCourse.row + newCourse.duration >= element.row){
+				} else {
+					if (newCourse.row + newCourse.duration >= element.row) {
 						courseIndex++;
 					}
 				}
+			}
 		}
-		}
-		newCourse.index = courseIndex+1;
+		newCourse.index = courseIndex + 1;
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 	};
@@ -62,14 +62,22 @@ class App extends Component {
 	}
 
 	async init() {
-		const { data: courses } = await courseService.getAllCourses();
-		const {
-			data: departments,
-		} = await departmentService.getAllDepartments();
 		const { data: myCourses } = await courseService.getMyCourses();
 		this.setState({ courses: myCourses });
-		await courseService.populateCoursesOnDb(courses);
-		await departmentService.populateDepartmentsOnDb(departments);
+
+		const isThereAnyCourses = await db.courses.count();
+		if (isThereAnyCourses !== 0) {
+			const { data: courses } = await courseService.getAllCourses();
+			await courseService.populateCoursesOnDb(courses);
+		}
+
+		const isThereAnyDepartments = await db.departments.count();
+		if (isThereAnyDepartments !== 0) {
+			const {
+				data: departments,
+			} = await departmentService.getAllDepartments();
+			await departmentService.populateDepartmentsOnDb(departments);
+		}
 	}
 
 	render() {
