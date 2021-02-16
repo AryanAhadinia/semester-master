@@ -22,6 +22,7 @@ import ResponsiveTimetable from './components/ResponsiveTimetable';
 class App extends Component {
 	state = {
 		currentState: 1,
+		hoveredCourse: null,
 		courses: [
 			{
 				column: '5',
@@ -123,6 +124,11 @@ class App extends Component {
 		this.setState({ courses: state });
 	};
 
+	handleUpdateHover = (state) => {
+		console.log(state);
+		this.setState({ hoveredCourse: state });
+	};
+
 	handleSidebar = () => {
 		switch (this.state.currentState) {
 			case 1:
@@ -140,13 +146,15 @@ class App extends Component {
 						<Redirect to='/timetable'></Redirect>
 						<Timetable
 							courses={this.state.courses}
-							handleUpdateCourses={
-								this.handleUpdateCourses
-							}></Timetable>
+							handleUpdateCourses={this.handleUpdateCourses}
+							hoveredCourse={this.state.hoveredCourse}>
+							handleUpdateHover={this.handleUpdateHover}
+						</Timetable>
 						<div
 							className='flex-grow-1 flex-shrink-1'
 							id='department-parent'>
 							<Departments
+								handleUpdateHover={this.handleUpdateHover}
 								onSelect={this.addCourse}></Departments>
 						</div>
 						<ResponsiveTimetable></ResponsiveTimetable>

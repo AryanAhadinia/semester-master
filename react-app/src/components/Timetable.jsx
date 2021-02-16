@@ -7,18 +7,24 @@ class Timetable extends Component {
 
     state = { 
         height: 0,
+        hoveredCourse : this.props.hoveredCourse,
         courses : this.props.courses
      };
 
      constructor(props) {
          super(props)
          this.state.courses = this.props.courses;
+         this.state.hoveredCourse = props.hoveredCourse;
      }
 
      componentDidUpdate(prevProps, prevState) {
          if (prevProps.courses !== this.props.courses)
             this.setState({courses : this.props.courses})
+        if (prevProps.hoveredCourse !== this.props.hoveredCourse)
+            this.setState({hoveredCourse : this.props.hoveredCourse})
      }
+
+
 
     render() { 
         return (
@@ -148,6 +154,10 @@ class Timetable extends Component {
                     {this.state.courses.map(card => (
                         <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber}></TableCard>
                     ))}
+
+                    { this.state.hoveredCourse ? 
+                        <TableCard key={this.state.hoveredCourse.courseNumber} course={this.state.hoveredCourse} handleDelete={this.handleDelete} column={this.state.hoveredCourse.column} row={this.state.hoveredCourse.row} duration={this.state.hoveredCourse.duration} color={this.state.hoveredCourse.color} courseName = {this.state.hoveredCourse.courseName} courseMaster = {this.state.hoveredCourse.courseMaster} courseNumber = {this.state.hoveredCourse.courseNumber}></TableCard>
+                    : null}
             
 
                 </div>

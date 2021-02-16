@@ -14,7 +14,7 @@ class TableContainer extends Component {
         return (  
             <div className="table-container d-flex flex-column justify-content-start align-items-center">
                 <h1 className='section-title'> جدول دروس</h1>
-                <table class="table">
+                <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">حذف</th>
@@ -31,6 +31,7 @@ class TableContainer extends Component {
                 <tbody>
                   { this.state.courses.map( course => 
                   <CourseRow 
+                  key={course.courseNumber}
                   courseNumber={	course.courseNumber}
                   courseName={course.courseName}
                   courseGroup={18}
