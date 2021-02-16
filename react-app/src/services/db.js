@@ -1,8 +1,8 @@
-import Dexie from 'dexie';
+import Dexie, { liveQuery } from 'dexie';
 
-const db = new Dexie('myDb');
+const db = new Dexie('AllCourses');
 db.version(1).stores({
-	friends: `name, age`,
+	courses: '++id, courseId, groupId',
 });
 
 export default db;
