@@ -208,8 +208,8 @@ label {
 
 .imam {
 	width: 7vw !important;
-	top: 1.3vw !important;
 	left: 12% !important;
+	margin-top: 2vw !important;
 	position: absolute;
 }
 
