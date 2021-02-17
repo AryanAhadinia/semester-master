@@ -26,7 +26,6 @@ class Timetable extends Component {
     
     getIndexes = (course) => {
         let currentIndex = this.state.courses.findIndex(c => c === course);
-        console.log(currentIndex);
         let zIndex;
         let indexes = [];
         const courses = this.state.courses.filter(c => c !== course);
@@ -278,29 +277,6 @@ class Timetable extends Component {
 
     handleDelete = (course) => {
         const courses = this.state.courses.filter(c => c !== course);
-        /*for (let index = 0; index < this.state.courses.length; index++) {
-			const element = this.state.courses[index];
-			if(element.column === course.column){
-				if(element.row === course.row){
-					if(element.index > course.index){
-                        element.index--;
-                    }
-				}else if(element.row < course.row){
-					if(element.row + element.duration >= course.row){
-						if(element.index > course.index){
-                            element.index--;
-                        }
-					}
-				}else{
-					if(course.row + course.duration >= element.row){
-						if(element.index > course.index){
-                            element.index--;
-                        }
-					}
-				}
-		}
-		}*/
-
 		this.setState(courses);
 		this.props.handleUpdateCourses(courses);
 		toast.dark('درس مورد نظر حذف شد', {
@@ -313,13 +289,6 @@ class Timetable extends Component {
 			progress: undefined,
 		});
 	};
-
-    componentDidMount() {
-        const height = document.getElementById('height-setter').clientHeight;
-        this.setState({ height });
-        console.log(height);
-        console.log(height/26);
-      }
 
 }
 

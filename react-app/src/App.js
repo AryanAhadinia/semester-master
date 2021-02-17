@@ -38,24 +38,6 @@ class App extends Component {
 	addCourse = (course) => {
 		let courseIndex = 0;
 		const newCourse = { ...course };
-		/*for (let index = 0; index < this.state.courses.length; index++) {
-			const element = this.state.courses[index];
-			if (element.column === newCourse.column) {
-
-				if (element.row === newCourse.row) {
-					courseIndex++;
-				} else if (element.row < newCourse.row) {
-					if (element.row + element.duration >= newCourse.row) {
-						courseIndex++;
-					}
-				} else {
-					if (newCourse.row + newCourse.duration >= element.row) {
-						courseIndex++;
-					}
-				}
-			}
-		}
-		newCourse.index = courseIndex + 1;*/
 		if (this.checkIfCourseAlreadyExists(newCourse)) {
 			return;
 		}
