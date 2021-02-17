@@ -25,8 +25,6 @@ class Timetable extends Component {
             this.setState({hoveredCourse : this.props.hoveredCourse})
      }
 
-
-
     render() { 
         return (
             <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
@@ -156,7 +154,7 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
+                        <TableCard key={card.courseNumber + card.groupId} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
                     ))}
                     {
                         
