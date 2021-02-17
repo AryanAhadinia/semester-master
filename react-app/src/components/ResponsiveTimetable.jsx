@@ -15,6 +15,7 @@ class ResponsiveTimetable extends Component {
                    super(props)
                    this.readDepartments()
                    this.mycourses = props.courses ;
+                   console.log(this.mycourses)
                 }
             
          readDepartments = async () => {
@@ -77,35 +78,35 @@ class ResponsiveTimetable extends Component {
             <h1 className='weekdays mx text-right ' style={{fontSize :'160%', marginTop :'30px'}}>شنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     {
-                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0][0] === 0)
+                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0].days[0] === 0)
                        .map( c => <SmallCourseCard course={c}></SmallCourseCard>)   
                     }
             </div>
             <h1 className='weekdays mx text-right   ' style={{fontSize :'160%', marginTop :'30px'}}>یکشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     {
-                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0][0] === 1)
+                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0].days[0] === 1)
                        .map( c => <SmallCourseCard course={c}></SmallCourseCard>)   
                     }
             </div>
             <h1 className='weekdays mx text-right   ' style={{fontSize :'160%' , marginTop :'30px'}}>دوشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
                     {
-                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0][1] === 2)
+                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0].days[1] === 2)
                        .map( c => <SmallCourseCard course={c}></SmallCourseCard>)   
                     }
             </div>
             <h1 className='weekdays mx text-right  ' style={{fontSize :'160%' , marginTop :'30px'}}>سه شنبه</h1>
             <div className='responsive-course-container mb-8 ' >
             {
-                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0][1] === 3)
+                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0].days[1] === 3)
                        .map( c => <SmallCourseCard course={c}></SmallCourseCard>)   
                     }
             </div>
             <h1 className='weekdays mx text-right   ' style={{fontSize :'160%', marginTop :'30px'}}>چهرشنبه</h1>
             <div className='responsive-course-container mb-8 ' >
             {
-                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0][0] === 4)
+                       this.state.mycourses &&   this.state.mycourses.filter( c => c.classTimeArray[0].days[0] === 4)
                        .map( c => <SmallCourseCard course={c}></SmallCourseCard>)   
                     }
             </div>
