@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import db from '../services/db';
 import departmentService from '../services/departmentService';
 import userService from '../services/userService';
+import Button from '@material-ui/core/Button';
 import {
 	Col,
 	Form,
@@ -66,6 +67,7 @@ class InfoModal extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.doSubmit();
+		this.setOpen(false);
 	};
 
 	doSubmit = async () => {
@@ -154,7 +156,14 @@ class InfoModal extends Component {
 						</div>
 					</Form>
 				</ModalBody>
-				<ModalFooter> im footer </ModalFooter>
+				<ModalFooter>
+						<Button onClick={this.handleClose} color='primary'>
+							بستن
+						</Button>
+						<Button onClick={this.handleSubmit} color='primary'>
+							ثبت اطلاعات
+						</Button>
+				 </ModalFooter>
 			</Modal>
 		);
 	}
