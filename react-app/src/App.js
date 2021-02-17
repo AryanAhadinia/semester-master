@@ -39,6 +39,11 @@ class App extends Component {
 		for (let index = 0; index < this.state.courses.length; index++) {
 			const element = this.state.courses[index];
 			if (element.column === newCourse.column) {
+
+
+
+
+
 				if (element.row === newCourse.row) {
 					courseIndex++;
 				} else if (element.row < newCourse.row) {
