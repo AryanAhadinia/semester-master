@@ -172,7 +172,7 @@ class Timetable extends Component {
 
     handleDelete = (course) => {
         const courses = this.state.courses.filter(c => c !== course);
-        for (let index = 0; index < this.state.courses.length; index++) {
+        /*for (let index = 0; index < this.state.courses.length; index++) {
 			const element = this.state.courses[index];
 			if(element.column === course.column){
 				if(element.row === course.row){
@@ -193,7 +193,12 @@ class Timetable extends Component {
 					}
 				}
 		}
-		}
+		}*/
+
+
+        
+
+
         this.setState(courses)
         this.props.handleUpdateCourses(courses);
         toast.dark('درس مورد نظر حذف شد', {
