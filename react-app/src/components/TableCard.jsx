@@ -16,11 +16,6 @@ class TableCard extends Component {
      constructor(props) {
          super()
          let zIndex;
-         let flag1;
-
-
-        console.log("fdgdg");
-        console.log(props.allCourses);
         const courses = props.allCourses.filter(c => c !== props.course);
         
 
@@ -73,8 +68,6 @@ class TableCard extends Component {
                         }
                     } 
                  }
-                console.log("aaaaaaa");
-                console.log(zIndex);
                 this.state.indexes = [...this.state.indexes, zIndex];
              }
          }
