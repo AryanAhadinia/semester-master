@@ -5,7 +5,6 @@ import person from '../person.jpg';
 import Tilt from 'react-parallax-tilt';
 import '../index.css';
 import imam from '../imamQoute.png';
-import Modal from './Modal';
 
 class Card extends Component {
 	state = {};
