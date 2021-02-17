@@ -3,17 +3,22 @@ import Sidebar from './components/Sidebar';
 import Card from './components/Card';
 import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
+import Week from './components/Week';
+import logo from './termix.png';
 import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
 import Timetable from './components/Timetable';
 import courseService from './services/courseService';
 import departmentService from './services/departmentService';
+import { toast } from 'react-toastify';
+import Dexie, { liveQuery } from 'dexie';
+import { LoaderProvider, useLoading, Audio } from '@agney/react-loading';
 import db from './services/db';
 import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
-import { toast } from 'react-toastify';
+import InfoModal from './components/InfoModal';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -22,7 +27,7 @@ import {
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
 import userService from './services/userService';
-import InfoModal from './components/InfoModal';
+// import InfoModal from './components/InfoModal';
 
 class App extends Component {
 	state = {
