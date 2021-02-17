@@ -3,9 +3,6 @@ import Sidebar from './components/Sidebar';
 import Card from './components/Card';
 import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-import Modal from './components/Modal';
-import Week from './components/Week';
-import logo from './termix.png';
 import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
@@ -17,9 +14,6 @@ import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
 import { toast } from 'react-toastify';
-import Dexie, { liveQuery } from 'dexie';
-import { LoaderProvider, useLoading, Audio } from '@agney/react-loading';
-
 import {
 	BrowserRouter as Router,
 	Route,
@@ -28,6 +22,7 @@ import {
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
 import userService from './services/userService';
+import InfoModal from './components/InfoModal';
 
 class App extends Component {
 	state = {
@@ -232,9 +227,8 @@ class App extends Component {
 								type='button'
 								className='btn btn-dark mx-auto mb-3'
 								id='info-form-button'
-								onClick={() =>
-									this.handleInfoFormButton.current.handleClickOpen()
-								}
+								data-toggle='modal'
+								data-target='#myInfoModel'
 								style={{
 									fontSize: '3vh',
 									borderRadius: '1vw',
@@ -243,8 +237,10 @@ class App extends Component {
 							>
 								ویرایش
 							</button>
+							<InfoModal
+								ref={this.handleInfoFormButton}
+							></InfoModal>
 							<Card></Card>
-							<Modal ref={this.handleInfoFormButton}></Modal>
 						</div>
 					</React.Fragment>
 				);
