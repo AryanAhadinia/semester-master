@@ -13,8 +13,8 @@ class Card extends Component {
 		return (
 			<React.Fragment>
 				<Tilt>
-					<div className='wrap d-flex flex-column justify-content-center'>
-						<div className='drop drop1' dir='rtl'>
+					<div className='wrap d-flex flex-column justify-content-around '>
+						<div className='drop drop1 mx' dir='rtl'>
 							<Row
 								className='card-bar'
 								style={{
@@ -131,7 +131,6 @@ class Card extends Component {
 								</Col>
 							</Row>
 						</div>
-						<Modal></Modal>
 					</div>
 				</Tilt>
 			</React.Fragment>

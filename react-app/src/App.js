@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar';
 import Card from './components/Card';
 import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
+import Modal from './components/Modal';
 import Week from './components/Week';
 import logo from './termix.png';
 import 'react-toastify/dist/ReactToastify.css';
@@ -119,6 +120,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.init();
+		this.handleInfoFormButton = React.createRef();
 	}
 
 	async init() {
@@ -223,8 +225,24 @@ class App extends Component {
 				return (
 					<React.Fragment>
 						<Redirect to='/dashboard'></Redirect>
-						<div className='w-100 h-100 overflow-hide'>
+						<div className='w-100 overflow-hide d-flex flex-column justify-content-between'>
+							<button
+								type='button'
+								className='btn btn-dark mx-auto mb-3'
+								id='info-form-button'
+								onClick={() =>
+									this.handleInfoFormButton.current.handleClickOpen()
+								}
+								style={{
+									fontSize: '3vh',
+									borderRadius: '1vw',
+									alignSelf: 'center',
+								}}
+							>
+								ویرایش
+							</button>
 							<Card></Card>
+							<Modal ref={this.handleInfoFormButton}></Modal>
 						</div>
 					</React.Fragment>
 				);
