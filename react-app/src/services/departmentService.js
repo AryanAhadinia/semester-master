@@ -12,6 +12,7 @@ export function populateDepartmentsOnDb(departments) {
 		db.departments.add({
 			depId: key,
 			department: departments[key],
+			timestamp: new Date().getTime(),
 		});
 	}
 }

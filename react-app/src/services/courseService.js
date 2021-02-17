@@ -28,7 +28,11 @@ export function populateCoursesOnDb(courses) {
 		let value = courses[k];
 		for (const course of value) {
 			console.log(course);
-			db.courses.add({ ...course, depId: k });
+			db.courses.add({
+				...course,
+				depId: k,
+				timestamp: new Date().getTime(),
+			});
 		}
 	}
 }

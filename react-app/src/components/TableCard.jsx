@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMinusCircle} from  '@fortawesome/free-solid-svg-icons'
+import { Textfit } from 'react-textfit';
 
 class TableCard extends Component {
     state = { 
@@ -91,8 +92,11 @@ class TableCard extends Component {
                         <FontAwesomeIcon onClick={() => this.props.handleDelete(this.props.course)} icon={faMinusCircle} className='p-1 mx'/> 
                     </div>
                     <h2 className="class-attributes">{this.state.course.courseId + "-" + this.state.course.groupId }</h2>
+                    <Textfit  mode="single" forceSingleModeWidth={false}>
                     <h2 className="class-attributes">{this.state.course.title}</h2>
+                    </Textfit>
                     <h3 className="class-attributes">{this.state.course.instructor}</h3>
+
                 </div>
                         /*<TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>*/
                     ))}

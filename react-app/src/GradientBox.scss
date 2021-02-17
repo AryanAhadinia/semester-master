@@ -86,14 +86,19 @@
 	right: 0px;
 	width: 100%;
 	height: 100%;
+	white-space: pre-wrap;
 }
 .class-time {
-	padding: 5px 15px;
-	font-family: kalameh-black;
+	padding: 5px 15px !important;
 	opacity: 0.8;
+	direction: ltr;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.4vw;
+	font-weight: 600;
 }
 
 .class-name {
+	text-align: right;
 	padding: 5px 15px;
 	font-size: 120%;
 	font-family: kalameh-bold;
@@ -101,6 +106,7 @@
 }
 
 .class-master {
+	text-align: right;
 	padding: 5px 15px;
 	font-family: kalameh-thin;
 	opacity: 0.6;
