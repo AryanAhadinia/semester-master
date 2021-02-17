@@ -7,9 +7,7 @@ class CourseContainer extends Component {
         return (
             <div className="courses-container d-flex flex-column justify-content-start align-items-center">
                 <Course   handleUpdateHover={this.props.handleUpdateHover} onSelect = {this.props.onSelect}></Course>
-                <Course   handleUpdateHover={this.props.handleUpdateHover} onSelect = {this.props.onSelect}></Course>
-                <Course   handleUpdateHover={this.props.handleUpdateHover} onSelect = {this.props.onSelect}></Course>
-                <Course   handleUpdateHover={this.props.handleUpdateHover} onSelect = {this.props.onSelect}></Course>
+                {}
             </div>
           );
     }

@@ -20,7 +20,7 @@ class Deparment extends Component {
     render() { 
         return (
             <div className='department-div d-flex flex-column justify-content-start align-items-center'>
-                <select className="custom-select custom-select-lg mb-3">
+                <select className="custom-select custom-select-lg mb-3" id='departments-select'>
                     <option selected>دانشکده</option>
                     {
                         this.state.departments && this.state.departments.map(dep => <option key={dep.depId} value={dep.depId}> dep.department </option>)
