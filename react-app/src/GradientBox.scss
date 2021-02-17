@@ -116,3 +116,42 @@
 	padding: 5px 15px;
 	font-family: kalameh-thin;
 }
+
+.menu-item:hover {
+	svg {
+		transition: transform 0.3s ease-in-out;
+	}
+
+	div {
+		transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+	}
+}
+
+.menu-item:hover {
+	svg {
+		transform: scale(1.1);
+	}
+
+	div {
+		transform: translateX(-10px);
+		font-size: 120%;
+	}
+}
+
+.big-logo {
+	transition: transform 0.3s ease-in-out;
+	cursor: cell;
+}
+
+.big-logo:hover {
+	transform: scale(1.15);
+}
+
+.small-logo {
+	transition: transform 0.3s ease-in-out;
+	cursor: cell;
+}
+
+.small-logo:hover {
+	transform: scale(1.15);
+}

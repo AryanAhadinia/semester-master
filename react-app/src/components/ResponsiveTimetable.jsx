@@ -7,7 +7,7 @@ class ResponsiveTimetable extends Component {
 	state = {
 		departments: undefined,
 		selected: 0,
-		selectedCourse: null,
+		selectedCourse: '',
 		departmentCourses: null,
 		mycourses: null,
 	};
@@ -119,15 +119,16 @@ class ResponsiveTimetable extends Component {
 							</select>
 						</div>
 						<div>
-							<a
+							<button
 								className='btn icon-btn p-3'
 								id='add-button'
 								href='#'
 								onClick={this.handleAddCourse}
+								disabled={this.state.selectedCourse === ''}
 							>
 								<span className='glyphicon btn-glyphicon glyphicon-plus img-circle'></span>
 								اضافه
-							</a>
+							</button>
 						</div>
 					</div>
 					<div className='col overflow-auto responsive-timetable-container'>
