@@ -61,7 +61,7 @@ class App extends Component {
 		this.checkIfTheNewCourseExamCorrupts(newCourse);
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
-		toast.dark('درس <<' + course.title + '>> اضافه شد', {
+		toast.dark('درس << ' + course.title + ' >> اضافه شد', {
 			position: 'bottom-left',
 			autoClose: 5000,
 			hideProgressBar: false,

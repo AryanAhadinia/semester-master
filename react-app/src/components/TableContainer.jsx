@@ -50,6 +50,23 @@ class TableContainer extends Component {
 							></CourseRow>
 						))}
 					</tbody>
+					<tfoot>
+						<tr>
+							<th scope='row'>مجموع</th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								{this.state.courses
+									.map((c) => c.unit)
+									.reduce((a, b) => a + b)}
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
 				</table>
 			</div>
 		);
