@@ -227,7 +227,7 @@ class App extends Component {
 				return (
 					<React.Fragment>
 						<Redirect to='/dashboard'></Redirect>
-						<div className='w-100 overflow-hide d-flex flex-column justify-content-between'>
+						<div className='w-100 overflow-hide d-flex flex-column justify-content-around'>
 							<InfoModal ref={this.modalRefrence}></InfoModal>
 							<button
 								type='button'
