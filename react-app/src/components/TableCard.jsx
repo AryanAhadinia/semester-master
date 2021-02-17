@@ -16,7 +16,6 @@ class TableCard extends Component {
 
      constructor(props) {
          super()
-         //let zIndex;
         const courses = props.allCourses.filter(c => c !== props.course);
         
 
@@ -24,57 +23,15 @@ class TableCard extends Component {
          for (let index = 0; index < props.course.classTimeArray.length; index++) {
              const element = props.course.classTimeArray[index];
              for (let i = 0; i < element.days.length; i++) {
-                 //zIndex = 0;
                  const element2 = element.days[i];
                  this.state.times = [...this.state.times, this.state.time];
                  this.state.columns = [...this.state.columns, (element2+2)];
                  this.state.rows = [...this.state.rows, ((element.startHour - 7)*2) + 2 + (element.startMin / 30)];
                  this.state.durations = [...this.state.durations, ((element.endHour - element.startHour)*2) + ((element.endMin - element.startMin)/30)]; 
                  this.state.time++;
-
-
-                
-                 /*for (let x = 0; x < courses.length; x++) {
-                     const tempCourse = courses[x];
-
-                     let tempCols = [];
-                     let tempRows = [];
-                     let tempDurs = [];
-
-                     for (let j = 0; j < tempCourse.classTimeArray.length; j++) {
-                        const element3 = tempCourse.classTimeArray[j];
-                        for (let k = 0; k < element3.days.length; k++) {
-                            const element4 = element3.days[k];
-                            tempCols = [...tempCols, (element4+2)];
-                            tempRows = [...tempRows, ((element3.startHour - 7)*2) + 2 + (element3.startMin / 30)];
-                            tempDurs = [...tempDurs, ((element3.endHour - element3.startHour)*2) + ((element3.endMin - element3.startMin)/30)]; 
-                        }
-                    }
-        
-
-                    for (let j = 0; j < tempCols.length; j++) {
-                        const col = tempCols[j];
-                        if(col === (element2+2)){
-                            if(tempRows[j] === ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                zIndex++;
-                            }else if(tempRows[j] < ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                if(tempRows[j] + tempDurs[j] > ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                    zIndex++;
-                                }
-                            }else{
-                                if((((element.startHour - 7)*2) + 2 + (element.startMin / 30) + ((element.endHour - element.startHour)*2) + ((element.endMin - element.startMin)/30)) > tempRows[j]){
-                                    zIndex++;
-                                }
-                            }
-                        }
-                    } 
-                 }
-                this.state.indexes = [...this.state.indexes, zIndex];*/
              }
          }
          this.state.indexes = props.indexes;
-         console.log("susnihnisurjngeknrgesignier");
-         console.log(props.indexes);
          this.state.course = props.course;
      }
 
