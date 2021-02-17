@@ -23,8 +23,6 @@ class TableCard extends Component {
 
      constructor(props) {
          super()
-         console.log("sgsrgsr");
-         console.log(props.course.classTimeArray);
          for (let index = 0; index < props.course.classTimeArray.length; index++) {
              const element = props.course.classTimeArray[index];
              for (let i = 0; i < element.days.length; i++) {
@@ -37,18 +35,13 @@ class TableCard extends Component {
              }
          }
          this.state.course = props.course;
-         console.log("that");
-        console.log(this.state.durations);
-        console.log(this.state.rows);
-        console.log(this.state.columns);
-        console.log(this.state.times)
      }
 
     render() { 
         return (
         <React.Fragment>
             {this.state.times.map(time => (
-                <div className="course-card d-flex flex-column align-items-center justify-content-around" style={{gridRow: this.state.rows[time] + "/ span " + this.state.durations[time] , gridColumn: this.state.columns[time], backgroundColor: 'rgba(232, 73, 48, 0.3)'}}>
+                <div className="course-card d-flex flex-column align-items-center justify-content-around" style={{gridRow: this.state.rows[time] + "/ span " + this.state.durations[time] , gridColumn: this.state.columns[time], backgroundColor: 'rgba(232, 73, 48, 0.3)', zIndex: this.props.index, marginLeft: this.props.index + "vw", marginRight: -(this.props.index) + "vw", marginTop: this.props.index + "vw", marginBottom: -(this.props.index) + "vw"}}>
                     <div className='delete-icon-timetable' >
                         <FontAwesomeIcon onClick={() => this.props.handleDelete(this.props.course)} icon={faMinusCircle} className='p-1 mx'/> 
                     </div>
