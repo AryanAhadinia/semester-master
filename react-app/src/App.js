@@ -112,8 +112,9 @@ class App extends Component {
 
 	constructor() {
 		super();
+		this.modalRefrence = React.createRef();
+		this.showModal = this.showModal.bind(this);
 		this.init();
-		this.handleInfoFormButton = React.createRef();
 	}
 
 	async init() {
@@ -216,6 +217,10 @@ class App extends Component {
 		userService.deleteUserInfo();
 	};
 
+	showModal() {
+		this.modalRefrence.current.handleClickOpen();
+	}
+
 	handleSidebar = () => {
 		switch (this.state.currentState) {
 			case 1:
@@ -223,6 +228,7 @@ class App extends Component {
 					<React.Fragment>
 						<Redirect to='/dashboard'></Redirect>
 						<div className='w-100 overflow-hide d-flex flex-column justify-content-between'>
+							<InfoModal ref={this.modalRefrence}></InfoModal>
 							<button
 								type='button'
 								className='btn btn-dark mx-auto mb-3'
@@ -234,12 +240,10 @@ class App extends Component {
 									borderRadius: '1vw',
 									alignSelf: 'center',
 								}}
+								onClick={this.showModal}
 							>
 								ویرایش
 							</button>
-							<InfoModal
-								ref={this.handleInfoFormButton}
-							></InfoModal>
 							<Card></Card>
 						</div>
 					</React.Fragment>

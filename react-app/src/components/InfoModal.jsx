@@ -75,7 +75,7 @@ class InfoModal extends Component {
 
 	render() {
 		return (
-			<Modal show={true} id='myInfoModel'>
+			<Modal show={this.state.open} id='myInfoModel'>
 				<Modal.Header id='form-dialog-title'>اطلاعات</Modal.Header>
 				<ModalBody>
 					<Form onSubmit={this.handleSubmit}>
