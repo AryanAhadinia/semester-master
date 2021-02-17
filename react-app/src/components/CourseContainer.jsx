@@ -5,13 +5,37 @@ import  db  from '../services/db';
 
 class CourseContainer extends Component {
     state = {  
-        departmentCourses : null
+        departmentCourses : null,
+        inputValue: '',
     }
 
     constructor(props) {
         super()
         this.readDepartmentCourses(props.depId)
     }
+
+    /*filterOnChange = (event) => {
+        event.persist();
+        (async () => {
+            await this.setState({ inputValue : event.target.value });
+            console.log('event', event.target);
+        })();  
+
+
+
+        console.log("changed");
+        if(event != null){
+            console.log("changed2");
+        let filteredCourses = this.state.departmentCourses.filter(course => {
+            return course.title.toLowerCase().includes(inputValue.toLocaleLowerCase());
+        })
+        this.setState({
+            departmentCourses : filteredCourses
+        });
+    }
+    
+                <input type="text" placeholder="جستجو" onChange={(e) => this.filterOnChange(e)}></input>
+    }*/
 
     readDepartmentCourses = async (id) => {
         const departmentCourses = await db.courses.where('depId').equals(id + '').toArray() ; 
