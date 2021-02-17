@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import db from '../services/db';
 import departmentService from '../services/departmentService';
 import userService from '../services/userService';
-import Button from '@material-ui/core/Button';
 import {
 	Col,
 	Form,
@@ -157,13 +156,21 @@ class InfoModal extends Component {
 					</Form>
 				</ModalBody>
 				<ModalFooter>
-						<button className="btn btn-dark" onClick={this.handleClose} color='primary'>
-							بستن
-						</button>
-						<button className="btn btn-dark" onClick={this.handleSubmit} color='primary'>
-							ثبت اطلاعات
-						</button>
-				 </ModalFooter>
+					<button
+						className='btn btn-dark'
+						onClick={this.handleClose}
+						color='primary'
+					>
+						بستن
+					</button>
+					<button
+						className='btn btn-dark'
+						onClick={this.handleSubmit}
+						color='primary'
+					>
+						ثبت اطلاعات
+					</button>
+				</ModalFooter>
 			</Modal>
 		);
 	}
