@@ -3,7 +3,7 @@ import Sidebar from './components/Sidebar';
 import Card from './components/Card';
 import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-import Week from './components/Week';
+import './week.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
