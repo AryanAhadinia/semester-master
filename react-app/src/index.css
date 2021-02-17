@@ -545,6 +545,62 @@ section {
 	z-index: 999999;
 }
 
+#add-button {
+	padding: 1px 2px 3px 10px !important;
+	justify-content: center !important;
+	align-items: center !important;
+	display: flex;
+	border-radius: 50px;
+	font-size: 120%;
+	color: #fff !important;
+	background: linear-gradient(-90deg, #ff7818b2, #af002cb2 41.07%);
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	transition: transform 0.3s ease-in-out;
+}
+
+#add-button:hover {
+	filter: saturate(1.6);
+	transform: scaleX(1.05);
+}
+
+#add-button span {
+	padding: 10px !important;
+	font-size: 50%;
+	vertical-align: middle;
+	text-align: center;
+	color: #ff7a18;
+	background: #ffffff;
+	margin-left: 4px;
+}
+
+@media only screen and (max-width: 800px) {
+	.search-course {
+		margin-top: 10px !important;
+		flex-direction: column;
+		height: 150px !important;
+	}
+
+	.search-course div {
+		margin: 3px;
+		width: 100% !important;
+		height: 35% !important;
+	}
+
+	.search-course div:nth-child(3) {
+		width: fit-content !important;
+		height: 30% !important;
+	}
+
+	.search-course div select {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	.search-course div label {
+		display: none;
+	}
+}
+
 @media only screen and (max-width: 1000px) {
 	.sidebar {
 		width: 80px !important;
@@ -564,6 +620,10 @@ section {
 		justify-content: center;
 	}
 
+	.search-course div label {
+		font-size: 100% !important;
+	}
+
 	.small-logo {
 		display: block;
 		width: 50% !important;
@@ -572,25 +632,6 @@ section {
 
 	.big-logo {
 		display: none !important;
-	}
-
-	.search-course {
-		flex-direction: column;
-	}
-
-	.search-course div {
-		width: 100% !important;
-		height: 40% !important;
-	}
-
-	.search-course div select {
-		width: 100% !important;
-		height: 100% !important;
-	}
-
-	.search-course div label {
-		width: max-content !important;
-		font-size: 2vw !important;
 	}
 
 	#timetable-container,
