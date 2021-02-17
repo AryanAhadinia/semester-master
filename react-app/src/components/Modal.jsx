@@ -86,8 +86,20 @@ class Modal extends Component {
 					aria-labelledby='form-dialog-title'
 				>
 					<h1 id='form-dialog-title'>اطلاعات</h1>
-					<DialogContent>
-						<Form onSubmit={this.handleSubmit}>
+					<div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            ثبت اطلاعات
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+					<Form onSubmit={this.handleSubmit}>
 							<div className='form-group'>
 								<label htmlFor='exampleInputEmail1'>
 									نام خانوداگی
@@ -135,6 +147,7 @@ class Modal extends Component {
 										this.state.departments.length !== 0 &&
 										this.state.departments.map((d) => (
 											<option
+												key={d.depId}
 												value={d.depId}
 												selected={
 													d.depId ===
@@ -161,7 +174,8 @@ class Modal extends Component {
 								</select>
 							</div>
 						</Form>
-					</DialogContent>
+                    </div>
+					</div>
 					<DialogActions>
 						<Button onClick={this.handleClose} color='primary'>
 							بستن
@@ -177,3 +191,10 @@ class Modal extends Component {
 }
 
 export default Modal;
+
+
+
+
+
+
+
