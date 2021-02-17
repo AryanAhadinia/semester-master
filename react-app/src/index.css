@@ -611,6 +611,15 @@ section {
 		width: 80px !important;
 	}
 
+	th:nth-child(8),
+	th:nth-child(9) {
+		display: none;
+	}
+
+	tr td:nth-child(8),
+	tr td:nth-child(9) {
+		display: none;
+	}
 	.menu-items-text {
 		display: none;
 	}
