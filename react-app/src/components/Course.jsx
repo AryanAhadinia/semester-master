@@ -19,6 +19,11 @@ class Course extends Component {
          this.state.course = props.course;
      }
 
+     componentDidUpdate(prevProps) {
+        if (prevProps.course !== this.props.course)
+            this.setState({course : this.props.course})
+    }
+
      
     render() { 
         return ( 
