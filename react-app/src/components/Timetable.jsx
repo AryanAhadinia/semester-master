@@ -90,7 +90,6 @@ class Timetable extends Component {
 						className='badge badge-pill badge-light '
 						style={{ fontSize: '1.5vw' }}
 					>
-						{' '}
 						{this.state.courses.length !== 0
 							? this.state.courses
 									.map((c) => c.unit)

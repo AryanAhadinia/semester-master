@@ -1,7 +1,7 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = 'http://b5e506d059a4.ngrok.io/api';
+const apiUrl = 'http://058a6a685fc8.ngrok.io/api';
 
 export function getAllCourses() {
 	return http.get(apiUrl + '/schedule/all_courses');

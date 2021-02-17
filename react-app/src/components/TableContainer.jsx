@@ -57,9 +57,11 @@ class TableContainer extends Component {
 							<td></td>
 							<td></td>
 							<td>
-								{this.state.courses
+              {this.state.courses.length !== 0
+							? this.state.courses
 									.map((c) => c.unit)
-									.reduce((a, b) => a + b)}
+									.reduce((a, b) => +a + +b)
+							: 0}
 							</td>
 							<td></td>
 							<td></td>
