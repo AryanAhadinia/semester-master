@@ -15,6 +15,7 @@ import db from './services/db';
 import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
+import { toast } from 'react-toastify';
 import Dexie, { liveQuery } from 'dexie';
 import { LoaderProvider, useLoading, Audio } from '@agney/react-loading';
 
@@ -36,7 +37,7 @@ class App extends Component {
 	addCourse = (course) => {
 		let courseIndex = 0;
 		const newCourse = { ...course };
-		for (let index = 0; index < this.state.courses.length; index++) {
+		/*for (let index = 0; index < this.state.courses.length; index++) {
 			const element = this.state.courses[index];
 			if (element.column === newCourse.column) {
 
@@ -57,9 +58,18 @@ class App extends Component {
 				}
 			}
 		}
-		newCourse.index = courseIndex + 1;
+		newCourse.index = courseIndex + 1;*/
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
+		toast.dark('درس <<' + course.title + '>> اضافه شد', {
+			position: 'bottom-left',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
 	};
 
 	constructor() {
