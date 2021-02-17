@@ -177,6 +177,7 @@ class App extends Component {
 								onSelect={this.addCourse}></Departments>
 						</div>
 						<ResponsiveTimetable
+							onSelect={this.addCourse}
 							courses={this.state.courses}></ResponsiveTimetable>
 					</React.Fragment>
 				);

@@ -118,11 +118,14 @@
 	-webkit-backdrop-filter: blur(6px);
 	color: white;
 	position: relative;
-	display: inline-block;
+	display: flex;
 	flex-shrink: 0;
+	direction: rtl !important;
 	border-radius: 5px;
 	-webkit-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
 	-moz-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
 	box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
 	margin-top: 10px;
+	padding: 25px;
+	direction: rtl !important;
 }

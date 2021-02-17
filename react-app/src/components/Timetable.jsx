@@ -25,8 +25,6 @@ class Timetable extends Component {
             this.setState({hoveredCourse : this.props.hoveredCourse})
      }
 
-
-
     render() { 
         return (
             <div className="timetable-container d-flex flex-column justify-content-between w-100" id='timetable-container'>
