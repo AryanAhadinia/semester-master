@@ -157,12 +157,12 @@ class InfoModal extends Component {
 					</Form>
 				</ModalBody>
 				<ModalFooter>
-						<Button onClick={this.handleClose} color='primary'>
+						<button className="btn btn-dark" onClick={this.handleClose} color='primary'>
 							بستن
-						</Button>
-						<Button onClick={this.handleSubmit} color='primary'>
+						</button>
+						<button className="btn btn-dark" onClick={this.handleSubmit} color='primary'>
 							ثبت اطلاعات
-						</Button>
+						</button>
 				 </ModalFooter>
 			</Modal>
 		);
