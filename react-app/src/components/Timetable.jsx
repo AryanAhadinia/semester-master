@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TableCard from './TableCard';
 import '../time-table.css';
 import { toast } from 'react-toastify';
+import courseService from '../services/courseService';
 import Course from './Course';
 
 class Timetable extends Component {
@@ -23,59 +24,90 @@ class Timetable extends Component {
 		if (prevProps.hoveredCourse !== this.props.hoveredCourse)
 			this.setState({ hoveredCourse: this.props.hoveredCourse });
 	}
-    
-    getIndexes = (course) => {
-        let currentIndex = this.state.courses.findIndex(c => c === course);
-        let zIndex;
-        let indexes = [];
-        const courses = this.state.courses.filter(c => c !== course);
-        
 
-         for (let index = 0; index < course.classTimeArray.length; index++) {
-             const element = course.classTimeArray[index];
-             for (let i = 0; i < element.days.length; i++) {
-                 zIndex = 0;
-                 const element2 = element.days[i];                
-                 for (let x = 0; x < currentIndex; x++) {
-                     const tempCourse = courses[x];
+	getIndexes = (course) => {
+		let currentIndex = this.state.courses.findIndex((c) => c === course);
+		let zIndex;
+		let indexes = [];
+		const courses = this.state.courses.filter((c) => c !== course);
 
-                     let tempCols = [];
-                     let tempRows = [];
-                     let tempDurs = [];
+		for (let index = 0; index < course.classTimeArray.length; index++) {
+			const element = course.classTimeArray[index];
+			for (let i = 0; i < element.days.length; i++) {
+				zIndex = 0;
+				const element2 = element.days[i];
+				for (let x = 0; x < currentIndex; x++) {
+					const tempCourse = courses[x];
 
-                     for (let j = 0; j < tempCourse.classTimeArray.length; j++) {
-                        const element3 = tempCourse.classTimeArray[j];
-                        for (let k = 0; k < element3.days.length; k++) {
-                            const element4 = element3.days[k];
-                            tempCols = [...tempCols, (element4+2)];
-                            tempRows = [...tempRows, ((element3.startHour - 7)*2) + 2 + (element3.startMin / 30)];
-                            tempDurs = [...tempDurs, ((element3.endHour - element3.startHour)*2) + ((element3.endMin - element3.startMin)/30)]; 
-                        }
-                    }
-        
+					let tempCols = [];
+					let tempRows = [];
+					let tempDurs = [];
 
-                    for (let j = 0; j < tempCols.length; j++) {
-                        const col = tempCols[j];
-                        if(col === (element2+2)){
-                            if(tempRows[j] === ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                zIndex++;
-                            }else if(tempRows[j] < ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                if(tempRows[j] + tempDurs[j] > ((element.startHour - 7)*2) + 2 + (element.startMin / 30)){
-                                    zIndex++;
-                                }
-                            }else{
-                                if((((element.startHour - 7)*2) + 2 + (element.startMin / 30) + ((element.endHour - element.startHour)*2) + ((element.endMin - element.startMin)/30)) > tempRows[j]){
-                                    zIndex++;
-                                }
-                            }
-                        }
-                    } 
-                 }
-                 indexes = [...indexes, zIndex];
-             }
-         }
-         return indexes;
-     }
+					for (let j = 0; j < tempCourse.classTimeArray.length; j++) {
+						const element3 = tempCourse.classTimeArray[j];
+						for (let k = 0; k < element3.days.length; k++) {
+							const element4 = element3.days[k];
+							tempCols = [...tempCols, element4 + 2];
+							tempRows = [
+								...tempRows,
+								(element3.startHour - 7) * 2 +
+									2 +
+									element3.startMin / 30,
+							];
+							tempDurs = [
+								...tempDurs,
+								(element3.endHour - element3.startHour) * 2 +
+									(element3.endMin - element3.startMin) / 30,
+							];
+						}
+					}
+
+					for (let j = 0; j < tempCols.length; j++) {
+						const col = tempCols[j];
+						if (col === element2 + 2) {
+							if (
+								tempRows[j] ===
+								(element.startHour - 7) * 2 +
+									2 +
+									element.startMin / 30
+							) {
+								zIndex++;
+							} else if (
+								tempRows[j] <
+								(element.startHour - 7) * 2 +
+									2 +
+									element.startMin / 30
+							) {
+								if (
+									tempRows[j] + tempDurs[j] >
+									(element.startHour - 7) * 2 +
+										2 +
+										element.startMin / 30
+								) {
+									zIndex++;
+								}
+							} else {
+								if (
+									(element.startHour - 7) * 2 +
+										2 +
+										element.startMin / 30 +
+										(element.endHour - element.startHour) *
+											2 +
+										(element.endMin - element.startMin) /
+											30 >
+									tempRows[j]
+								) {
+									zIndex++;
+								}
+							}
+						}
+					}
+				}
+				indexes = [...indexes, zIndex];
+			}
+		}
+		return indexes;
+	};
 
 	render() {
 		return (
@@ -258,25 +290,40 @@ class Timetable extends Component {
 						20:00
 					</label>
 
-                    {this.state.courses.map(card => (
-                        <TableCard key={card.courseId + "" + card.groupId} allCourses={this.props.courses} indexes={this.getIndexes(card)} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
-                    ))}
-                    {
-                        
-                    }
+					{this.state.courses.map((card) => (
+						<TableCard
+							key={card.courseId + '' + card.groupId}
+							allCourses={this.props.courses}
+							indexes={this.getIndexes(card)}
+							course={card}
+							handleDelete={this.handleDelete}
+							index={(card.index - 1) / 2}
+						></TableCard>
+					))}
+					{}
 
-                    { this.state.hoveredCourse ? 
-                        <TableCard key={this.state.hoveredCourse.courseId + "" + this.state.hoveredCourse.groupId }  allCourses={this.props.courses} indexes={this.getIndexes(this.state.hoveredCourse)} course={this.state.hoveredCourse} handleDelete={this.handleDelete}  index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
-                    : null}
-            
+					{this.state.hoveredCourse ? (
+						<TableCard
+							key={
+								this.state.hoveredCourse.courseId +
+								'' +
+								this.state.hoveredCourse.groupId
+							}
+							allCourses={this.props.courses}
+							indexes={this.getIndexes(this.state.hoveredCourse)}
+							course={this.state.hoveredCourse}
+							handleDelete={this.handleDelete}
+							index={(this.state.hoveredCourse.index - 1) / 2}
+						></TableCard>
+					) : null}
+				</div>
+			</div>
+		);
+	}
 
-                </div>
-            </div>
-          );
-    }
-
-    handleDelete = (course) => {
-        const courses = this.state.courses.filter(c => c !== course);
+	handleDelete = async (course) => {
+		const save = this.state.courses;
+		const courses = this.state.courses.filter((c) => c !== course);
 		this.setState(courses);
 		this.props.handleUpdateCourses(courses);
 		toast.dark('درس مورد نظر حذف شد', {
@@ -288,8 +335,23 @@ class Timetable extends Component {
 			draggable: true,
 			progress: undefined,
 		});
+		try {
+			await courseService.deleteCourseFromSchedule(course);
+		} catch (ex) {
+			if (ex.response && ex.response.status === 404)
+				toast.error('مشکل در برقراری ارتباط!', {
+					position: 'bottom-left',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			this.setState(save);
+			this.props.handleUpdateCourses(save);
+		}
 	};
-
 }
 
 export default Timetable;

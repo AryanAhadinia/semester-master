@@ -27,6 +27,7 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
+import userService from './services/userService';
 
 class App extends Component {
 	state = {
@@ -35,8 +36,8 @@ class App extends Component {
 		courses: [],
 	};
 
-	addCourse = (course) => {
-		let courseIndex = 0;
+	addCourse = async (course) => {
+		const saveState = this.state;
 		const newCourse = { ...course };
 		if (this.checkIfCourseAlreadyExists(newCourse)) {
 			return;
@@ -53,6 +54,21 @@ class App extends Component {
 			draggable: true,
 			progress: undefined,
 		});
+		try {
+			await courseService.addCourseToSchedule(newCourse);
+		} catch (ex) {
+			if (ex.response && ex.response.status === 404)
+				toast.error('مشکل در برقراری ارتباط!', {
+					position: 'bottom-left',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			this.setState(saveState);
+		}
 	};
 
 	checkIfTheNewCourseExamCorrupts = (newCourse) => {
@@ -106,8 +122,8 @@ class App extends Component {
 	}
 
 	async init() {
-		// const { data: myCourses } = await courseService.getMyCourses();
-		// this.setState({ courses: myCourses });
+		const { data: myCourses } = await courseService.getMyCourses();
+		this.setState({ courses: myCourses });
 		this.deleteIfExpired();
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
@@ -201,6 +217,10 @@ class App extends Component {
 		this.setState({ hoveredCourse: state });
 	};
 
+	handleClearDB = () => {
+		userService.deleteUserInfo();
+	};
+
 	handleSidebar = () => {
 		switch (this.state.currentState) {
 			case 1:
@@ -265,7 +285,8 @@ class App extends Component {
 					</React.Fragment>
 				);
 			case 4:
-				return null;
+				this.handleClearDB();
+				return <Redirect to='/index'></Redirect>;
 
 			default:
 				return null;
