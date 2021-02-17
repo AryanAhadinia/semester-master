@@ -9,14 +9,14 @@ class ResponsiveTimetable extends Component {
 		selected: 0,
 		selectedCourse: '',
 		departmentCourses: null,
-		mycourses: null,
+		myCourses: null,
 	};
 
 	constructor(props) {
 		super(props);
-		this.mycourses = props.courses;
+		console.log('constructor !');
+		this.state.myCourses = props.courses;
 		this.readDepartments();
-		console.log(this.mycourses);
 	}
 
 	readDepartments = async () => {
@@ -58,7 +58,7 @@ class ResponsiveTimetable extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevProps.courses !== this.props.courses)
-			this.setState({ mycourses: this.props.courses });
+			this.setState({ myCourses: this.props.courses });
 		if (prevState.selected !== this.state.selected)
 			this.readDepartmentCourses(this.state.selected);
 	}
@@ -139,9 +139,9 @@ class ResponsiveTimetable extends Component {
 							شنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.mycourses &&
-								this.state.mycourses.length !== 0 &&
-								this.state.mycourses
+							{this.state.myCourses &&
+								this.state.myCourses.length !== 0 &&
+								this.state.myCourses
 									.filter(
 										(c) => c.classTimeArray[0].days[0] === 0
 									)
@@ -158,9 +158,9 @@ class ResponsiveTimetable extends Component {
 							یکشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.mycourses &&
-								this.state.mycourses.length !== 0 &&
-								this.state.mycourses
+							{this.state.myCourses &&
+								this.state.myCourses.length !== 0 &&
+								this.state.myCourses
 									.filter(
 										(c) => c.classTimeArray[0].days[0] === 1
 									)
@@ -177,9 +177,9 @@ class ResponsiveTimetable extends Component {
 							دوشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.mycourses &&
-								this.state.mycourses.length !== 0 &&
-								this.state.mycourses
+							{this.state.myCourses &&
+								this.state.myCourses.length !== 0 &&
+								this.state.myCourses
 									.filter(
 										(c) => c.classTimeArray[0].days[1] === 2
 									)
@@ -196,9 +196,9 @@ class ResponsiveTimetable extends Component {
 							سه شنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.mycourses &&
-								this.state.mycourses.length !== 0 &&
-								this.state.mycourses
+							{this.state.myCourses &&
+								this.state.myCourses.length !== 0 &&
+								this.state.myCourses
 									.filter(
 										(c) => c.classTimeArray[0].days[1] === 3
 									)
@@ -215,9 +215,9 @@ class ResponsiveTimetable extends Component {
 							چهارشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.mycourses &&
-								this.state.mycourses.length !== 0 &&
-								this.state.mycourses
+							{this.state.myCourses &&
+								this.state.myCourses.length !== 0 &&
+								this.state.myCourses
 									.filter(
 										(c) => c.classTimeArray[0].days[0] === 4
 									)
