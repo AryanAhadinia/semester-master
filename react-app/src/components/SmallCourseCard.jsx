@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../time-table.css'
+import { Textfit } from 'react-textfit';
+
 
 class SmallCourseCard extends Component {
     state = { 
@@ -44,7 +46,7 @@ class SmallCourseCard extends Component {
                 <div className="small-card-content d-flex flex-column justify-content-center align-items-start h-100">
                         <h1 className="class-time"> {this.state.times}</h1>
                         <h1 className="class-name"> {this.state.course.title} </h1>
-                        <h1 className="class-master">{this.state.course.instructor}</h1>
+                        < h1 className="class-master">{this.state.course.instructor}</h1>
                         <h1 className="class-exam"> امتحان : {this.state.course.examTime}</h1>
                 </div>
             </div>
