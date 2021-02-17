@@ -156,14 +156,14 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseId + "" + card.groupId} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
+                        <TableCard key={card.courseId + "" + card.groupId} allCourses={this.props.courses} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
                     ))}
                     {
                         
                     }
 
                     { this.state.hoveredCourse ? 
-                        <TableCard key={this.state.hoveredCourse.courseId + "" + this.state.hoveredCourse.groupId } course={this.state.hoveredCourse} handleDelete={this.handleDelete}  index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
+                        <TableCard key={this.state.hoveredCourse.courseId + "" + this.state.hoveredCourse.groupId }  allCourses={this.props.courses} course={this.state.hoveredCourse} handleDelete={this.handleDelete}  index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
                     : null}
             
 

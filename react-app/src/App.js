@@ -36,7 +36,7 @@ class App extends Component {
 	addCourse = (course) => {
 		let courseIndex = 0;
 		const newCourse = { ...course };
-		for (let index = 0; index < this.state.courses.length; index++) {
+		/*for (let index = 0; index < this.state.courses.length; index++) {
 			const element = this.state.courses[index];
 			if (element.column === newCourse.column) {
 
@@ -57,7 +57,7 @@ class App extends Component {
 				}
 			}
 		}
-		newCourse.index = courseIndex + 1;
+		newCourse.index = courseIndex + 1;*/
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 	};
