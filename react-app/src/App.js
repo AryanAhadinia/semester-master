@@ -55,6 +55,10 @@ class App extends Component {
 			}
 		}
 		newCourse.index = courseIndex + 1;*/
+		if (this.checkIfCourseAlreadyExists(newCourse)) {
+			return;
+		}
+		this.checkIfTheNewCourseExamCorrupts(newCourse);
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 		toast.dark('درس <<' + course.title + '>> اضافه شد', {
@@ -66,6 +70,50 @@ class App extends Component {
 			draggable: true,
 			progress: undefined,
 		});
+	};
+
+	checkIfTheNewCourseExamCorrupts = (newCourse) => {
+		for (let course of this.state.courses) {
+			if (
+				newCourse.examTime !== '' &&
+				newCourse.examTime === course.examTime
+			) {
+				toast.warn('امتحان این درس با دروس ثبت شده تداخل دارد', {
+					position: 'bottom-left',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	checkIfCourseAlreadyExists = (newCourse) => {
+		for (let course of this.state.courses) {
+			if (
+				newCourse.courseId === course.courseId &&
+				newCourse.groupId === course.groupId
+			) {
+				toast.error('این درس در برنامه شما وجود دارد! ', {
+					position: 'bottom-left',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				return true;
+			}
+		}
+
+		return false;
 	};
 
 	constructor() {
