@@ -16,7 +16,7 @@ class TableCard extends Component {
 
      constructor(props) {
          super()
-         let zIndex;
+         //let zIndex;
         const courses = props.allCourses.filter(c => c !== props.course);
         
 
@@ -24,7 +24,7 @@ class TableCard extends Component {
          for (let index = 0; index < props.course.classTimeArray.length; index++) {
              const element = props.course.classTimeArray[index];
              for (let i = 0; i < element.days.length; i++) {
-                 zIndex = 0;
+                 //zIndex = 0;
                  const element2 = element.days[i];
                  this.state.times = [...this.state.times, this.state.time];
                  this.state.columns = [...this.state.columns, (element2+2)];
@@ -34,7 +34,7 @@ class TableCard extends Component {
 
 
                 
-                 for (let x = 0; x < courses.length; x++) {
+                 /*for (let x = 0; x < courses.length; x++) {
                      const tempCourse = courses[x];
 
                      let tempCols = [];
@@ -69,12 +69,19 @@ class TableCard extends Component {
                         }
                     } 
                  }
-                this.state.indexes = [...this.state.indexes, zIndex];
+                this.state.indexes = [...this.state.indexes, zIndex];*/
              }
          }
-
+         this.state.indexes = props.indexes;
+         console.log("susnihnisurjngeknrgesignier");
+         console.log(props.indexes);
          this.state.course = props.course;
      }
+
+     componentDidUpdate(prevProps) {
+        if (prevProps.indexes !== this.props.indexes)
+           this.setState({indexes : this.props.indexes})
+    }
 
     render() { 
         return (
