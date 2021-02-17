@@ -574,6 +574,11 @@ section {
 }
 
 @media only screen and (max-width: 800px) {
+	.responsive-timetable-container {
+		height: calc(100% - 190px) !important;
+		max-height: calc(100% - 190px) !important;
+	}
+
 	.search-course {
 		margin-top: 10px !important;
 		flex-direction: column;
