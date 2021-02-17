@@ -17,7 +17,7 @@ class TableContainer extends Component {
             <div className="table-container d-flex flex-column justify-content-start align-items-center">
               <div className='d-flex justify-content-between align-items-center w-100'>
                 <h1 className='section-title'> جدول دروس</h1>
-                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.length!==0 ? this.state.courses.map( c => c.courseUnits).reduce((a,b) => +a + +b) : 0}</span>
+                <span className="badge badge-pill badge-light " style={{fontSize :'1.5vw'}}>{this.state.courses.length!==0 ? this.state.courses.map( c => c.unit).reduce((a,b) => +a + +b) : 0}</span>
                 </div>
                 <table className="table">
                 <thead>
@@ -36,13 +36,13 @@ class TableContainer extends Component {
                 <tbody>
                   { this.state.courses.map( course => 
                   <CourseRow 
-                  key={course.courseNumber}
-                  courseNumber={	course.courseNumber}
-                  courseName={course.courseName}
-                  courseGroup={18}
-                  courseUnit={course.courseUnits}
-                  courseInfo='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
-                  courseMessage='تربیت بدنی برادران (مجازی) اطلاعات بیشتر در سایت تربیت بدنی'
+                  key={course.courseId + "" + course.groupId }
+                  courseNumber={course.courseId}
+                  courseName={course.title}
+                  courseGroup={course.groupId}
+                  courseUnit={course.unit}
+                  courseInfo={course.info}
+                  courseMessage={course.onRegister}
                   course={course}
                   handleDelete={this.handleDelete}
                   ></CourseRow>)
