@@ -574,6 +574,11 @@ section {
 }
 
 @media only screen and (max-width: 800px) {
+	.responsive-timetable-container {
+		height: calc(100% - 190px) !important;
+		max-height: calc(100% - 190px) !important;
+	}
+
 	.search-course {
 		margin-top: 10px !important;
 		flex-direction: column;
@@ -606,6 +611,15 @@ section {
 		width: 80px !important;
 	}
 
+	th:nth-child(8),
+	th:nth-child(9) {
+		display: none;
+	}
+
+	tr td:nth-child(8),
+	tr td:nth-child(9) {
+		display: none;
+	}
 	.menu-items-text {
 		display: none;
 	}
