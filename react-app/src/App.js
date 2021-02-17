@@ -16,6 +16,7 @@ import './time-table.css';
 import './background.css';
 import './GradientBox.scss';
 import Dexie, { liveQuery } from 'dexie';
+import { LoaderProvider, useLoading, Audio } from '@agney/react-loading';
 
 import {
 	BrowserRouter as Router,
@@ -62,17 +63,17 @@ class App extends Component {
 	}
 
 	async init() {
-		const { data: myCourses } = await courseService.getMyCourses();
-		this.setState({ courses: myCourses });
+		// const { data: myCourses } = await courseService.getMyCourses();
+		// this.setState({ courses: myCourses });
 
 		const isThereAnyCourses = await db.courses.count();
-		if (isThereAnyCourses !== 0) {
+		if (isThereAnyCourses === 0) {
 			const { data: courses } = await courseService.getAllCourses();
 			await courseService.populateCoursesOnDb(courses);
 		}
 
 		const isThereAnyDepartments = await db.departments.count();
-		if (isThereAnyDepartments !== 0) {
+		if (isThereAnyDepartments === 0) {
 			const {
 				data: departments,
 			} = await departmentService.getAllDepartments();

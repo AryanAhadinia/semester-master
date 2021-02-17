@@ -1,10 +1,10 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = 'http://localhost:8082/api';
+const apiUrl = 'http://086685af1fe9.ngrok.io/api';
 
 export function getAllCourses() {
-	return http.get(apiUrl + '/schedule/courses');
+	return http.get(apiUrl + '/schedule/all_courses');
 }
 
 export function getMyCourses() {
@@ -23,11 +23,14 @@ export function deleteCourseFromSchedule(course) {
 }
 
 export function populateCoursesOnDb(courses) {
-	courses.forEach((value, key) => {
-		for (const course in value) {
-			db.courses.add({ ...course, depId: key });
+	console.log(courses);
+	for (let k in courses) {
+		let value = courses[k];
+		for (const course of value) {
+			console.log(course);
+			db.courses.add({ ...course, depId: k });
 		}
-	});
+	}
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

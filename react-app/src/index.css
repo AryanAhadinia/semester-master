@@ -530,6 +530,19 @@ td {
 	font-family: kalameh-bold !important;
 }
 
+section {
+	height: 100vh !important;
+	width: 100vw !important;
+	display: flex;
+	position: absolute;
+	flex-grow: 1;
+	align-items: flex-start !important;
+	padding-top: 5vh !important;
+	justify-content: center !important;
+	color: white !important;
+	z-index: 999999;
+}
+
 @media only screen and (max-width: 1000px) {
 	.sidebar {
 		width: 80px !important;
