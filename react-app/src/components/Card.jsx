@@ -54,57 +54,60 @@ class Card extends Component {
 											<label htmlFor='exampleInputEmail1'>
 												نام خانوداگی
 											</label>
-											<input
+											<label
 												type='name'
 												className='form-control info-field'
 												id='inputName'
-												placeholder='محمد'
-											/>
+											>
+												محمد
+												</label>
 										</div>
 										<div className='form-group'>
 											<label htmlFor='exampleInputEmail1'>
 												نام
 											</label>
-											<input
+											<label
 												type='name'
 												className='form-control info-field'
 												id='inputName'
-												placeholder='جعفری'
-											/>
+											>
+												جعفری
+											</label>
 										</div>
 										<div className='form-group'>
 											<label htmlFor='exampleInputEmail1'>
 												شماره دانشجویی
 											</label>
-											<input
+											<label
 												type='name'
 												className='form-control info-field'
 												id='inputName'
-												placeholder='98105654'
-											/>
+											>
+												98105654
+											</label>
 										</div>
 										<div className='form-group'>
 											<label htmlFor='exampleInputEmail1'>
 												رشته ‌تحصیلی
 											</label>
-											<select
-												className='form-control'
+											<label
+												className='info-field form-control'
 												id='exampleFormControlSelect1'
 											>
-												<option>1</option>
-												<option>2</option>
-											</select>
+												مهندسی کامپیوتر
+											</label>
 										</div>
 										<div className='form-group'>
 											<label htmlFor='exampleInputEmail1'>
 												مقطع تحصیلی
 											</label>
-											<input
+											<label
 												type='name'
 												className='form-control info-field'
 												id='inputName'
-												placeholder='کارشناسی'
-											/>
+											>
+												کارشناسی
+											</label>
 										</div>
 									</Form>
 								</Col>
