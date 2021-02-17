@@ -70,7 +70,6 @@ class App extends Component {
 			const { data: courses } = await courseService.getAllCourses();
 			await courseService.populateCoursesOnDb(courses);
 		}
-
 		const isThereAnyDepartments = await db.departments.count();
 		if (isThereAnyDepartments === 0) {
 			const {

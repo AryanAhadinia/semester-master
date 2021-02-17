@@ -15,7 +15,7 @@ class CourseContainer extends Component {
 
     readDepartmentCourses = async (id) => {
         const departmentCourses = await db.courses.where('depId').equals(id + '').toArray() ; 
-        console.log(departmentCourses)
+        console.log(departmentCourses);
         this.setState({departmentCourses})
     }
 

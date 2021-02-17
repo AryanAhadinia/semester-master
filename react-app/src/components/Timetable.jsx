@@ -156,11 +156,14 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} column={card.column} row={card.row} duration={card.duration} color={card.color} courseName = {card.courseName} courseMaster = {card.courseMaster} courseNumber = {card.courseNumber} index = {(card.index - 1)/2}></TableCard>
+                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
                     ))}
+                    {
+                        
+                    }
 
                     { this.state.hoveredCourse ? 
-                        <TableCard key={this.state.hoveredCourse.courseNumber} course={this.state.hoveredCourse} handleDelete={this.handleDelete} column={this.state.hoveredCourse.column} row={this.state.hoveredCourse.row} duration={this.state.hoveredCourse.duration} color={this.state.hoveredCourse.color} courseName = {this.state.hoveredCourse.courseName} courseMaster = {this.state.hoveredCourse.courseMaster} courseNumber = {this.state.hoveredCourse.courseNumber} index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
+                        <TableCard key={this.state.hoveredCourse.courseId + "" + this.state.hoveredCourse.groupId } course={this.state.hoveredCourse} handleDelete={this.handleDelete}  index={(this.state.hoveredCourse.index - 1)/2}></TableCard>
                     : null}
             
 
