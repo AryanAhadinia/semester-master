@@ -294,13 +294,15 @@ label {
 }
 
 .course {
-	height: 30px;
+	height: max-content !important;
+	min-height: 30px !important;
 	width: 95%;
 	padding: 7px;
 	text-align: center;
 	margin: 2%;
 	background-color: rgba(255, 255, 255, 0.2);
 	border-radius: 5px;
+	font-size: 90%;
 	font-family: kalameh-bold;
 	cursor: pointer;
 	transition: background-color 0.2s;

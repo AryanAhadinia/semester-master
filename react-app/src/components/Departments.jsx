@@ -4,7 +4,8 @@ import  db  from '../services/db';
 
 
 class Deparment extends Component {
-    state = { departments: undefined}
+    state = { departments: undefined,
+    selected : 0}
 
     constructor(){
        super()
@@ -12,21 +13,28 @@ class Deparment extends Component {
     }
 
     readDepartments = async () => {
-        const{ data : departments } = await db.departments ; 
+        const departments = await db.departments.toArray() ; 
+        console.log(departments)
         this.state.departments = departments
+        this.setState({departments})
+    }
+
+    handleChange = ()=> {
+        const e = document.getElementById('department-select');
+        this.setState({selected : +e.value})
     }
 
     
     render() { 
         return (
             <div className='department-div d-flex flex-column justify-content-start align-items-center'>
-                <select className="custom-select custom-select-lg mb-3" id='departments-select'>
+                <select className="custom-select custom-select-lg mb-3" id='department-select'onChange={this.handleChange}>
                     <option selected>دانشکده</option>
                     {
-                        this.state.departments && this.state.departments.map(dep => <option key={dep.depId} value={dep.depId}> dep.department </option>)
+                        this.state.departments && this.state.departments.map(dep => <option key={dep.depId} value={dep.depId}> {dep.department} </option>)
                     }
                 </select>
-                <CourseContainer handleUpdateHover={this.props.handleUpdateHover} onSelect={this.props.onSelect}>
+                <CourseContainer depId={this.state.selected} handleUpdateHover={this.props.handleUpdateHover} onSelect={this.props.onSelect}>
                 </CourseContainer>
             </div>
             );

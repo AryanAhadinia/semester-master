@@ -14,6 +14,11 @@ class Course extends Component {
         }
      }
 
+     constructor(props) {
+         super()
+         this.state.course = props.course;
+     }
+
      
     render() { 
         return ( 
@@ -22,7 +27,7 @@ class Course extends Component {
                 onMouseOver={() => this.props.handleUpdateHover(this.state.course)}
                 onMouseOut={() => this.props.handleUpdateHover(null)}
                 className="course">
-                نام درس
+                    {this.props.course.title}
             </div>
          );
     }
