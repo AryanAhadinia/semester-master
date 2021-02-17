@@ -43,7 +43,7 @@ class App extends Component {
 
 
 
-				
+
 				if (element.row === newCourse.row) {
 					courseIndex++;
 				} else if (element.row < newCourse.row) {

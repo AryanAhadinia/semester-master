@@ -156,7 +156,7 @@ class Timetable extends Component {
                     <label htmlFor="" className="clock">20:00</label>
 
                     {this.state.courses.map(card => (
-                        <TableCard key={card.courseNumber} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
+                        <TableCard key={card.courseId + "" + card.groupId} course={card} handleDelete={this.handleDelete} index = {(card.index - 1)/2}></TableCard>
                     ))}
                     {
                         
