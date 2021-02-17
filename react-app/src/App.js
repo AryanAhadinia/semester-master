@@ -189,9 +189,10 @@ class App extends Component {
 									/>
 									<Route
 										path='/'
+										exact
 										render={() => this.handleSidebar()}
 									>
-										<Redirect to='/dashboard'></Redirect>
+										<Redirect to='/index'></Redirect>
 									</Route>
 								</Switch>
 							</div>
