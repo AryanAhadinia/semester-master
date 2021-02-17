@@ -65,7 +65,6 @@ class App extends Component {
 	async init() {
 		// const { data: myCourses } = await courseService.getMyCourses();
 		// this.setState({ courses: myCourses });
-
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
 			const { data: courses } = await courseService.getAllCourses();
@@ -173,7 +172,8 @@ class App extends Component {
 								handleUpdateHover={this.handleUpdateHover}
 								onSelect={this.addCourse}></Departments>
 						</div>
-						<ResponsiveTimetable></ResponsiveTimetable>
+						<ResponsiveTimetable
+							courses={this.state.courses}></ResponsiveTimetable>
 					</React.Fragment>
 				);
 			case 3:
