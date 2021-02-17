@@ -34,7 +34,7 @@
 
 .wrap {
 	position: relative;
-	height: 100vh;
+	height: 50vh;
 	align-items: center;
 	justify-content: center;
 	justify-self: center;
@@ -422,6 +422,14 @@ td {
 .weekdays {
 	font-family: katibeh;
 	font-size: 1.5vw;
+	text-shadow: none;
+}
+
+#form-dialog-title {
+	color: black;
+	font-family: kalameh-black;
+	font-size: 2vw;
+	margin-top: 20px;
 	text-shadow: none;
 }
 
