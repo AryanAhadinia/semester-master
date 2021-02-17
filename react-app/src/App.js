@@ -41,10 +41,6 @@ class App extends Component {
 			const element = this.state.courses[index];
 			if (element.column === newCourse.column) {
 
-
-
-
-
 				if (element.row === newCourse.row) {
 					courseIndex++;
 				} else if (element.row < newCourse.row) {
@@ -80,6 +76,7 @@ class App extends Component {
 	async init() {
 		// const { data: myCourses } = await courseService.getMyCourses();
 		// this.setState({ courses: myCourses });
+		this.deleteIfExpired();
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
 			const { data: courses } = await courseService.getAllCourses();
@@ -93,6 +90,17 @@ class App extends Component {
 			await departmentService.populateDepartmentsOnDb(departments);
 		}
 	}
+
+	deleteIfExpired = async () => {
+		await db.courses
+			.where('timestamp')
+			.below(new Date().getTime() - 86400000)
+			.delete();
+		await db.departments
+			.where('timestamp')
+			.below(new Date().getTime() - 86400000)
+			.delete();
+	};
 
 	render() {
 		return (
@@ -112,11 +120,13 @@ class App extends Component {
 					<div className='d-flex flex-row flex-fill h-100 overflow-hidden'>
 						<Sidebar
 							handleCurrentState={this.handleCurrentState}
-							currentState={this.state.currentState}></Sidebar>
+							currentState={this.state.currentState}
+						></Sidebar>
 						<Col className='d-flex flex-column justify-content-start align-items-center flex-fill main-section overflow-hidden'>
 							<div
 								className='d-flex justify-content-between w-100 h-100'
-								style={{ padding: '4%' }}>
+								style={{ padding: '4%' }}
+							>
 								{/* {this.handleSidebar()} */}
 								<Switch>
 									<Route
@@ -133,7 +143,8 @@ class App extends Component {
 									/>
 									<Route
 										path='/'
-										render={() => this.handleSidebar()}>
+										render={() => this.handleSidebar()}
+									>
 										<Redirect to='/dashboard'></Redirect>
 									</Route>
 								</Switch>
@@ -176,19 +187,23 @@ class App extends Component {
 						<Timetable
 							courses={this.state.courses}
 							handleUpdateCourses={this.handleUpdateCourses}
-							hoveredCourse={this.state.hoveredCourse}>
+							hoveredCourse={this.state.hoveredCourse}
+						>
 							handleUpdateHover={this.handleUpdateHover}
 						</Timetable>
 						<div
 							className='flex-grow-1 flex-shrink-1'
-							id='department-parent'>
+							id='department-parent'
+						>
 							<Departments
 								handleUpdateHover={this.handleUpdateHover}
-								onSelect={this.addCourse}></Departments>
+								onSelect={this.addCourse}
+							></Departments>
 						</div>
 						<ResponsiveTimetable
 							onSelect={this.addCourse}
-							courses={this.state.courses}></ResponsiveTimetable>
+							courses={this.state.courses}
+						></ResponsiveTimetable>
 					</React.Fragment>
 				);
 			case 3:
@@ -197,9 +212,8 @@ class App extends Component {
 						<Redirect to='/courseTable'></Redirect>
 						<TableContainer
 							courses={this.state.courses}
-							handleUpdateCourses={
-								this.handleUpdateCourses
-							}></TableContainer>
+							handleUpdateCourses={this.handleUpdateCourses}
+						></TableContainer>
 					</React.Fragment>
 				);
 			case 4:
