@@ -5,7 +5,8 @@ import  db  from '../services/db';
 
 class Deparment extends Component {
     state = { departments: undefined,
-    selected : 0}
+    selected : 0,
+}
 
     constructor(){
        super()
