@@ -46,8 +46,8 @@ class ResponsiveTimetable extends Component {
             <React.Fragment>
         <div className='h-100 w-100 timetable-responsive'>
             <div className="search-course d-flex  justify-content-around align-items-center p-3" >
-              <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
-              <label className='flex-shrink-0 p-4'> دانشکده : </label>
+              <div className='d-flex justify-content-center align-items-center'  style={{width : '35%'}}>
+              <label className='flex-shrink-0 p-4'> دانشکده: </label>
             <select className="custom-select custom-select-lg responsive-select" id='department-select-responsive' onChange={this.handleChange}>
                 <option selected>دانشکده</option>
                 {
@@ -55,8 +55,8 @@ class ResponsiveTimetable extends Component {
                 }
             </select>
             </div >
-            <div className='d-flex justify-content-center align-items-center'  style={{width : '40%'}}>
-            <label className='flex-shrink-0 p-4'> درس : </label>
+            <div className='d-flex justify-content-center align-items-center'  style={{width : '35%' }}>
+            <label className='flex-shrink-0 p-4'> درس: </label>
             <select  disabled={this.state.selected ===0} className="custom-select custom-select-lg responsive-select" >
                 <option selected>درس</option>
                 {
@@ -64,7 +64,14 @@ class ResponsiveTimetable extends Component {
                 this.state.departmentCourses.map(c => <option key={c.courseId + c.groupId} value={c.courseId + c.groupId}> {c.title} </option>)
                 }
             </select>
-            </div >    
+            </div >
+            <div>
+            <a className="btn icon-btn p-3"  id='add-button' href='#'>
+                    <span className="glyphicon btn-glyphicon glyphicon-plus img-circle" >
+                    </span>
+                    اضافه
+             </a>    
+            </div>
             </div>
             <div className='col overflow-auto responsive-timetable-container'>
             <h1 className='weekdays mx text-right ' style={{fontSize :'160%', marginTop :'30px'}}>شنبه</h1>

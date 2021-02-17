@@ -81,19 +81,19 @@
 
 .search-course {
 	background: rgba(255, 255, 255, 0.3);
-	height: 100px !important;
 	width: 100%;
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	color: white;
 	margin: 0px;
-	padding: 0px;
+	padding: 20px !important;
 	position: relative;
 	display: inline-block;
 	flex-shrink: 0;
-	-webkit-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.2);
-	-moz-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.2);
-	box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.2);
+	border-radius: 5px;
+	-webkit-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
+	-moz-box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
+	box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
 	padding: 5px;
 	margin: -5px;
 }
