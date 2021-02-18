@@ -4,6 +4,7 @@ import Card from './components/Card';
 import { Col, Row, Form } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import './week.css';
+import './pattern.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Departments from './components/Departments';
 import TableContainer from './components/TableContainer';
@@ -123,9 +124,8 @@ class App extends Component {
 	}
 
 	async init() {
-		// when usin express uncomment
-		// const { data: myCourses } = await courseService.getMyCourses();
-		// this.setState({ courses: myCourses });
+		const { data: myCourses } = await courseService.getMyCourses();
+		this.setState({ courses: myCourses });
 		await this.deleteIfExpired();
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
@@ -197,7 +197,6 @@ class App extends Component {
 									>
 										<Redirect to='/dashboard'></Redirect>
 									</Route>
-									<Redirect to='/not-found'></Redirect>
 								</Switch>
 							</div>
 						</Col>
@@ -292,7 +291,7 @@ class App extends Component {
 				);
 			case 4:
 				this.handleClearDB();
-				return <Link to='/index'></Link>;
+				return <Redirect to='/index'></Redirect>;
 
 			default:
 				return null;

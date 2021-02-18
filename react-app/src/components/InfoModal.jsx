@@ -29,7 +29,7 @@ class InfoModal extends Component {
 			depId: '40',
 			grade: true,
 		};
-		// this.state.user = this.props.user;
+		this.state.user = this.props.user;
 	}
 
 	async componentWillMount() {
