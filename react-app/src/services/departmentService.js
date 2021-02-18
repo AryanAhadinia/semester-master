@@ -1,7 +1,7 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = 'http://ad038ba15b2a.ngrok.io/api';
+const apiUrl = '/api';
 
 export function getAllDepartments() {
 	return http.get(apiUrl + '/schedule/all_departments');
