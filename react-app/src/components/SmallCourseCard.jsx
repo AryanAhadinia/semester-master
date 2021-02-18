@@ -13,28 +13,6 @@ class SmallCourseCard extends Component {
 
 	constructor(props) {
 		super(props);
-		for (
-			let index = 0;
-			index < props.course.classTimeArray.length;
-			index++
-		) {
-			const element = props.course.classTimeArray[index];
-			for (let i = 0; i < element.days.length; i++) {
-				const element2 = element.days[i];
-				this.state.times = [...this.state.times, this.state.time];
-				this.state.columns = [...this.state.columns, element2 + 2];
-				this.state.rows = [
-					...this.state.rows,
-					(element.startHour - 7) * 2 + 2 + element.startMin / 30,
-				];
-				this.state.durations = [
-					...this.state.durations,
-					(element.endHour - element.startHour) * 2 +
-						(element.endMin - element.startMin) / 30,
-				];
-				this.state.time++;
-			}
-		}
 		this.state.course = props.course;
 	}
 
