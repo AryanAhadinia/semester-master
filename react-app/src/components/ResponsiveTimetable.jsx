@@ -14,12 +14,12 @@ class ResponsiveTimetable extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state.myCourses = props.courses;
 		console.log('constructor !');
 	}
 
 	async componentWillMount() {
 		await this.readDepartments();
-		this.state.myCourses = this.props.courses;
 	}
 
 	readDepartments = async () => {

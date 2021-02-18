@@ -133,7 +133,14 @@ class App extends Component {
 		const myUser = await db.userInfo.get(0);
 		this.setState({ user: myUser });
 		const { data: myCourses } = await courseService.getMyCourses();
-		this.setState({ courses: myCourses });
+		const courseArray = await myCourses.map(
+			async (c) =>
+				await db.course.get({
+					courseId: c.courseId,
+					groupId: c.groupId,
+				})
+		);
+		this.setState({ courses: courseArray });
 		await this.deleteIfExpired();
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
