@@ -8,7 +8,7 @@ export function getMyUserInfo() {
 }
 
 export function updateMyInfo(user) {
-	return http.get(apiUrl + '/user/my_account', user);
+	return http.get(apiUrl + '/user/update_account', user);
 }
 
 export function saveUserInfo(user) {

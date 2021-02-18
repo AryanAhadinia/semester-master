@@ -19,10 +19,10 @@ export function addCourseToSchedule(course) {
 }
 
 export function deleteCourseFromSchedule(course) {
-	return http.delete(
-		apiUrl + '/schedule/unselect',
-		course.courseId + course.groupId
-	);
+	return http.delete(apiUrl + '/schedule/unselect', {
+		courseId: +course.courseId,
+		groupId: +course.groupId,
+	});
 }
 
 export function populateCoursesOnDb(courses) {
