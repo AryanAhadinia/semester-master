@@ -32,6 +32,7 @@ class App extends Component {
 		currentState: 1,
 		hoveredCourse: undefined,
 		courses: [],
+		user: {},
 	};
 
 	addCourse = async (course) => {
@@ -124,6 +125,13 @@ class App extends Component {
 	}
 
 	async init() {
+		const isThereMyUser = await db.userInfo.count();
+		if (isThereMyUser === 0) {
+			const { data: user } = await userService.getMyUserInfo();
+			await userService.saveUserInfo(user);
+		}
+		const myUser = await db.userInfo.get(0);
+		this.setState({ user: myUser });
 		const { data: myCourses } = await courseService.getMyCourses();
 		this.setState({ courses: myCourses });
 		await this.deleteIfExpired();
@@ -234,7 +242,10 @@ class App extends Component {
 					<React.Fragment>
 						<Link to='/dashboard'></Link>
 						<div className='w-100 overflow-hide d-flex flex-column justify-content-around'>
-							<InfoModal ref={this.modalRefrence}></InfoModal>
+							<InfoModal
+								user={this.state.user}
+								ref={this.modalRefrence}
+							></InfoModal>
 							<button
 								type='button'
 								className='btn btn-dark mx-auto mb-3'
@@ -250,7 +261,7 @@ class App extends Component {
 							>
 								ویرایش
 							</button>
-							<Card></Card>
+							<Card user={this.state.user}></Card>
 						</div>
 					</React.Fragment>
 				);

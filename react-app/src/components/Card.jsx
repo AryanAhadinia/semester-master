@@ -13,18 +13,9 @@ class Card extends Component {
 		user: {},
 	};
 
-	async componentWillMount() {
-		this.init();
-	}
-
-	async init() {
-		const isThereMyUser = await db.userInfo.count();
-		if (isThereMyUser === 0) {
-			const { data: user } = await userService.getMyUserInfo();
-			await userService.saveUserInfo(user);
-		}
-		// const myUser = await db.userInfo.get(0);
-		// this.setState({ user: myUser });
+	constructor(props) {
+		super(props);
+		this.state.user = props.user;
 	}
 
 	render() {
