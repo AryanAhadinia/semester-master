@@ -1,7 +1,7 @@
 import http from './httpService';
 import db from './db';
 
-const apiUrl = '/api';
+const apiUrl = 'http://ad038ba15b2a.ngrok.io/api';
 
 export function getAllCourses() {
 	return http.get(apiUrl + '/schedule/all_courses');
@@ -12,7 +12,10 @@ export function getMyCourses() {
 }
 
 export function addCourseToSchedule(course) {
-	return http.post(apiUrl + '/schedule/select', course);
+	return http.put(apiUrl + '/schedule/select', {
+		courseId: +course.courseId,
+		groupId: +course.groupId,
+	});
 }
 
 export function deleteCourseFromSchedule(course) {

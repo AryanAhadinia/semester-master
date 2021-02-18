@@ -4,7 +4,7 @@ import db from '../services/db';
 
 class CourseContainer extends Component {
 	state = {
-		departmentCourses: null,
+		departmentCourses: [],
 		inputValue: '',
 	};
 
@@ -53,7 +53,8 @@ class CourseContainer extends Component {
 	render() {
 		return (
 			<div className='courses-container d-flex flex-column justify-content-start align-items-center'>
-				{this.state.departmentCourses &&
+				{this.props &&
+					this.state.departmentCourses &&
 					this.state.departmentCourses.map((course) => (
 						<Course
 							course={course}

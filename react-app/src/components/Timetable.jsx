@@ -8,8 +8,8 @@ import Course from './Course';
 class Timetable extends Component {
 	state = {
 		height: 0,
-		hoveredCourse: this.props.hoveredCourse,
-		courses: this.props.courses,
+		hoveredCourse: {},
+		courses: [],
 	};
 
 	constructor(props) {
@@ -26,10 +26,15 @@ class Timetable extends Component {
 	}
 
 	getIndexes = (course) => {
-		let currentIndex = this.state.courses.findIndex((c) => c === course);
+		if (!this.state.courses) return;
+		let currentIndex =
+			this.state.courses &&
+			this.state.courses.findIndex((c) => c === course);
 		let zIndex;
 		let indexes = [];
-		const courses = this.state.courses.filter((c) => c !== course);
+		const courses =
+			this.state.courses &&
+			this.state.courses.filter((c) => c !== course);
 
 		for (let index = 0; index < course.classTimeArray.length; index++) {
 			const element = course.classTimeArray[index];
@@ -121,7 +126,9 @@ class Timetable extends Component {
 						className='badge badge-pill badge-light '
 						style={{ fontSize: '1.5vw' }}
 					>
-						{this.state.courses.length !== 0
+						{this.state &&
+						this.state.courses &&
+						this.state.courses.length !== 0
 							? this.state.courses
 									.map((c) => c.unit)
 									.reduce((a, b) => +a + +b)
@@ -290,16 +297,18 @@ class Timetable extends Component {
 						20:00
 					</label>
 
-					{this.state.courses.map((card) => (
-						<TableCard
-							key={card.courseId + '' + card.groupId}
-							allCourses={this.props.courses}
-							indexes={this.getIndexes(card)}
-							course={card}
-							handleDelete={this.handleDelete}
-							index={(card.index - 1) / 2}
-						></TableCard>
-					))}
+					{this.state &&
+						this.state.courses &&
+						this.state.courses.map((card) => (
+							<TableCard
+								key={card.courseId + '' + card.groupId}
+								allCourses={this.props.courses}
+								indexes={this.getIndexes(card)}
+								course={card}
+								handleDelete={this.handleDelete}
+								index={(card.index - 1) / 2}
+							></TableCard>
+						))}
 					{}
 
 					{this.state.hoveredCourse ? (

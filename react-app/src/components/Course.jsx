@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Course extends Component {
 	state = {
-		course: undefined,
+		course: {},
 	};
 
 	constructor(props) {

@@ -3,7 +3,7 @@ import CourseContainer from './CourseContainer';
 import db from '../services/db';
 
 class Deparment extends Component {
-	state = { departments: undefined, selected: 0 };
+	state = { departments: [], selected: 0 };
 
 	constructor() {
 		super();
@@ -31,7 +31,8 @@ class Deparment extends Component {
 					onChange={this.handleChange}
 				>
 					<option selected>دانشکده</option>
-					{this.state.departments &&
+					{this.state &&
+						this.state.departments &&
 						this.state.departments.map((dep) => (
 							<option key={dep.depId} value={dep.depId}>
 								{' '}

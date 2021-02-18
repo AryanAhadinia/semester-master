@@ -5,11 +5,11 @@ import '../index.css';
 
 class ResponsiveTimetable extends Component {
 	state = {
-		departments: undefined,
+		departments: [],
 		selected: 0,
-		selectedCourse: '',
-		departmentCourses: null,
-		myCourses: null,
+		selectedCourse: {},
+		departmentCourses: [],
+		myCourses: [],
 	};
 
 	constructor(props) {
@@ -82,7 +82,8 @@ class ResponsiveTimetable extends Component {
 								onChange={this.handleChange}
 							>
 								<option selected>دانشکده</option>
-								{this.state.departments &&
+								{this.state &&
+									this.state.departments &&
 									this.state.departments.map((dep) => (
 										<option
 											key={dep.depId}
@@ -106,7 +107,8 @@ class ResponsiveTimetable extends Component {
 								className='custom-select custom-select-lg responsive-select'
 							>
 								<option selected>درس</option>
-								{this.state.departmentCourses &&
+								{this.state &&
+									this.state.departmentCourses &&
 									this.state.departmentCourses.map((c) => (
 										<option
 											key={c.courseId + '-' + c.groupId}
@@ -139,7 +141,8 @@ class ResponsiveTimetable extends Component {
 							شنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.myCourses &&
+							{this.state &&
+								this.state.myCourses &&
 								this.state.myCourses.length !== 0 &&
 								this.state.myCourses
 									.filter(
@@ -158,7 +161,8 @@ class ResponsiveTimetable extends Component {
 							یکشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.myCourses &&
+							{this.state &&
+								this.state.myCourses &&
 								this.state.myCourses.length !== 0 &&
 								this.state.myCourses
 									.filter(
@@ -177,7 +181,8 @@ class ResponsiveTimetable extends Component {
 							دوشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.myCourses &&
+							{this.state &&
+								this.state.myCourses &&
 								this.state.myCourses.length !== 0 &&
 								this.state.myCourses
 									.filter(
@@ -196,7 +201,8 @@ class ResponsiveTimetable extends Component {
 							سه شنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.myCourses &&
+							{this.state &&
+								this.state.myCourses &&
 								this.state.myCourses.length !== 0 &&
 								this.state.myCourses
 									.filter(
@@ -215,7 +221,8 @@ class ResponsiveTimetable extends Component {
 							چهارشنبه
 						</h1>
 						<div className='responsive-course-container mb-8 '>
-							{this.state.myCourses &&
+							{this.state &&
+								this.state.myCourses &&
 								this.state.myCourses.length !== 0 &&
 								this.state.myCourses
 									.filter(

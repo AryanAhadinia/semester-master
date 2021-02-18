@@ -14,8 +14,7 @@ class MenuItem extends Component {
 					style={{ marginLeft: '12px' }}
 				/>
 				<div htmlFor={this.props.item} className='menu-items-text'>
-					{' '}
-					{this.props.item}{' '}
+					{this.props.item}
 				</div>
 			</div>
 		);

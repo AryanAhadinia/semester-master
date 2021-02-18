@@ -24,9 +24,9 @@ class InfoModal extends Component {
 		this.state.open = false;
 		this.init();
 		this.state.user = {
-			firstName: 'Ali',
-			lastName: 'Mamadi',
-			stdId: '231321323',
+			firstName: '',
+			lastName: '',
+			stdId: '',
 			depId: '40',
 			grade: true,
 		};
@@ -123,7 +123,8 @@ class InfoModal extends Component {
 								id='depId'
 								onChange={this.handleChange}
 							>
-								{this.state.departments &&
+								{this.state &&
+									this.state.departments &&
 									this.state.departments.length !== 0 &&
 									this.state.departments.map((d) => (
 										<option

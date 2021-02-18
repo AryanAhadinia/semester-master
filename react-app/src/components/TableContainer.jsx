@@ -4,12 +4,12 @@ import { toast } from 'react-toastify';
 
 class TableContainer extends Component {
 	state = {
-		courses: this.props.courses,
+		courses: [],
 	};
 
 	constructor(props) {
 		super(props);
-		this.state.courses = props.courses;
+		// this.state.courses = props.courses;
 	}
 	render() {
 		return (
@@ -20,7 +20,9 @@ class TableContainer extends Component {
 						className='badge badge-pill badge-light '
 						style={{ fontSize: '1.5vw' }}
 					>
-						{this.state.courses.length !== 0
+						{(this.state &&
+							this.state.courses &&
+							this.state.courses.length) !== 0
 							? this.state.courses
 									.map((c) => c.unit)
 									.reduce((a, b) => +a + +b)
@@ -42,13 +44,15 @@ class TableContainer extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.state.courses.map((course) => (
-							<CourseRow
-								key={course.courseId + '' + course.groupId}
-								course={course}
-								handleDelete={this.handleDelete}
-							></CourseRow>
-						))}
+						{this.state &&
+							this.state.courses &&
+							this.state.courses.map((course) => (
+								<CourseRow
+									key={course.courseId + '' + course.groupId}
+									course={course}
+									handleDelete={this.handleDelete}
+								></CourseRow>
+							))}
 					</tbody>
 					<tfoot
 						style={{
@@ -64,7 +68,9 @@ class TableContainer extends Component {
 							<td></td>
 							<td></td>
 							<td>
-								{this.state.courses.length !== 0
+								{this.state &&
+								this.state.courses &&
+								this.state.courses.length !== 0
 									? this.state.courses
 											.map((c) => c.unit)
 											.reduce((a, b) => +a + +b)

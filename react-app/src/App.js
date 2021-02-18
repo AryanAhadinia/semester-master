@@ -20,6 +20,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
+	Link,
 	Redirect,
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
@@ -29,7 +30,7 @@ import userService from './services/userService';
 class App extends Component {
 	state = {
 		currentState: 1,
-		hoveredCourse: null,
+		hoveredCourse: {},
 		courses: [],
 	};
 
@@ -173,7 +174,6 @@ class App extends Component {
 								className='d-flex justify-content-between w-100 h-100'
 								style={{ padding: '4%' }}
 							>
-								{/* {this.handleSidebar()} */}
 								<Switch>
 									<Route
 										path='/dashboard'
@@ -192,8 +192,9 @@ class App extends Component {
 										exact
 										render={() => this.handleSidebar()}
 									>
-										<Redirect to='/index'></Redirect>
+										<Redirect to='/dashboard'></Redirect>
 									</Route>
+									<Redirect to='/not-found'></Redirect>
 								</Switch>
 							</div>
 						</Col>
@@ -229,7 +230,7 @@ class App extends Component {
 			case 1:
 				return (
 					<React.Fragment>
-						<Redirect to='/dashboard'></Redirect>
+						<Link to='/dashboard'></Link>
 						<div className='w-100 overflow-hide d-flex flex-column justify-content-around'>
 							<InfoModal ref={this.modalRefrence}></InfoModal>
 							<button
@@ -254,14 +255,13 @@ class App extends Component {
 			case 2:
 				return (
 					<React.Fragment>
-						<Redirect to='/timetable'></Redirect>
+						<Link to='/timetable'></Link>
 						<Timetable
-							courses={this.state.courses}
+							courses={this.state.courses.list}
 							handleUpdateCourses={this.handleUpdateCourses}
 							hoveredCourse={this.state.hoveredCourse}
-						>
 							handleUpdateHover={this.handleUpdateHover}
-						</Timetable>
+						></Timetable>
 						<div
 							className='flex-grow-1 flex-shrink-1'
 							id='department-parent'
@@ -273,14 +273,14 @@ class App extends Component {
 						</div>
 						<ResponsiveTimetable
 							onSelect={this.addCourse}
-							courses={this.state.courses}
+							courses={this.state.courses.list}
 						></ResponsiveTimetable>
 					</React.Fragment>
 				);
 			case 3:
 				return (
 					<React.Fragment>
-						<Redirect to='/courseTable'></Redirect>
+						<Link to='/courseTable'></Link>
 						<TableContainer
 							courses={this.state.courses}
 							handleUpdateCourses={this.handleUpdateCourses}
@@ -289,7 +289,7 @@ class App extends Component {
 				);
 			case 4:
 				this.handleClearDB();
-				return <Redirect to='/index'></Redirect>;
+				return <Link to='/index'></Link>;
 
 			default:
 				return null;

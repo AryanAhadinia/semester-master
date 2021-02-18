@@ -3,16 +3,7 @@ import '../time-table.css';
 
 class SmallCourseCard extends Component {
 	state = {
-		course: {
-			column: '6',
-			row: '14',
-			duration: '6',
-			color: 'rgba(232, 73, 48, 0.3)',
-			courseNumber: '406221',
-			courseName: 'ساختمان داده',
-			courseMaster: 'مسعود صدیقین',
-			courseUnits: '3',
-		},
+		course: {},
 		rows: [],
 		columns: [],
 		durations: [],

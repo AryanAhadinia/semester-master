@@ -24,8 +24,8 @@ class Card extends Component {
 			const { data: user } = await userService.getMyUserInfo();
 			await userService.saveUserInfo(user);
 		}
-		const myUser = await db.userInfo.get(0);
-		this.setState({ user: myUser });
+		// const myUser = await db.userInfo.get(0);
+		// this.setState({ user: myUser });
 	}
 	render() {
 		return (
