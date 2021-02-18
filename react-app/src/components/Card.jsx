@@ -13,8 +13,7 @@ class Card extends Component {
 		user: {},
 	};
 
-	constructor() {
-		super();
+	async componentWillMount() {
 		this.init();
 	}
 
@@ -27,6 +26,7 @@ class Card extends Component {
 		// const myUser = await db.userInfo.get(0);
 		// this.setState({ user: myUser });
 	}
+
 	render() {
 		return (
 			<React.Fragment>

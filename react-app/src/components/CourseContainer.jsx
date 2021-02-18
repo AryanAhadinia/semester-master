@@ -10,7 +10,10 @@ class CourseContainer extends Component {
 
 	constructor(props) {
 		super();
-		this.readDepartmentCourses(props.depId);
+	}
+
+	async componentWillMount() {
+		await this.readDepartmentCourses(this.props.depId);
 	}
 
 	/*filterOnChange = (event) => {

@@ -15,33 +15,45 @@ class TableCard extends Component {
 	};
 
 	constructor(props) {
-		super();
-		// const courses = props.allCourses.filter((c) => c !== props.course);
+		super(props);
+	}
 
-		// for (
-		// 	let index = 0;
-		// 	index < props.course.classTimeArray.length;
-		// 	index++
-		// ) {
-		// 	const element = props.course.classTimeArray[index];
-		// 	for (let i = 0; i < element.days.length; i++) {
-		// 		const element2 = element.days[i];
-		// 		this.state.times = [...this.state.times, this.state.time];
-		// 		this.state.columns = [...this.state.columns, element2 + 2];
-		// 		this.state.rows = [
-		// 			...this.state.rows,
-		// 			(element.startHour - 7) * 2 + 2 + element.startMin / 30,
-		// 		];
-		// 		this.state.durations = [
-		// 			...this.state.durations,
-		// 			(element.endHour - element.startHour) * 2 +
-		// 				(element.endMin - element.startMin) / 30,
-		// 		];
-		// 		this.state.time++;
-		// 	}
-		// }
-		// this.state.indexes = props.indexes;
-		// this.state.course = props.course;
+	componentWillMount() {
+		for (
+			let index = 0;
+			index < this.props.course.classTimeArray.length;
+			index++
+		) {
+			const element = this.props.course.classTimeArray[index];
+			for (let i = 0; i < element.days.length; i++) {
+				const element2 = element.days[i];
+				this.setState({
+					times: [...this.state.times, this.state.time],
+				});
+				this.setState({
+					columns: [...this.state.columns, element2 + 2],
+				});
+				this.setState({
+					rows: [
+						...this.state.rows,
+						(element.startHour - 7) * 2 + 2 + element.startMin / 30,
+					],
+				});
+
+				this.setState({
+					durations: [
+						...this.state.durations,
+						(element.endHour - element.startHour) * 2 +
+							(element.endMin - element.startMin) / 30,
+					],
+				});
+				this.setState({
+					time: this.state.time + 1,
+				});
+			}
+		}
+		this.setState({ indexes: this.props.indexes });
+		this.setState({ course: this.props.course });
 	}
 
 	componentDidUpdate(prevProps) {

@@ -22,7 +22,6 @@ class InfoModal extends Component {
 	constructor(props) {
 		super(props);
 		this.state.open = false;
-		this.init();
 		this.state.user = {
 			firstName: '',
 			lastName: '',
@@ -31,6 +30,10 @@ class InfoModal extends Component {
 			grade: true,
 		};
 		// this.state.user = this.props.user;
+	}
+
+	async componentWillMount() {
+		await this.init();
 	}
 
 	init = async () => {

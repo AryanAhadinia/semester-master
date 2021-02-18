@@ -14,8 +14,9 @@ class Timetable extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state.courses = this.props.courses;
+		this.state.courses = props.courses;
 		this.state.hoveredCourse = props.hoveredCourse;
+		console.log(props.courses);
 	}
 
 	componentDidUpdate(prevProps) {
@@ -26,16 +27,11 @@ class Timetable extends Component {
 	}
 
 	getIndexes = (course) => {
-		if (!this.state.courses) return;
-		let currentIndex =
-			this.state.courses &&
-			this.state.courses.findIndex((c) => c === course);
+		let currentIndex = this.state.courses.findIndex((c) => c === course);
 		let zIndex;
 		let indexes = [];
-		const courses =
-			this.state.courses &&
-			this.state.courses.filter((c) => c !== course);
-
+		const courses = this.state.courses.filter((c) => c !== course);
+		console.log(course);
 		for (let index = 0; index < course.classTimeArray.length; index++) {
 			const element = course.classTimeArray[index];
 			for (let i = 0; i < element.days.length; i++) {

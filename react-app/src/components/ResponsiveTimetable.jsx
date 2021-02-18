@@ -15,8 +15,11 @@ class ResponsiveTimetable extends Component {
 	constructor(props) {
 		super(props);
 		console.log('constructor !');
-		this.state.myCourses = props.courses;
-		this.readDepartments();
+	}
+
+	async componentWillMount() {
+		await this.readDepartments();
+		this.state.myCourses = this.props.courses;
 	}
 
 	readDepartments = async () => {
@@ -44,6 +47,7 @@ class ResponsiveTimetable extends Component {
 	};
 
 	handleAddCourse = async () => {
+		console.log(this.state.selectedCourse, ' selectedCourse');
 		if (this.state.selectedCourse)
 			this.props.onSelect(this.state.selectedCourse);
 	};
@@ -61,6 +65,7 @@ class ResponsiveTimetable extends Component {
 			this.setState({ myCourses: this.props.courses });
 		if (prevState.selected !== this.state.selected)
 			this.readDepartmentCourses(this.state.selected);
+		console.log(this.state.myCourses);
 	}
 
 	render() {

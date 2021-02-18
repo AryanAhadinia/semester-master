@@ -12,7 +12,7 @@ class SmallCourseCard extends Component {
 	};
 
 	constructor(props) {
-		super();
+		super(props);
 		for (
 			let index = 0;
 			index < props.course.classTimeArray.length;

@@ -25,12 +25,11 @@ import {
 } from 'react-router-dom';
 import ResponsiveTimetable from './components/ResponsiveTimetable';
 import userService from './services/userService';
-// import InfoModal from './components/InfoModal';
 
 class App extends Component {
 	state = {
 		currentState: 1,
-		hoveredCourse: {},
+		hoveredCourse: undefined,
 		courses: [],
 	};
 
@@ -40,7 +39,7 @@ class App extends Component {
 		if (this.checkIfCourseAlreadyExists(newCourse)) {
 			return;
 		}
-		this.checkIfTheNewCourseExamCorrupts(newCourse);
+		await this.checkIfTheNewCourseExamCorrupts(newCourse);
 		const courses = [...this.state.courses, newCourse];
 		this.setState({ courses });
 		toast.dark('درس << ' + course.title + ' >> اضافه شد', {
@@ -117,13 +116,17 @@ class App extends Component {
 		super();
 		this.modalRefrence = React.createRef();
 		this.showModal = this.showModal.bind(this);
-		this.init();
+	}
+
+	async componentWillMount() {
+		await this.init();
 	}
 
 	async init() {
-		const { data: myCourses } = await courseService.getMyCourses();
-		this.setState({ courses: myCourses });
-		this.deleteIfExpired();
+		// when usin express uncomment
+		// const { data: myCourses } = await courseService.getMyCourses();
+		// this.setState({ courses: myCourses });
+		await this.deleteIfExpired();
 		const isThereAnyCourses = await db.courses.count();
 		if (isThereAnyCourses === 0) {
 			const { data: courses } = await courseService.getAllCourses();
@@ -257,7 +260,7 @@ class App extends Component {
 					<React.Fragment>
 						<Link to='/timetable'></Link>
 						<Timetable
-							courses={this.state.courses.list}
+							courses={this.state.courses}
 							handleUpdateCourses={this.handleUpdateCourses}
 							hoveredCourse={this.state.hoveredCourse}
 							handleUpdateHover={this.handleUpdateHover}
@@ -273,7 +276,7 @@ class App extends Component {
 						</div>
 						<ResponsiveTimetable
 							onSelect={this.addCourse}
-							courses={this.state.courses.list}
+							courses={this.state.courses}
 						></ResponsiveTimetable>
 					</React.Fragment>
 				);

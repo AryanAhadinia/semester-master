@@ -7,7 +7,10 @@ class Course extends Component {
 
 	constructor(props) {
 		super();
-		this.state.course = props.course;
+	}
+
+	componentWillMount() {
+		this.setState({ course: this.props.course });
 	}
 
 	componentDidUpdate(prevProps) {

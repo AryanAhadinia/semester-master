@@ -7,10 +7,10 @@ class TableContainer extends Component {
 		courses: [],
 	};
 
-	constructor(props) {
-		super(props);
-		// this.state.courses = props.courses;
+	componentWillMount() {
+		this.setState({ courses: this.props.courses });
 	}
+
 	render() {
 		return (
 			<div className='table-container d-flex flex-column justify-content-start align-items-center'>

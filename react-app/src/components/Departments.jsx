@@ -5,9 +5,8 @@ import db from '../services/db';
 class Deparment extends Component {
 	state = { departments: [], selected: 0 };
 
-	constructor() {
-		super();
-		this.readDepartments();
+	async componentWillMount() {
+		await this.readDepartments();
 	}
 
 	readDepartments = async () => {
