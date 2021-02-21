@@ -308,8 +308,10 @@ class App extends Component {
 					</React.Fragment>
 				);
 			case 4:
-				this.handleClearDB();
-				return <Redirect to='/index'></Redirect>;
+				// this.handleClearDB();
+				return <iframe id="2e6d627f-5b7c-4726-950b-df4454a99dad"
+							   src="https://www.vectary.com/viewer/v1/?model=2e6d627f-5b7c-4726-950b-df4454a99dad&env=autumncrossing"
+							   frameBorder="0" width="100%" height="480"></iframe>;
 
 			default:
 				return null;
